@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    <div class="row">
+        <div class="col-sm-2 d-flex align-items-center">
+            <button class="btn btn-primary" (click)="toggleFilterInput()">Filter</button>
+        </div>
+        <div class="col-sm-2 d-flex align-items-center">
+            <div class="form-group row">
+                <div class="col-sm-12 mt-2">
+                    <button class="btn-control btn btn-primary" [routerLink]="['add']">Thêm mới nhân sự</button>
+                </div>
+            </div>
+        </div>  
+        <div class="col-sm-8 align-items-center" *ngIf="showFilterInput">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label" for="fullNameInput">Họ Tên</label>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="fullNameInput" [(ngModel)]="queries.filter.fullName">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" (click)="onFilterButtonClick()">Lọc</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="listModel.items.length > 0; else noEmployees">
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th style="width: 5%;">STT</th>
+                <th>Họ tên nhân sự</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+                <th>Số CCCD</th>
+                <th>Email</th>
+                <th>Dân tộc</th>
+                <th style="width: 10%;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listModel.items | paginate: { itemsPerPage: pageSize, currentPage: listModel.page, id: 'employee-pagination' } ; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{item.fullName}}</td>
+                <td>{{item.dateOfBirth | date:"dd-MM-yyyy"}}</td>
+                <td>{{item.addressString}}</td>
+                <td>{{item.phoneNumber}}</td>
+                <td>{{item.identificationNumber}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.ethnicity}}</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <i [routerLink]="['update', item.id]" class="fas fa-edit mx-2"></i>
+                        <i (click)="deleteItem(item)" class="fas fa-trash-alt mx-2"></i>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls id="employee-pagination" class="pagination" previousLabel="Trước" nextLabel="Tiếp"
+        (pageChange)="onPageChange($event)">
+    </pagination-controls>
+</div>
+<ng-template #noEmployees>
+    <p>Không tìm thấy.</p>
+</ng-template>

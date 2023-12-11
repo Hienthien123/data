@@ -1,0 +1,185 @@
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    <div class="d-flex">
+        <button [routerLink]="['/admin/students']" class="btn btn-secondary me-3">Quay lại</button>
+        <button [disabled]="checkFormValid()" (click)="submit()" class="btn btn-primary">{{itemId ? 'Sửa thông tin' :
+            'Thêm mới'}}</button>
+    </div>
+</div>
+<hr>
+<div>
+    <form>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="lastName">Tên học viên <b class="text-danger ms-2">( *
+                    )</b></label>
+            <div class="col-sm-2">
+                <input type="text" placeholder="Họ" class="form-control" id="lastName" name="lastName"
+                    required="required" [(ngModel)]="data.lastName">
+            </div>
+            <div class="col-sm-2">
+                <input type="text" placeholder="Tên" class="form-control" id="firstName" name="firstName"
+                    required="required" [(ngModel)]="data.firstName">
+            </div>
+            <div class="col-sm-1 offset-1 col-form-label" for="gender">Giới tính</div>
+            <div class="col-sm-4">
+                <select class="form-control" name="gender" id="gender" [(ngModel)]="data.gender">
+                    <option value="0">Nam</option>
+                    <option value="1">Nữ</option>
+                    <option value="2">Khác</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="dateOfBirth">Ngày sinh <b class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <input type="date" class="form-control" [(ngModel)]="doBString" name="dateOfBirth" id="dateOfBirth" required="required" />
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="phoneNumber">Số điện thoại <b class="text-danger ms-2">( *
+                    )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.phoneNumber" name="phoneNumber"
+                    id="phoneNumber" required="required" />
+            </div>
+            <label class="col-sm-1 offset-1 col-form-label" for="email">E-mail <b class="text-danger ms-2">( *
+                    )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.email" name="email" id="email"
+                    required="required" />
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="nationality">Quốc tịch <b class="text-danger ms-2">( *
+                    )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.nationality" name="nationality"
+                    id="nationality" required="required" />
+            </div>
+            <label class="col-sm-1 offset-1 col-form-label" for="identificationNumber">Số CCCD <b
+                    class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.identificationNumber"
+                    name="identificationNumber" id="identificationNumber" required="required" />
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="religion">Tôn giáo <b class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.religion" name="religion" id="religion"
+                    required="required" />
+            </div>
+            <label class="col-sm-1 offset-1 col-form-label" for="ethnicity">Dân tộc <b class="text-danger ms-2">( *
+                    )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.ethnicity" name="ethnicity" id="ethnicity"
+                    required="required" />
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="addProvince">Tỉnh/Thành phố <b class="text-danger ms-2">( *
+                    )</b></label>
+            <div class="col-sm-4">                
+                <app-location-select 
+                [objectName]="'address'" 
+                [type]="1" 
+                [elementName]="'addProvince'" 
+                [classList]="'form-control'" 
+                [selectedValue]="data.address!.provinceId"
+                (changeValue)="handleLocationChange($event)"></app-location-select>
+
+            </div>
+            <label class="col-sm-1 offset-1 col-form-label" for="addDistrict">Quận/Huyện <b class="text-danger ms-2">( *
+                    )</b></label>
+            <div class="col-sm-4">
+                <!-- [selectedValue]="data.address!.districtId" -->
+                <app-location-select [objectName]="'address'" [type]="2" [parentId]="data.address!.provinceId"
+                    [elementName]="'addDistrict'" [classList]="'form-control'"
+                    [selectedValue]="data.address!.districtId"
+                    (changeValue)="handleLocationChange($event)"></app-location-select>
+                   
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="addWard">Xã/Phường <b class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <!-- [selectedValue]="data.address!.wardId" -->
+                <app-location-select [objectName]="'address'" [type]="3" [parentId]="data.address!.districtId"
+                    [elementName]="'addWard'" [classList]="'form-control'" [selectedValue]="data.address!.wardId"
+                    (changeValue)="handleLocationChange($event)"></app-location-select>
+            </div>
+            <label class="col-sm-1 offset-1 col-form-label" for="specificLocation">Địa chỉ chi tiết <b
+                    class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.address!.specificLocation"
+                    name="specificLocation" id="specificLocation" required="required" />
+            </div>
+        </div>
+        <hr>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="emergencyContactName">Người liên hệ <b
+                    class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.emergencyContactName" name="emergencyContactName" id="emergencyContactName"
+                    required="required" />
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="emergencyContactNumber">SĐT người liên hệ <b
+                    class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.emergencyContactNumber"
+                    name="emergencyContactNumber" id="emergencyContactNumber" required="required" />
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="emergencyContactJob">Nghề nghiệp <b
+                    class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.emergencyContactJob" name="emergencyContactJob" id="emergencyContactJob"
+                    required="required" />
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="emergencyContactYearOfBirth">Năm sinh <b class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.emergencyContactYearOfBirth"
+                    name="emergencyContactYearOfBirth" id="emergencyContactYearOfBirth" required="required" />
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="emeProvince">Tỉnh/Thành phố <b class="text-danger ms-2">( *
+                    )</b></label>
+            <div class="col-sm-4">
+                <app-location-select [objectName]="'emergencyContactAddress'" [type]="1" [elementName]="'emeProvince'"
+                    [classList]="'form-control'" [selectedValue]="data.emergencyContactAddress!.provinceId"
+                    (changeValue)="handleLocationChange($event)"></app-location-select>
+            </div>
+            <label class="col-sm-1 offset-1 col-form-label" for="emeDistrict">Quận/Huyện <b class="text-danger ms-2">( *
+                    )</b></label>
+            <div class="col-sm-4">
+                <!-- [selectedValue]="data.address!.districtId" -->
+                <app-location-select [objectName]="'emergencyContactAddress'" [type]="2"
+                    [parentId]="data.emergencyContactAddress!.provinceId" [elementName]="'emeDistrict'"
+                    [selectedValue]="data.emergencyContactAddress!.districtId" [classList]="'form-control'"
+                    (changeValue)="handleLocationChange($event)"></app-location-select>
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="addWard">Xã/Phường <b class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <!-- [selectedValue]="data.address!.wardId" -->
+                <app-location-select [objectName]="'emergencyContactAddress'" [type]="3"
+                    [parentId]="data.emergencyContactAddress!.districtId" [elementName]="'emeWard'"
+                    [selectedValue]="data.emergencyContactAddress!.wardId" [classList]="'form-control'"
+                    (changeValue)="handleLocationChange($event)"></app-location-select>
+            </div>
+            <label class="col-sm-1 offset-1 col-form-label" for="specificLocation">Địa chỉ chi tiết <b
+                    class="text-danger ms-2">( * )</b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" [(ngModel)]="data.emergencyContactAddress!.specificLocation"
+                    name="emeSpecificLocation" id="emeSpecificLocation" required="required" />
+            </div>
+        </div>
+    </form>
+</div>

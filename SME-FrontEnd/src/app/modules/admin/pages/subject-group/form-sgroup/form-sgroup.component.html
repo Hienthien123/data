@@ -1,0 +1,50 @@
+
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    <div class="d-flex">
+        <button [routerLink]="['/admin/subject-group']" class="btn btn-secondary me-3">Quay lại</button>
+        <button [disabled]="data.name ==''" (click)="submit()" class="btn btn-primary">{{itemId ? 'Sửa thông tin' :
+            'Thêm mới'}}</button>
+    </div>
+</div>
+<hr>
+<div>
+    <form>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="name">Tên ngành học</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" required="required"
+                    [(ngModel)]="data.name">
+            </div>
+        </div>       
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="code">Mã</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="code" name="code" required="required"
+                    [(ngModel)]="data.code">
+            </div>
+        </div>   
+        <br>
+        <!-- <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="orderid">Order Id</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="orderid" name="orderid" required="required"
+                    [(ngModel)]="data.orderId">
+            </div>
+        </div>    -->
+        <br>
+        
+        <!-- <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="organization">Tổ chức</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="orderid" name="orderid" required="required"
+                [(ngModel)]="data.organizationId">
+               
+            </div>
+        </div>   
+        <br> -->
+
+        <!-- Add more form fields as needed -->
+    </form>
+</div>

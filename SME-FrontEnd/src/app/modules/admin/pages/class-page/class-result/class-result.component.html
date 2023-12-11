@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    <div>
+      <button [routerLink]="['/admin/class']" class="btn btn-primary">Trở về</button>
+    </div>
+  </div>
+  <hr />
+  <div>
+    <table class="table table-bordered table-light">
+      <thead>
+        <tr>
+          <th style="width: 5%">STT</th>
+          <th>Họ tên</th>
+          <th>Ngày sinh</th>
+          <th>Điểm 15p</th>
+          <th>Điểm 45p</th>
+          <th>Điểm giữa kì</th>
+          <th>Điểm cuối kì</th>
+          <th style="width: 10%">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of TestScoreData; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{item.student?.fullName  }}</td>
+          <!-- <td>{{item.studentId  }}</td> -->
+          <td>{{item.student?.dateOfBirth}}</td>
+          <td contenteditable="true"> {{ item.weight1 }}</td>
+          <td contenteditable="true">{{ item.weight2 }}</td>
+          <td contenteditable="true">{{ item.weight3 }}</td>
+          <td contenteditable="true">{{ item.weight4 }}</td>
+          
+          <td>
+            <div class="d-flex align-items-center">
+              <!-- <i [routerLink]="['update', item.id]" class="fas fa-edit mx-2"></i> -->
+              <!-- <i (click)="deleteItem(item)" class="fas fa-trash-alt mx-2"></i> -->
+              <button (click)="submit( item.studentId,item.classId)" class="btn btn-primary">Lưu</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    <div class="d-flex">
+        <button [routerLink]="['/admin/students']" class="btn btn-secondary me-3">Quay lại</button>
+        <button class="btn btn-primary me-3" (click)="submit()">Thêm vào lớp</button>
+    </div>
+</div>
+<hr />
+<div>
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th style="width: 5%">STT</th>
+                <th>Tên lớp học</th>
+                <th>Mã</th>
+                <th>Sĩ số</th>
+                <th>Tín chỉ</th>
+                <th>Ngành</th>
+                <th>Khối</th>
+                <th>Môn</th>
+                <th style="width: 10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of classNoInTagetStudent; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.code }}</td>
+                <td>{{ item.classSize }}</td>
+                <td>{{ item.credits }}</td>
+                <td>{{ subjectgroupMap[item.subjectGroupId] }}</td>
+                <td>{{ gradeMap[item.gradeId] }}</td>
+                <td>{{ subjectMap[item.subjectId] }}</td>
+
+                <td>
+                    <div class="d-flex align-items-center">
+                        <input type="checkbox" value="{{item.id}}" (change)="checkboxChanged($event)">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

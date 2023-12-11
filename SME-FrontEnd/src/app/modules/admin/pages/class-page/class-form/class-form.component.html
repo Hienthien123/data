@@ -1,0 +1,75 @@
+
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    
+    <div class="d-flex">
+        <button [routerLink]="['/admin/class']" class="btn btn-secondary me-3">Quay lại</button>
+        <button [disabled]="data.name ==''" (click)="submit()" class="btn btn-primary">{{itemId ? 'Sửa thông tin' :
+            'Thêm mới'}}</button>
+    </div>
+</div>
+<hr>
+<div>
+    <form>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="name">Tên lớp học</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" required="required"
+                    [(ngModel)]="data.name">
+            </div>
+        </div>       
+        <br>    
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="code">Mã</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="code" name="code" required="required"
+                    [(ngModel)]="data.code">
+            </div>
+        </div>   
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="classSize">Sĩ số</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="classSize" name="classSize" required="required"
+                    [(ngModel)]="data.classSize">
+            </div>
+        </div> 
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="credits">Tín chỉ </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="credits" name="credits" required="required"
+                    [(ngModel)]="data.credits">
+            </div>
+        </div> 
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="subjectGroupId">Ngành</label>
+            <div class="col-sm-10">
+                <select class="form-select" [(ngModel)]="data.subjectGroupId" name="subjectGroupId" id="subjectGroupId">
+                    <option selected *ngFor="let item of subjectgroupData" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+            </div>
+        </div>   
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="gradeId">Khối</label>
+            <div class="col-sm-10">
+                <select class="form-select" [(ngModel)]="data.gradeId" name="gradeId" id="gradeId">
+                    <option selected *ngFor="let item of gradeData" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+            </div>
+        </div>   
+        <br>
+       
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="subjectId">Môn</label>
+            <div class="col-sm-10">
+                <select class="form-select" [(ngModel)]="data.subjectId" name="subjectId" id="subjectId">
+                    <option selected *ngFor="let item of subjectData" value="{{item.id}}">{{item.subjectName}}</option>
+                  </select>
+            </div>
+        </div>   
+        <br>
+    </form>
+</div>

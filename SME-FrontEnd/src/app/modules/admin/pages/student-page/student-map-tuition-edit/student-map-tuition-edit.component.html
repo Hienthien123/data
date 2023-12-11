@@ -1,0 +1,110 @@
+<div class="student-map-class">
+  <h3 class="title">------------------------------------------Thông Tin -----------------------------------------</h3>
+  <hr>
+  <table class="table table-bordered table-light">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Học Viên Đăng Ký Học</th>
+        <th>Tên Lớp Học</th>
+        <th>Số Tiền</th>
+        <th>Mức Giảm</th>
+        <th>Ngày Áp Dụng</th>
+        <th>Ngày Kết Thúc</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of studentMaps; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ studentName[item.studentId] }}</td>
+        <td>{{ studentClassName[item.classId] }}</td>
+        <td>{{ studentMapsTuition[item.tuitionId] }}</td>
+        <td>{{item.discountAmount}}</td>
+        <td>{{studentTuitionDate[item.id]}}</td>
+        <td>{{studentTuitionDate1[item.id]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="student-map-class">
+  <h5 class="title">------------------------------------------------------------Thông Tin Học
+    Phí ------------------------------------------------------</h5>
+  <hr>
+  <table class="table table-bordered table-light">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Tháng</th>
+        <th>Số Tiền Dư Nợ</th>
+        <th>Trạng Thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of studentMapMoneyMonth; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{item.month}}</td>
+        <td>{{item.money}}</td>
+        <td>{{item.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<div class="student-map-class">
+  <h5 class="title">------------------------------------------------------------ Đóng Học
+    Phí ------------------------------------------------------------</h5>
+  <hr>
+  <div class="d-flex justify-content-between">
+  </div>
+  <hr>
+  <div>
+    <form>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label py-4" for="discountPercentage">Loại Giao Dịch</label>
+        <div class="col-sm-10 py-4">
+          <input type="text" class="form-control" id="discountPercentage" name="discountPercentage" required
+            [(ngModel)]="dataTuitionTransaction.transactionType">
+        </div>
+        <label class="col-sm-2 py-4 col-form-label" for="amountOfMoney">Số Tiền Giao Dịch</label>
+        <div class="col-sm-10 py-4">
+          <input type="text" class="form-control" id="amountOfMoney" name="amountOfMoney" required
+            [(ngModel)]="dataTuitionTransaction.amountOfMoney">
+        </div>
+        <label class="col-sm-2 py-4 col-form-label" for="transactionDate">Thời Giao Dịch</label>
+        <div class="col-sm-10 py-4">
+          <input type="text" class="form-control" id="transactionDate" name="transactionDate" required
+            [(ngModel)]="dataTuitionTransaction.transactionDate">
+        </div>
+        <label class="col-sm-2 py-4 col-form-label" for="classMonth">Giao Dịch Cho Tháng nào </label>
+        <div class="col-sm-10 py-4">
+          <input type="text" class="form-control" id="classMonth" name="classMonth" required
+            [(ngModel)]="dataTuitionTransaction.classMonth">
+        </div>
+        <label class="col-sm-2 col-form-label py-4" for="studentId">Học Sinh Tham Gia</label>
+        <div class="col-sm-10 py-4">
+          <select id="studentId" class="form-select" name="studentId" required
+            [(ngModel)]="dataTuitionTransaction.studentId">
+            <option *ngFor="let item of dataStudent" [value]="item.id">{{ item.fullName }}</option>
+          </select>
+        </div>
+        <label class="col-sm-2 col-form-label py-4" for="classId">Lớp Học</label>
+        <div class="col-sm-10 py-4">
+          <select id="classId" name="classId" class="form-select" [(ngModel)]="dataTuitionTransaction.classId">
+            <option *ngFor="let item of dataClass" [value]="item.id">{{ item.name }}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+    
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <button [routerLink]="['/admin/mon-hoc']" class="btn btn-secondary me-3">Trở lại</button>
+        <button [disabled]="!isFormValid()" (click)="submit()" class="btn btn-primary">{{'Thêm'}}</button>
+      </div>
+    </div>
+   
+</div>

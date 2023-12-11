@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-between">
+  <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+  <div>
+    <button [routerLink]="['add']" class="btn btn-primary">Thêm mới lớp</button>
+  </div>
+</div>
+<hr />
+<div>
+  <table class="table table-bordered table-light">
+    <thead>
+      <tr>
+        <th style="width: 5%">STT</th>
+        <th>Tên lớp học</th>
+        <th>Mã</th>
+        <th>Sĩ số</th>
+        <th>Tín chỉ</th>
+        <th>Ngành</th>
+        <th>Khối</th>
+        <th>Môn</th>
+        <th style="width: 10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of classdata; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.code }}</td>
+        <td>{{ item.classSize }}</td>
+        <td>{{ item.credits }}</td>
+        <td>{{ subjectgroupMap[item.subjectGroupId] }}</td>
+        <td>{{ gradeMap[item.gradeId] }}</td>
+        <td>{{ subjectMap[item.subjectId] }}</td>
+        <td>
+          <div class="d-flex align-items-center">
+            <i [routerLink]="['update', item.id]" class="fas fa-edit mx-2"></i>
+            <i (click)="deleteItem(item)" class="fas fa-trash-alt mx-2"></i>
+                <i
+            [routerLink]="['lop', item.id]"
+            class="fa-solid fas fa-user-graduate mx-2"
+          ></i>
+            <button [routerLink]="['scores', item.id]" class="btn btn-primary">Điểm</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
