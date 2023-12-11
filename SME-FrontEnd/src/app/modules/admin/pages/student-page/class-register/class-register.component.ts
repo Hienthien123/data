@@ -9,7 +9,7 @@ import { GradeService } from "../../../../../services/admin/grade.service";
 import { SubjectgroupServiceService } from "../../../../../services/admin/subjectgroup-service.service";
 import { SubjectServiceService } from "../../../../../services/admin/subject-service.service";
 import { GradeModel } from "../../../../../models/grade.model";
-import { SubjectModel } from "../../../../../models/Subject.model";
+import { SubjectModel } from "../../../../../models/subject.model";
 import { SubjectGroupModel } from "../../../../../models/subjectGroup.model";
 
 

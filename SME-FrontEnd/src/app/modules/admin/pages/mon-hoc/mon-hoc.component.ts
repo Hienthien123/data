@@ -5,7 +5,7 @@ import {OrganizationService} from "../../../../services/admin/organization.servi
 import {OrganizationModel} from "../../../../models/organization.model";
 import {SubjectGroupModel} from "../../../../models/subjectGroup.model";
 import {SubjectgroupServiceService} from "../../../../services/admin/subjectgroup-service.service";
-import { SubjectModel } from 'src/app/models/Subject.model';
+import { SubjectModel } from 'src/app/models/subject.model';
 
 
 @Component({

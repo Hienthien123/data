@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TestModel} from "../../../../../models/test.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TestServiceService} from "../../../../../services/admin/test-service.service";
-import {SubjectModel} from "../../../../../models/Subject.model";
+import {SubjectModel} from "../../../../../models/subject.model";
 import {SubjectServiceService} from "../../../../../services/admin/subject-service.service";
 import {OrganizationService} from "../../../../../services/admin/organization.service";
 import {OrganizationModel} from "../../../../../models/organization.model";

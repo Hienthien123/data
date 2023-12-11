@@ -28,6 +28,12 @@ export const AdminMenu = [
         children: []
     },
     {
+        path: '/admin/khoa-hoc',
+        text: 'Khoa hoc',
+        icon: 'fas fa-bell',
+        children: []
+    },
+    {
         path: '',
         text: 'Quản lý học viên',
         icon: 'fas fa-user-graduate',

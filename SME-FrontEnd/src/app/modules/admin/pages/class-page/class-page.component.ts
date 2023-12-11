@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { SubjectModel } from 'src/app/models/Subject.model';
+import { SubjectModel } from 'src/app/models/subject.model';
 import { ClassModel } from 'src/app/models/class.model';
 import { GradeModel } from 'src/app/models/grade.model';
 import { SubjectGroupModel } from 'src/app/models/subjectGroup.model';

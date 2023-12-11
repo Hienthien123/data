@@ -8,7 +8,7 @@ import { GradeComponent } from '../../grade/grade.component';
 import { SubjectgroupServiceService } from 'src/app/services/admin/subjectgroup-service.service';
 import { SubjectServiceService } from 'src/app/services/admin/subject-service.service';
 import { ToastrService } from 'ngx-toastr';
-import { SubjectModel } from 'src/app/models/Subject.model';
+import { SubjectModel } from 'src/app/models/subject.model';
 import { GradeModel } from 'src/app/models/grade.model';
 import { SubjectGroupModel } from 'src/app/models/subjectGroup.model';
 import { GradeService } from 'src/app/services/admin/grade.service';

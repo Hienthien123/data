@@ -3,7 +3,7 @@ import {environment} from "../../../environments/environments";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {BaseResponseModel} from "../../models/baseResponseModel";
-import {SubjectModel} from "../../models/Subject.model";
+import {SubjectModel} from "../../models/subject.model";
 import {StudentMapsClassModel} from "../../models/studentMapsClass.model";
 
 @Injectable({

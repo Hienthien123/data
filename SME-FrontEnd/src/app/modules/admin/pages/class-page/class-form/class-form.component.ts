@@ -7,7 +7,7 @@ import { ClassServiceService } from 'src/app/services/admin/class-service.servic
 import { GradeService } from 'src/app/services/admin/grade.service';
 import { ToastrService } from 'ngx-toastr';
 import { SubjectGroupModel } from 'src/app/models/subjectGroup.model';
-import { SubjectModel } from 'src/app/models/Subject.model';
+import { SubjectModel } from 'src/app/models/subject.model';
 import { SubjectgroupServiceService } from 'src/app/services/admin/subjectgroup-service.service';
 import { SubjectServiceService } from 'src/app/services/admin/subject-service.service';
 

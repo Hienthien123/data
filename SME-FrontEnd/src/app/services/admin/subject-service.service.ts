@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {BaseResponseModel} from "../../models/baseResponseModel";
-import {SubjectModel} from "../../models/Subject.model";
+import {SubjectModel} from "../../models/subject.model";
 import {environment} from "../../../environments/environments";
 
 
