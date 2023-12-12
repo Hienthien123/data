@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between">
+  <div> Tổ chức</div>
+  <div>
+    <button [routerLink]="['add']" class="btn btn-primary">Thêm</button>
+  </div>
+</div>
+<hr>
+<div>
+  <table class="table table-bordered table-light">
+    <thead>
+    <tr>
+      <th style="width: 5%;">STT</th>
+      <th>Tên tổ chức</th>
+      <th>Thuộc tổ chức</th>
+
+
+      <th style="width: 10%;">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of testData; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{item.organizationName}}</td>
+      <td>{{ item.parentOrganizationId === undefined ? "" : organizationMap[(item.parentOrganizationId)] }}</td>
+
+      <td>
+        <div class="d-flex align-items-center">
+          <i [routerLink]="['update', item.id]" class="fas fa-edit mx-2"></i>
+           <i (click)="deleteItem(item)" class="fas fa-trash-alt mx-2"></i>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

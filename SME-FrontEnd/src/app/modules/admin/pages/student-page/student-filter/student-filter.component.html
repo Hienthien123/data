@@ -1,0 +1,145 @@
+
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    <!-- <button (click)="getStudentById(data.id)" class="btn btn-primary">Lọc</button> -->
+    <button (click)="getStudentsQuery(queries)" class="btn btn-primary">Lọc</button>
+</div>
+<div>
+    <form>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="lastName">Họ tên học viên <b class="text-danger ms-2"></b></label>
+            <div class="col-sm-4">
+                <input type="text" placeholder="Họ tên" class="form-control" id="fullName" name="fullName"
+                    required="required" [(ngModel)]="queries.filter.fullName" (change)="getStudentsQuery(queries)">
+            </div>
+            <!-- <div class="col-sm-2">
+                <input type="text" placeholder="Tên" class="form-control" id="firstName" name="firstName"
+                    required="required" [(ngModel)]="queries.filter.lastName">
+            </div>  -->
+            
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="organizationId">Tổ chức<b class="text-danger ms-2"></b></label>
+            <div class="col-sm-4">
+                <!-- <input type="text" placeholder="organizationId" class="form-control" id="organizationId" name="organizationId"
+                    required="required" [(ngModel)]="data.id"> -->
+                <select id="organizationId" class="form-select" name="organizationId" [(ngModel)]="queries.filter.organizationId" >
+                    <option (change)="getStudentsQuery(queries)" selected *ngFor="let item of listModel.items" value="{{item.organizationId}}" >{{item.organizationId}}</option>
+                </select>          
+            </div> 
+        </div>
+        
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="dateOfBirth">Ngày sinh từ <b class="text-danger ms-2"></b></label>
+            <div class="col-sm-4">
+                <input type="date" class="form-control" (change)="getStudentsQuery(queries)" [(ngModel)]="queries.filter.doBFrom" name="dateOfBirth" id="dateOfBirth" required="required" />
+            </div>
+            <div class="col-sm-1 offset-1 col-form-label" for="dateOfBirth">Đến ngày <b class="text-danger ms-2"></b></div>
+            <div class="col-sm-4">
+                <input type="date" class="form-control" (change)="getStudentsQuery(queries)" [(ngModel)]="queries.filter.doBTo" name="dateOfBirth" id="dateOfBirth" required="required" />
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="dateOfBirth">Ngày đăng ký từ <b class="text-danger ms-2"></b></label>
+            <div class="col-sm-4">
+                <input type="date" class="form-control" (change)="getStudentsQuery(queries)" [(ngModel)]="queries.filter.registerFrom" name="dateOfBirth" id="dateOfBirth" required="required" />
+            </div>
+            <div class="col-sm-1 offset-1 col-form-label" for="dateOfBirth">Đến ngày <b class="text-danger ms-2"></b></div>
+            <div class="col-sm-4">
+                <input type="date" class="form-control" (change)="getStudentsQuery(queries)" [(ngModel)]="queries.filter.registerTo" name="dateOfBirth" id="dateOfBirth" required="required" />
+            </div>
+        </div>
+        
+        
+        
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="addProvince">Tỉnh/Thành phố <b class="text-danger ms-2"></b></label>
+            <div class="col-sm-4">                
+                <app-location-select 
+                [objectName]="'address'" 
+                [type]="1" 
+                [elementName]="'addProvince'" 
+                [classList]="'form-control'" 
+                [selectedValue]="queries.filter.provinceId"
+                (changeValue)="handleLocationChange($event)"
+                (change)="getStudentsQuery(queries)"></app-location-select>
+
+            </div>
+            <label class="col-sm-1 offset-1 col-form-label" for="addDistrict">Quận/Huyện <b class="text-danger ms-2"></b></label>
+            <div class="col-sm-4">
+                <!-- [selectedValue]="queries.filter.districtId" -->
+                <app-location-select [objectName]="'address'" [type]="2" [parentId]="queries.filter.provinceId"
+                    [elementName]="'addDistrict'" [classList]="'form-control'"
+                    [selectedValue]="queries.filter.districtId"
+                    (changeValue)="handleLocationChange($event)"
+                    (change)="getStudentsQuery(queries)"></app-location-select>
+                   
+            </div>
+        </div>
+        <div class="form-group row my-4">
+            <label class="col-sm-2 col-form-label" for="addWard">Xã/Phường <b class="text-danger ms-2"></b></label>
+            <div class="col-sm-4">
+                <!-- [selectedValue]="queries.filter.wardId" -->
+                <app-location-select [objectName]="'address'" [type]="3" [parentId]="queries.filter.districtId"
+                    [elementName]="'addWard'" [classList]="'form-control'" [selectedValue]="queries.filter.wardId"
+                    (changeValue)="handleLocationChange($event)"
+                    (change)="getStudentsQuery(queries)"></app-location-select>
+            </div>
+            <label class="col-sm-1 offset-1 col-form-label" for="specificLocation">Địa chỉ chi tiết <b
+                    class="text-danger ms-2"></b></label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" (change)="getStudentsQuery(queries)" [(ngModel)]="queries.filter.specificLocation"
+                    name="specificLocation" id="specificLocation" required="required" />
+            </div>
+        </div>
+        <hr>
+        
+    </form>
+</div>
+<div>
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th style="width: 5%;">STT</th>
+                <th>Họ tên</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+                <th>Số CCCD</th>
+                <th>Email</th>
+                <th>Dân tộc</th>
+                <th style="width: 10%;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listModel.items | paginate : {
+                itemsPerPage: queries.pageSize,
+                currentPage: listModel.page,
+                totalItems: listModel.totalCount,
+            }; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.fullName}}</td>
+                <td>{{item.dateOfBirth | date:"dd-MM-yyyy"}}</td>
+                <td>{{item.addressString}}</td>
+                <td>{{item.phoneNumber}}</td>
+                <td>{{item.identificationNumber}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.ethnicity}}</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <i [routerLink]="['update', item.id]" class="fas fa-edit mx-2"></i>
+                        <i (click)="deleteItem(item.id)" class="fas fa-trash-alt mx-2"></i>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center" >
+        <pagination-controls
+          previousLabel="Trước"
+          nextLabel="Sau"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+</div>

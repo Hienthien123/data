@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    <button class="d-flex justify-content-between" [routerLink]="['filter']" class="btn btn-primary">Lọc</button>
+    <div>
+        <button [routerLink]="['add']" class="btn btn-primary">Thêm mới học viên</button>
+    </div>
+
+</div>
+<hr>
+<div>
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th style="width: 5%;">STT</th>
+                <th>Họ tên</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+                <th>Số CCCD</th>
+                <th>Email</th>
+                <th>Dân tộc</th>
+                <th style="width: 10%;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listModel.items; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.fullName}}</td>
+                <td>{{item.dateOfBirth | date:"dd-MM-yyyy"}}</td>
+                <td>{{item.addressString}}</td>
+                <td>{{item.phoneNumber}}</td>
+                <td>{{item.identificationNumber}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.ethnicity}}</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <i [routerLink]="['update', item.id]" class="fas fa-edit mx-2"></i>
+                        <i (click)="deleteItem(item.id)" class="fas fa-trash-alt mx-2"></i>
+                        <i [routerLink]="['register',item.id]"  class="fas fa-registered mx-2"></i>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

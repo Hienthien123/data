@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-between">
+    <div>Mức học phí</div>
+    <div>
+        <button [routerLink]="['add']" class="btn btn-primary">Thêm mức học phí</button>
+    </div>
+</div>
+<hr>
+<div>
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th style="width: 5%;">STT</th>
+                <th>Tiêu đề</th>
+                <th>Số tiền</th>
+                <th>Ghi chú</th>
+                <!-- <th>organizationId</th> -->
+                
+                <th style="width: 10%;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of tuitionData; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.amountOfMoney}}</td>
+                <td>{{item.note}}</td>
+                <!-- <td>{{item.organizationId}}</td> -->
+                
+                <td>
+                    <div class="d-flex align-items-center">
+                        <i [routerLink]="['update', item.id]" class="fas fa-edit mx-2"></i>
+                        <i (click)="deleteItem(item)" class="fas fa-trash-alt mx-2"></i>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

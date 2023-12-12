@@ -1,0 +1,1543 @@
+@import '_bootstrap-extended/include-dark';
+
+// Import bootstrap core scss from node_module
+// ! Utilities are customized and added in bootstrap-extended
+
+// Layout & components
+@import '../../node_modules/bootstrap/scss/root';
+@import '../../node_modules/bootstrap/scss/reboot';
+@import '../../node_modules/bootstrap/scss/type';
+@import '../../node_modules/bootstrap/scss/images';
+@import '../../node_modules/bootstrap/scss/containers';
+@import '../../node_modules/bootstrap/scss/grid';
+@import '../../node_modules/bootstrap/scss/tables';
+@import '../../node_modules/bootstrap/scss/forms';
+@import '../../node_modules/bootstrap/scss/buttons';
+@import '../../node_modules/bootstrap/scss/transitions';
+@import '../../node_modules/bootstrap/scss/dropdown';
+@import '../../node_modules/bootstrap/scss/button-group';
+@import '../../node_modules/bootstrap/scss/nav';
+@import '../../node_modules/bootstrap/scss/navbar';
+@import '../../node_modules/bootstrap/scss/card';
+@import '../../node_modules/bootstrap/scss/accordion';
+@import '../../node_modules/bootstrap/scss/breadcrumb';
+@import '../../node_modules/bootstrap/scss/pagination';
+@import '../../node_modules/bootstrap/scss/badge';
+@import '../../node_modules/bootstrap/scss/alert';
+@import '../../node_modules/bootstrap/scss/progress';
+@import '../../node_modules/bootstrap/scss/list-group';
+@import '../../node_modules/bootstrap/scss/close';
+@import '../../node_modules/bootstrap/scss/toasts';
+@import '../../node_modules/bootstrap/scss/modal';
+@import '../../node_modules/bootstrap/scss/tooltip';
+@import '../../node_modules/bootstrap/scss/popover';
+@import '../../node_modules/bootstrap/scss/carousel';
+@import '../../node_modules/bootstrap/scss/spinners';
+@import '../../node_modules/bootstrap/scss/offcanvas';
+
+// Helpers
+@import '../../node_modules/bootstrap/scss/helpers';
+
+@import '_bootstrap-extended/include-dark';
+
+// Import bootstrap extended scss
+@import '_bootstrap-extended/root';
+@import '_bootstrap-extended/reboot';
+@import '_bootstrap-extended/type';
+@import '_bootstrap-extended/utilities';
+@import '_bootstrap-extended/tables';
+@import '_bootstrap-extended/buttons';
+@import '_bootstrap-extended/button-group';
+@import '_bootstrap-extended/badge';
+@import '_bootstrap-extended/dropdown';
+@import '_bootstrap-extended/nav';
+@import '_bootstrap-extended/pagination';
+@import '_bootstrap-extended/alert';
+@import '_bootstrap-extended/tooltip';
+@import '_bootstrap-extended/popover';
+@import '_bootstrap-extended/forms';
+@import '_bootstrap-extended/modal';
+@import '_bootstrap-extended/progress';
+@import '_bootstrap-extended/breadcrumb';
+@import '_bootstrap-extended/list-group';
+@import '_bootstrap-extended/navbar';
+@import '_bootstrap-extended/card';
+@import '_bootstrap-extended/accordion';
+@import '_bootstrap-extended/close';
+@import '_bootstrap-extended/toasts';
+@import '_bootstrap-extended/carousel';
+@import '_bootstrap-extended/spinners';
+@import '_bootstrap-extended/offcanvas';
+
+// Common Utilities
+@import '../../node_modules/bootstrap/scss/utilities/api';
+
+// LTR Utilities
+
+@include ltr-only {
+    @import '_bootstrap-extended/utilities-ltr';
+    @import '../../node_modules/bootstrap/scss/utilities/api';
+}
+
+@import '_bootstrap-extended/include';
+
+// Import bootstrap extended scss
+@import '_bootstrap-extended/root';
+@import '_bootstrap-extended/reboot';
+@import '_bootstrap-extended/type';
+@import '_bootstrap-extended/utilities';
+@import '_bootstrap-extended/tables';
+@import '_bootstrap-extended/buttons';
+@import '_bootstrap-extended/button-group';
+@import '_bootstrap-extended/badge';
+@import '_bootstrap-extended/dropdown';
+@import '_bootstrap-extended/nav';
+@import '_bootstrap-extended/pagination';
+@import '_bootstrap-extended/alert';
+@import '_bootstrap-extended/tooltip';
+@import '_bootstrap-extended/popover';
+@import '_bootstrap-extended/forms';
+@import '_bootstrap-extended/modal';
+@import '_bootstrap-extended/progress';
+@import '_bootstrap-extended/breadcrumb';
+@import '_bootstrap-extended/list-group';
+@import '_bootstrap-extended/navbar';
+@import '_bootstrap-extended/card';
+@import '_bootstrap-extended/accordion';
+@import '_bootstrap-extended/close';
+@import '_bootstrap-extended/toasts';
+@import '_bootstrap-extended/carousel';
+@import '_bootstrap-extended/spinners';
+@import '_bootstrap-extended/offcanvas';
+
+// Common Utilities
+@import '../../node_modules/bootstrap/scss/utilities/api';
+
+// LTR Utilities
+@include ltr-only {
+    @import '_bootstrap-extended/utilities-ltr';
+    @import '../../node_modules/bootstrap/scss/utilities/api';
+}
+
+@import '../../node_modules/bootstrap/scss/mixins/banner';
+@include bsBanner('');
+
+@import '_bootstrap-extended/include';
+
+// Import bootstrap core scss from node_module
+// ! Utilities are customized and added in bootstrap-extended
+
+// Layout & components
+@import '../../node_modules/bootstrap/scss/root';
+@import '../../node_modules/bootstrap/scss/reboot';
+@import '../../node_modules/bootstrap/scss/type';
+@import '../../node_modules/bootstrap/scss/images';
+@import '../../node_modules/bootstrap/scss/containers';
+@import '../../node_modules/bootstrap/scss/grid';
+@import '../../node_modules/bootstrap/scss/tables';
+@import '../../node_modules/bootstrap/scss/forms';
+@import '../../node_modules/bootstrap/scss/buttons';
+@import '../../node_modules/bootstrap/scss/transitions';
+@import '../../node_modules/bootstrap/scss/dropdown';
+@import '../../node_modules/bootstrap/scss/button-group';
+@import '../../node_modules/bootstrap/scss/nav';
+@import '../../node_modules/bootstrap/scss/navbar';
+@import '../../node_modules/bootstrap/scss/card';
+@import '../../node_modules/bootstrap/scss/accordion';
+@import '../../node_modules/bootstrap/scss/breadcrumb';
+@import '../../node_modules/bootstrap/scss/pagination';
+@import '../../node_modules/bootstrap/scss/badge';
+@import '../../node_modules/bootstrap/scss/alert';
+@import '../../node_modules/bootstrap/scss/progress';
+@import '../../node_modules/bootstrap/scss/list-group';
+@import '../../node_modules/bootstrap/scss/close';
+@import '../../node_modules/bootstrap/scss/toasts';
+@import '../../node_modules/bootstrap/scss/modal';
+@import '../../node_modules/bootstrap/scss/tooltip';
+@import '../../node_modules/bootstrap/scss/popover';
+@import '../../node_modules/bootstrap/scss/carousel';
+@import '../../node_modules/bootstrap/scss/spinners';
+@import '../../node_modules/bootstrap/scss/offcanvas';
+@import '../../node_modules/bootstrap/scss/placeholders';
+
+// Helpers
+@import '../../node_modules/bootstrap/scss/helpers';
+
+@import '_components/include-dark';
+
+// * Custom colors
+// *******************************************************************************
+
+$facebook: #3b5998 !default;
+$twitter: #1da1f2 !default;
+$google-plus: #dd4b39 !default;
+$instagram: #e1306c !default;
+$linkedin: #0077b5 !default;
+$github: #333 !default;
+$dribbble: #ea4c89 !default;
+$pinterest: #cb2027 !default;
+$slack: #4a154b !default;
+$reddit: #ff4500 !default;
+$youtube: #ff0000 !default;
+$vimeo: #1ab7ea !default;
+
+$custom-colors: (
+    'facebook': $facebook,
+    'twitter': $twitter,
+    'google-plus': $google-plus,
+    'instagram': $instagram,
+    'linkedin': $linkedin,
+    'github': $github,
+    'dribbble': $dribbble,
+    'pinterest': $pinterest,
+    'slack': $slack,
+    'reddit': $reddit,
+    'youtube': $youtube,
+    'vimeo': $vimeo) !default;
+
+:root {
+
+    @each $color,
+    $value in $custom-colors {
+        --#{$prefix}#{$color}: #{$value};
+    }
+}
+
+@each $color-name,
+$color-value in $custom-colors {
+    @include bg-variant('.bg-#{$color-name}', $color-value
+);
+@include bg-label-variant('.bg-label-#{$color-name}', $color-value);
+@include bg-label-hover-variant('.bg-label-hover-#{$color-name}', $color-value);
+
+@include template-button-variant('.btn-#{$color-name}', $color-value);
+@include template-button-label-variant('.btn-label-#{$color-name}', $color-value);
+@include template-button-outline-variant('.btn-outline-#{$color-name}', $color-value);
+}
+
+// * Bootstrap colors (Uncomment required colors)
+// *******************************************************************************
+
+$bootstrap-colors: (
+    // blue: $blue,
+    // indigo: $indigo,
+    // purple: $purple,
+    // pink: $pink,
+    // orange: $orange,
+    // teal: $teal
+    ) !default;
+
+@each $color-name,
+$color-value in $bootstrap-colors {
+    @include bg-variant('.bg-#{$color-name}', $color-value
+);
+@include bg-label-variant('.bg-label-#{$color-name}', $color-value);
+@include bg-label-hover-variant('.bg-label-hover-#{$color-name}', $color-value);
+@include bg-gradient-variant('.bg-gradient-#{$color-name}', $color-value);
+
+.border-#{$color-name} {
+    border-color: $color-value !important;
+}
+
+@include template-button-variant('.btn-#{$color-name}', $color-value);
+@include template-button-label-variant('.btn-label-#{$color-name}', $color-value);
+@include template-button-outline-variant('.btn-outline-#{$color-name}', $color-value);
+}
+
+// * Buttons
+// *******************************************************************************
+
+@include template-button-variant('.btn-white', $white, $body-color);
+@include template-button-label-variant('.btn-label-white', $white, $body-color);
+@include template-button-outline-variant('.btn-outline-white', $white, $body-color);
+
+// ! ToDo: Custom colors (checkbox & radio)
+// *******************************************************************************
+
+$form-control-colors: (
+    black: #000,
+    white: #fff,
+    silver: #eee,
+    gray: #777,
+    gold: #ffeb3b,
+    pink: #e91e63,
+    red: #f44336) !default;
+
+@each $color-name,
+$color-value in $form-control-colors {
+    @include template-form-check-variant('.form-check-#{$color-name}', $color-value
+);
+}
+
+// * Navbar
+// *******************************************************************************
+
+@each $color,
+$value in $theme-colors {
+    @if $color !=primary and $color !=light {
+        @include template-navbar-style('.navbar.bg-#{$color}', $value);
+    }
+}
+
+@include template-navbar-style('.navbar.bg-white', #fff, $color: $body-color, $active-color: $headings-color);
+@include template-navbar-style('.navbar.bg-light', $light, $color: $body-color, $active-color: $headings-color);
+@include template-navbar-style('.navbar.bg-lighter', $gray-50, $color: $body-color, $active-color: $headings-color);
+
+// * Footer
+// *******************************************************************************
+
+@each $color,
+$value in $theme-colors {
+    @if $color !=primary and $color !=light {
+        @include template-footer-style('.footer.bg-#{$color}', $value);
+    }
+}
+
+@include template-footer-style('.footer.bg-white', #fff, $color: $body-color, $active-color: $headings-color);
+@include template-footer-style('.footer.bg-light',
+    rgba-to-hex($gray-100, $rgba-to-hex-bg),
+    $color: $body-color,
+    $active-color: $headings-color);
+@include template-footer-style('.footer.bg-lighter',
+    rgba-to-hex($gray-50, $rgba-to-hex-bg),
+    $color: $body-color,
+    $active-color: $headings-color);
+
+@import '_components/include-dark';
+
+// Import components scss
+@import '_components/base';
+@import '_components/common';
+@import '_components/menu';
+@import '_components/layout';
+@import '_components/app-brand';
+@import '_components/custom-options';
+@import '_components/switch';
+@import '_components/avatar';
+@import '_components/timeline';
+@import '_components/blockui';
+@import '_components/drag-drop';
+@import '_components/text-divider';
+@import '_components/footer';
+
+@import '_components/include';
+
+// Import components scss
+@import '_components/base';
+@import '_components/common';
+@import '_components/menu';
+@import '_components/layout';
+@import '_components/app-brand';
+@import '_components/custom-options';
+@import '_components/switch';
+@import '_components/avatar';
+@import '_components/timeline';
+@import '_components/blockui';
+@import '_components/drag-drop';
+@import '_components/text-divider';
+@import '_components/footer';
+
+@import 'bootstrap-dark';
+@import 'bootstrap-extended-dark';
+@import 'components-dark';
+@import 'colors-dark';
+
+@import 'bootstrap';
+@import 'bootstrap-extended';
+@import 'components';
+@import 'colors';
+
+@import './_components/include-dark';
+@import './_theme/common';
+@import './_theme/libs';
+@import './_theme/pages';
+@import './_theme/_theme';
+
+$primary-color: #7367f0;
+
+body {
+    background: $card-bg;
+}
+
+.bg-body {
+    background: $body-bg !important;
+}
+
+@include template-common-theme($primary-color);
+@include template-libs-dark-theme($primary-color);
+@include template-pages-theme($primary-color);
+
+// Navbar
+// ---------------------------------------------------------------------------
+@include template-navbar-style('.bg-navbar-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-navbar,
+.menu-horizontal {
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.navbar-detached {
+    border: 1px solid $border-color;
+}
+
+.layout-navbar-fixed .layout-page:before {
+    backdrop-filter: saturate(200%) blur(10px);
+    background: linear-gradient(180deg, rgba($card-bg, 70%) 44%, rgba($card-bg, 43%) 73%, rgba($card-bg, 0%));
+    -webkit-mask: linear-gradient($card-bg, $card-bg 18%, transparent 100%);
+    mask: linear-gradient($card-bg, $card-bg 18%, transparent 100%);
+}
+
+.layout-horizontal .layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+}
+
+// Menu
+// ---------------------------------------------------------------------------
+@include template-menu-style('.bg-menu-theme',
+    $card-bg,
+    $color: $body-color,
+    $active-color: $headings-color,
+    $active-bg: $primary-color);
+
+.bg-menu-theme {
+    .menu-inner {
+        .menu-item {
+
+            &.open,
+            &.active {
+                >.menu-link.menu-toggle {
+
+                    &,
+                    .layout-menu-hover.layout-menu-collapsed & {
+                        background: rgba($base, 0.06);
+                    }
+                }
+            }
+
+            &:not(.active) .menu-link:hover {
+
+                html:not(.layout-menu-collapsed) &,
+                .layout-menu-hover.layout-menu-collapsed & {
+                    background: rgba($base, 0.06);
+                }
+            }
+        }
+    }
+
+    .menu-inner .menu-sub .menu-item:not(.active)>.menu-link::before {
+        color: $text-muted !important;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .layout-menu {
+        box-shadow: 0 0 0 1px $border-color;
+    }
+}
+
+.layout-menu-horizontal {
+    box-shadow: 0 -1px 0 $border-color inset;
+}
+
+// Footer
+// ---------------------------------------------------------------------------
+@include template-footer-style('.bg-footer-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.content-footer .footer-container {
+    .layout-footer-fixed .layout-wrapper:not(.layout-horizontal) & {
+        border: 1px solid $border-color;
+        border-bottom: 0;
+    }
+}
+
+.content-footer {
+    .layout-horizontal & {
+        border-top: 1px solid $border-color;
+    }
+}
+
+// Component styles
+// ---------------------------------------------------------------------------
+
+// card
+.card {
+    box-shadow: none;
+    border: $border-width solid $card-border-color;
+}
+
+// Accordion
+.accordion {
+    .accordion-item {
+        border-top: 1px solid $card-border-color;
+        box-shadow: none !important;
+    }
+}
+
+// Tabs
+.nav-tabs-shadow {
+    box-shadow: none !important;
+    border: 1px solid $border-color !important;
+    border-radius: $border-radius;
+}
+
+.nav-pills:not(.card-header-pills) {
+    ~.tab-content {
+        border: 1px solid $border-color !important;
+        @include border-radius($border-radius);
+        box-shadow: none;
+    }
+}
+
+.nav-align-top .nav-tabs {
+    @include border-top-radius($border-radius);
+
+    ~.tab-content {
+        border-top-width: 0 !important;
+        @include border-bottom-radius($border-radius);
+    }
+}
+
+.nav-align-bottom .nav-tabs {
+    @include border-bottom-radius($border-radius);
+
+    ~.tab-content {
+        border-bottom-width: 0 !important;
+        @include border-top-radius($border-radius);
+    }
+}
+
+.nav-align-left .nav-tabs {
+    @include ltr-style {
+        @include border-start-radius($border-radius);
+    }
+
+    @include rtl-style {
+        @include border-end-radius($border-radius);
+    }
+
+    ~.tab-content {
+        @include ltr-style {
+            border-left-width: 0 !important;
+            @include border-end-radius($border-radius);
+        }
+
+        @include rtl-style {
+            border-right-width: 0 !important;
+            @include border-start-radius($border-radius);
+        }
+    }
+}
+
+.nav-align-right .nav-tabs {
+    @include ltr-style {
+        @include border-end-radius($border-radius);
+    }
+
+    @include rtl-style {
+        @include border-start-radius($border-radius);
+    }
+
+    ~.tab-content {
+        @include ltr-style {
+            border-right-width: 0 !important;
+            @include border-start-radius($border-radius);
+        }
+
+        @include rtl-style {
+            border-left-width: 0 !important;
+            @include border-end-radius($border-radius);
+        }
+    }
+}
+
+//Kanban-item
+.kanban-item {
+    box-shadow: none !important;
+    border: $border-width solid $card-border-color;
+}
+
+// default form wizard style
+
+.bs-stepper:not(.wizard-modern) {
+    box-shadow: none !important;
+    border: 1px solid $border-color;
+    border-radius: $card-border-radius;
+}
+
+// modern form wizard style
+
+.bs-stepper.wizard-modern {
+    .bs-stepper-content {
+        box-shadow: none !important;
+        border: 1px solid $border-color;
+        border-radius: $card-border-radius;
+    }
+}
+
+// file upload (dropzone)
+.light-style .dz-preview {
+    box-shadow: none;
+    border: 1px solid $border-color;
+}
+
+//timeline
+
+.timeline .timeline-item .timeline-event:after {
+    position: absolute;
+    top: 0.75rem;
+    left: -17px;
+    width: 0;
+    height: 0;
+    border-top: 1rem solid transparent;
+    border-right: 1rem solid;
+    border-left: 0 solid;
+    border-bottom: 1rem solid transparent;
+    border-left-color: $timeline-item-bg-color;
+    border-right-color: $card-border-color;
+    z-index: -1;
+    content: '';
+}
+
+.timeline {
+    .timeline-item {
+
+        .timeline-indicator,
+        .timeline-indicator-advanced {
+            i {
+                background-color: $card-bg;
+            }
+        }
+    }
+}
+
+@import './_components/include';
+@import './_theme/common';
+@import './_theme/libs';
+@import './_theme/pages';
+@import './_theme/_theme';
+
+$primary-color: #7367f0;
+$body-bg: #f8f7fa;
+
+body {
+    background: $card-bg;
+}
+
+.bg-body {
+    background: $body-bg !important;
+}
+
+@include template-common-theme($primary-color);
+@include template-libs-theme($primary-color);
+@include template-pages-theme($primary-color);
+
+// Navbar
+// ---------------------------------------------------------------------------
+
+@include template-navbar-style('.bg-navbar-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-navbar,
+.menu-horizontal {
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.navbar-detached {
+    border: 1px solid $border-color;
+}
+
+.layout-navbar-fixed .layout-page:before {
+    backdrop-filter: saturate(200%) blur(10px);
+    background: linear-gradient(180deg, rgba($card-bg, 70%) 44%, rgba($card-bg, 43%) 73%, rgba($card-bg, 0%));
+    -webkit-mask: linear-gradient($card-bg, $card-bg 18%, transparent 100%);
+    mask: linear-gradient($card-bg, $card-bg 18%, transparent 100%);
+}
+
+.layout-horizontal .layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+}
+
+// Menu
+// ---------------------------------------------------------------------------
+
+@include template-menu-style('.bg-menu-theme',
+    $card-bg,
+    $color: $body-color,
+    $active-color: $headings-color,
+    $active-bg: $primary-color);
+
+.bg-menu-theme {
+    .menu-inner {
+        .menu-item {
+
+            &.open,
+            &.active {
+                >.menu-link.menu-toggle {
+
+                    &,
+                    .layout-menu-hover.layout-menu-collapsed & {
+                        background: rgba-to-hex(rgba($black, 0.04), $rgba-to-hex-bg);
+                    }
+                }
+            }
+
+            &:not(.active) .menu-link:hover {
+
+                html:not(.layout-menu-collapsed) &,
+                .layout-menu-hover.layout-menu-collapsed & {
+                    background: rgba-to-hex(rgba($black, 0.04), $rgba-to-hex-bg);
+                }
+            }
+        }
+    }
+
+    .menu-inner .menu-sub .menu-item:not(.active)>.menu-link::before {
+        color: $text-muted !important;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .layout-menu {
+        box-shadow: 0 0 0 1px $border-color;
+    }
+}
+
+.layout-menu-horizontal {
+    box-shadow: 0 -1px 0 $border-color inset;
+}
+
+.timeline .timeline-item .timeline-event:after {
+    position: absolute;
+    top: 0.75rem;
+    left: -17px;
+    width: 0;
+    height: 0;
+    border-top: 1rem solid transparent;
+    border-right: 1rem solid;
+    border-left: 0 solid;
+    border-bottom: 1rem solid transparent;
+    border-left-color: $timeline-item-bg-color;
+    border-right-color: $gray-400;
+    z-index: -1;
+    content: '';
+}
+
+.timeline {
+    .timeline-item {
+
+        .timeline-indicator,
+        .timeline-indicator-advanced {
+            i {
+                background-color: $card-bg;
+            }
+        }
+    }
+}
+
+// Footer
+// ---------------------------------------------------------------------------
+@include template-footer-style('.bg-footer-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.content-footer .footer-container {
+    .layout-footer-fixed .layout-wrapper:not(.layout-horizontal) & {
+        border: 1px solid $border-color;
+        border-bottom: 0;
+    }
+}
+
+.layout-horizontal .bg-footer-theme {
+    border-top: 1px solid $border-color;
+}
+
+// Component styles
+// ---------------------------------------------------------------------------
+
+// card
+.card {
+    box-shadow: none;
+    border: $border-width solid $card-border-color;
+}
+
+// Accordion
+.accordion {
+    .accordion-item {
+        border-top: 1px solid $card-border-color;
+        box-shadow: none !important;
+    }
+}
+
+// Tabs
+.nav-tabs-shadow {
+    box-shadow: none !important;
+    border: 1px solid $border-color !important;
+    border-radius: $border-radius;
+}
+
+.nav-pills:not(.card-header-pills) {
+    ~.tab-content {
+        border: 1px solid $border-color !important;
+        @include border-radius($border-radius);
+        box-shadow: none;
+    }
+}
+
+.nav-align-top .nav-tabs {
+    @include border-top-radius($border-radius);
+
+    ~.tab-content {
+        border-top-width: 0 !important;
+        @include border-bottom-radius($border-radius);
+    }
+}
+
+.nav-align-bottom .nav-tabs {
+    @include border-bottom-radius($border-radius);
+
+    ~.tab-content {
+        border-bottom-width: 0 !important;
+        @include border-top-radius($border-radius);
+    }
+}
+
+.nav-align-left .nav-tabs {
+    @include ltr-style {
+        @include border-start-radius($border-radius);
+    }
+
+    @include rtl-style {
+        @include border-end-radius($border-radius);
+    }
+
+    ~.tab-content {
+        @include ltr-style {
+            border-left-width: 0 !important;
+            @include border-end-radius($border-radius);
+        }
+
+        @include rtl-style {
+            border-right-width: 0 !important;
+            @include border-start-radius($border-radius);
+        }
+    }
+}
+
+.nav-align-right .nav-tabs {
+    @include ltr-style {
+        @include border-end-radius($border-radius);
+    }
+
+    @include rtl-style {
+        @include border-start-radius($border-radius);
+    }
+
+    ~.tab-content {
+        @include ltr-style {
+            border-right-width: 0 !important;
+            @include border-start-radius($border-radius);
+        }
+
+        @include rtl-style {
+            border-left-width: 0 !important;
+            @include border-end-radius($border-radius);
+        }
+    }
+}
+
+//Kanban-item
+.kanban-item {
+    box-shadow: none !important;
+    border: $border-width solid $card-border-color;
+}
+
+// default form wizard style
+.bs-stepper:not(.wizard-modern) {
+    box-shadow: none !important;
+    border: 1px solid $border-color;
+    border-radius: $card-border-radius;
+}
+
+// modern form wizard style
+
+.bs-stepper.wizard-modern {
+    .bs-stepper-content {
+        box-shadow: none !important;
+        border: 1px solid $border-color;
+        border-radius: $card-border-radius;
+    }
+}
+
+// file upload (dropzone)
+.light-style .dz-preview {
+    box-shadow: none;
+    border: 1px solid $border-color;
+}
+
+@import './_components/include-dark';
+@import './_theme/common';
+@import './_theme/libs';
+@import './_theme/pages';
+@import './_theme/_theme';
+
+$primary-color: #7367f0;
+
+body {
+    background: $body-bg;
+}
+
+.bg-body {
+    background: $body-bg !important;
+}
+
+@include template-common-theme($primary-color);
+@include template-libs-dark-theme($primary-color);
+@include template-pages-theme($primary-color);
+
+// Navbar
+// ---------------------------------------------------------------------------
+
+@include template-navbar-style('.bg-navbar-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-navbar {
+    box-shadow: 0 0 10px $border-color;
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.menu-horizontal {
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.layout-horizontal .layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+}
+
+.navbar-detached {
+    box-shadow: $box-shadow-sm;
+}
+
+.layout-navbar-fixed .layout-page:before {
+    backdrop-filter: saturate(200%) blur(10px);
+    background: linear-gradient(180deg, rgba($body-bg, 70%) 44%, rgba($body-bg, 43%) 73%, rgba($body-bg, 0%));
+    -webkit-mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+    mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+}
+
+// Menu
+// ---------------------------------------------------------------------------
+
+@include template-menu-style('.bg-menu-theme',
+    $card-bg,
+    $color: $body-color,
+    $active-color: $headings-color,
+    $border: transparent,
+    $active-bg: $primary-color);
+
+@include media-breakpoint-up(xl) {
+    .bg-menu-theme {
+        box-shadow: $box-shadow-sm;
+    }
+}
+
+.bg-menu-theme {
+    .menu-inner {
+        .menu-item {
+
+            &.open,
+            &.active {
+                >.menu-link.menu-toggle {
+
+                    &,
+                    .layout-menu-hover.layout-menu-collapsed & {
+                        background: rgba($base, 0.06);
+                    }
+                }
+            }
+
+            &:not(.active) .menu-link:hover {
+
+                html:not(.layout-menu-collapsed) &,
+                .layout-menu-hover.layout-menu-collapsed & {
+                    background: rgba($base, 0.06);
+                }
+            }
+        }
+    }
+
+    .menu-inner .menu-sub .menu-item:not(.active)>.menu-link::before {
+        color: $text-muted !important;
+    }
+}
+
+// Footer
+// ---------------------------------------------------------------------------
+@include template-footer-style('.bg-footer-theme', $body-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-footer-fixed .layout-wrapper:not(.layout-horizontal) .content-footer .footer-container,
+.layout-footer-fixed .layout-wrapper.layout-horizontal .content-footer {
+    box-shadow: $box-shadow;
+}
+
+@import './_components/include';
+@import './_theme/common';
+@import './_theme/libs';
+@import './_theme/pages';
+@import './_theme/_theme';
+
+$primary-color: #7367f0;
+$body-bg: #f8f7fa;
+
+body {
+    background: $body-bg;
+}
+
+.bg-body {
+    background: $body-bg !important;
+}
+
+@include template-common-theme($primary-color);
+@include template-libs-theme($primary-color);
+@include template-pages-theme($primary-color);
+
+// Navbar
+// ---------------------------------------------------------------------------
+@include template-navbar-style('.bg-navbar-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-navbar {
+    box-shadow: 0 0 10px $border-color;
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.menu-horizontal {
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.layout-horizontal .layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+}
+
+.navbar-detached {
+    box-shadow: $box-shadow-sm;
+}
+
+.layout-navbar-fixed .layout-page:before {
+    backdrop-filter: saturate(200%) blur(10px);
+    background: linear-gradient(180deg, rgba($body-bg, 70%) 44%, rgba($body-bg, 43%) 73%, rgba($body-bg, 0%));
+    -webkit-mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+    mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+}
+
+// Menu
+// ---------------------------------------------------------------------------
+@include template-menu-style('.bg-menu-theme',
+    $card-bg,
+    $color: $body-color,
+    $active-color: $headings-color,
+    $border: transparent,
+    $active-bg: $primary-color);
+
+@include media-breakpoint-up(xl) {
+    .bg-menu-theme {
+        box-shadow: $box-shadow-sm;
+    }
+}
+
+.bg-menu-theme {
+    .menu-inner {
+        .menu-item {
+
+            &.open,
+            &.active {
+                >.menu-link.menu-toggle {
+
+                    &,
+                    .layout-menu-hover.layout-menu-collapsed & {
+                        background: rgba-to-hex(rgba($black, 0.06), $rgba-to-hex-bg);
+                    }
+                }
+            }
+
+            &:not(.active) .menu-link:hover {
+
+                html:not(.layout-menu-collapsed) &,
+                .layout-menu-hover.layout-menu-collapsed & {
+                    background: rgba-to-hex(rgba($black, 0.04), $rgba-to-hex-bg);
+                }
+            }
+        }
+    }
+
+    .menu-inner .menu-sub .menu-item:not(.active)>.menu-link::before {
+        color: $text-muted !important;
+    }
+}
+
+// Footer
+// ---------------------------------------------------------------------------
+@include template-footer-style('.bg-footer-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-footer-fixed .layout-wrapper:not(.layout-horizontal) .content-footer .footer-container,
+.layout-footer-fixed .layout-wrapper.layout-horizontal .content-footer {
+    box-shadow: $box-shadow;
+}
+
+@import './_components/include-dark';
+@import './_theme/common';
+@import './_theme/libs';
+@import './_theme/pages';
+@import './_theme/_theme';
+
+$primary-color: #e30b5c;
+
+body {
+    background: $body-bg;
+}
+
+.bg-body {
+    background: $body-bg !important;
+}
+
+@include template-common-theme($primary-color);
+@include template-libs-theme($primary-color);
+@include template-pages-theme($primary-color);
+
+// Navbar
+// ---------------------------------------------------------------------------
+
+@include template-navbar-style('.bg-navbar-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.menu-horizontal {
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.navbar-detached {
+    box-shadow: 0 0 0.375rem 0.25rem rgba($black, 0.15);
+}
+
+.layout-navbar-fixed .layout-page:before {
+    backdrop-filter: saturate(200%) blur(10px);
+    background: linear-gradient(180deg, rgba($body-bg, 70%) 44%, rgba($body-bg, 43%) 73%, rgba($body-bg, 0%));
+    -webkit-mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+    mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+}
+
+.layout-horizontal .layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+}
+
+// Menu
+// ---------------------------------------------------------------------------
+
+@include template-menu-style('.bg-menu-theme',
+    $card-bg,
+    $color: $body-color,
+    $active-color: $body-color,
+    $active-bg: $primary-color);
+
+.bg-menu-theme {
+    .menu-inner {
+        .menu-item {
+
+            &.open,
+            &.active {
+                >.menu-link.menu-toggle {
+
+                    &,
+                    .layout-menu-hover.layout-menu-collapsed & {
+                        background: rgba($base, 0.06);
+                    }
+                }
+            }
+
+            &:not(.active) .menu-link:hover {
+
+                html:not(.layout-menu-collapsed) &,
+                .layout-menu-hover.layout-menu-collapsed & {
+                    background: rgba($base, 0.06);
+                }
+            }
+        }
+    }
+
+    .menu-inner .menu-sub .menu-item:not(.active)>.menu-link::before {
+        color: $text-muted !important;
+    }
+}
+
+.layout-menu {
+    box-shadow: 0 0 0 1px $border-color;
+}
+
+.layout-menu-horizontal {
+    box-shadow: 0 -1px 0 $border-color inset;
+}
+
+.timeline .timeline-item .timeline-event:after {
+    content: '';
+}
+
+// Footer
+// ---------------------------------------------------------------------------
+@include template-footer-style('.bg-footer-theme', $body-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-footer-fixed .layout-wrapper:not(.layout-horizontal) .content-footer .footer-container,
+.layout-footer-fixed .layout-wrapper.layout-horizontal .content-footer {
+    box-shadow: $box-shadow;
+}
+
+// Component styles
+// ---------------------------------------------------------------------------
+
+// card
+.card {
+    box-shadow: none;
+    border: $border-width solid $card-border-color;
+}
+
+// Accordion
+.accordion {
+    .accordion-item {
+        border-top: $accordion-border-width solid $accordion-border-color;
+    }
+}
+
+// default form wizard style
+
+.bs-stepper:not(.wizard-modern) {
+    border: 1px solid $border-color;
+    border-radius: $card-border-radius;
+}
+
+// modern form wizard style
+
+.bs-stepper.wizard-modern {
+    .bs-stepper-content {
+        box-shadow: none !important;
+        border: 1px solid $border-color;
+        border-radius: $card-border-radius;
+    }
+}
+
+@import './_components/include';
+@import './_theme/common';
+@import './_theme/libs';
+@import './_theme/pages';
+@import './_theme/_theme';
+
+$primary-color: #e30b5c;
+$body-bg: #f5f5f5;
+
+body {
+    background: $body-bg;
+}
+
+.bg-body {
+    background: $body-bg !important;
+}
+
+@include template-common-theme($primary-color);
+@include template-libs-theme($primary-color);
+@include template-pages-theme($primary-color);
+
+// Navbar
+// ---------------------------------------------------------------------------
+
+@include template-navbar-style('.bg-navbar-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.menu-horizontal {
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.navbar-detached {
+    box-shadow: 0 0 0.375rem 0.25rem rgba(rgba-to-hex($gray-500, $rgba-to-hex-bg), 0.15);
+}
+
+.layout-navbar-fixed .layout-page:before {
+    backdrop-filter: saturate(200%) blur(10px);
+    background: linear-gradient(180deg, rgba($body-bg, 70%) 44%, rgba($body-bg, 43%) 73%, rgba($body-bg, 0%));
+    -webkit-mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+    mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+}
+
+.layout-horizontal .layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+}
+
+// Menu
+// ---------------------------------------------------------------------------
+
+@include template-menu-style('.bg-menu-theme',
+    $card-bg,
+    $color: $body-color,
+    $active-color: $headings-color,
+    $active-bg: $primary-color);
+
+.bg-menu-theme {
+    .menu-inner {
+        .menu-item {
+
+            &.open,
+            &.active {
+                >.menu-link.menu-toggle {
+
+                    &,
+                    .layout-menu-hover.layout-menu-collapsed & {
+                        background: rgba-to-hex(rgba($black, 0.04), $rgba-to-hex-bg);
+                    }
+                }
+            }
+
+            &:not(.active) .menu-link:hover {
+
+                html:not(.layout-menu-collapsed) &,
+                .layout-menu-hover.layout-menu-collapsed & {
+                    background: rgba-to-hex(rgba($black, 0.04), $rgba-to-hex-bg);
+                }
+            }
+        }
+    }
+}
+
+.layout-menu {
+    box-shadow: 0 0 0 1px $border-color;
+}
+
+.layout-menu-horizontal {
+    box-shadow: 0 -1px 0 $border-color inset;
+}
+
+.timeline .timeline-item .timeline-event:after {
+    content: '';
+}
+
+// Footer
+// ---------------------------------------------------------------------------
+@include template-footer-style('.bg-footer-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-footer-fixed .layout-wrapper:not(.layout-horizontal) .content-footer .footer-container,
+.layout-footer-fixed .layout-wrapper.layout-horizontal .content-footer {
+    box-shadow: $box-shadow;
+}
+
+// Component styles
+// ---------------------------------------------------------------------------
+
+// card
+.card {
+    box-shadow: none;
+    border: $border-width solid $card-border-color;
+}
+
+// Accordion
+.accordion {
+    .accordion-item {
+        border-top: $accordion-border-width solid $accordion-border-color;
+    }
+}
+
+// default form wizard style
+
+.bs-stepper:not(.wizard-modern) {
+    border: 1px solid $border-color;
+    border-radius: $card-border-radius;
+}
+
+// modern form wizard style
+
+.bs-stepper.wizard-modern {
+    .bs-stepper-content {
+        box-shadow: none !important;
+        border: 1px solid $border-color;
+        border-radius: $card-border-radius;
+    }
+}
+
+@import './_components/include-dark';
+@import './_theme/common';
+@import './_theme/libs';
+@import './_theme/pages';
+@import './_theme/_theme';
+
+$primary-color: #7367f0;
+
+body {
+    background: $body-bg;
+}
+
+.bg-body {
+    background: $body-bg !important;
+}
+
+@include template-common-theme($primary-color);
+@include template-libs-dark-theme($primary-color);
+@include template-pages-theme($primary-color);
+
+// Navbar
+// ---------------------------------------------------------------------------
+@include template-navbar-style('.bg-navbar-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.menu-horizontal {
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.navbar-detached {
+    box-shadow: 0 0 0.375rem 0.25rem rgba($black, 0.15);
+}
+
+.layout-navbar-fixed .layout-page:before {
+    backdrop-filter: saturate(200%) blur(10px);
+    background: linear-gradient(180deg, rgba($body-bg, 70%) 44%, rgba($body-bg, 43%) 73%, rgba($body-bg, 0%));
+    -webkit-mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+    mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+}
+
+// Menu
+// ---------------------------------------------------------------------------
+@include template-menu-style('.bg-menu-theme',
+    #161931,
+    $color: rgba-to-hex($gray-300, $rgba-to-hex-bg),
+    $active-color: rgba-to-hex($gray-200, $rgba-to-hex-bg),
+    $active-bg: $primary-color);
+
+.bg-menu-theme {
+    .menu-inner {
+        .menu-item {
+
+            &.open,
+            &.active {
+                >.menu-link.menu-toggle {
+
+                    &,
+                    .layout-menu-hover.layout-menu-collapsed & {
+                        background: #2d3253;
+                    }
+                }
+            }
+
+            &:not(.active) .menu-link:hover {
+
+                html:not(.layout-menu-collapsed) &,
+                .layout-menu-hover.layout-menu-collapsed & {
+                    background: #2d3253;
+                }
+            }
+        }
+    }
+
+    .menu-inner .menu-sub .menu-item:not(.active)>.menu-link::before {
+        color: rgba-to-hex($gray-500, $rgba-to-hex-bg) !important;
+    }
+}
+
+// Footer
+// ---------------------------------------------------------------------------
+@include template-footer-style('.bg-footer-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-footer-fixed .layout-wrapper:not(.layout-horizontal) .content-footer .footer-container,
+.layout-footer-fixed .layout-wrapper.layout-horizontal .content-footer {
+    box-shadow: $box-shadow;
+}
+
+@import './_components/include';
+@import './_theme/common';
+@import './_theme/libs';
+@import './_theme/pages';
+@import './_theme/_theme';
+
+$primary-color: #7367f0;
+$body-bg: #f8f7fa;
+
+body {
+    background: $body-bg;
+}
+
+.bg-body {
+    background: $body-bg !important;
+}
+
+@include template-common-theme($primary-color);
+@include template-libs-theme($primary-color);
+@include template-pages-theme($primary-color);
+
+// Navbar
+// ---------------------------------------------------------------------------
+@include template-navbar-style('.bg-navbar-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-navbar {
+    box-shadow: 0 1px 0 $border-color;
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.menu-horizontal {
+    backdrop-filter: saturate(200%) blur(6px);
+}
+
+.navbar-detached {
+    box-shadow: 0 0 0.375rem 0.25rem rgba(rgba-to-hex($gray-500, $rgba-to-hex-bg), 0.15);
+}
+
+.layout-navbar-fixed .layout-page:before {
+    backdrop-filter: saturate(200%) blur(10px);
+    background: linear-gradient(180deg, rgba($body-bg, 70%) 44%, rgba($body-bg, 43%) 73%, rgba($body-bg, 0%));
+    -webkit-mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+    mask: linear-gradient($body-bg, $body-bg 18%, transparent 100%);
+}
+
+// Menu
+// ---------------------------------------------------------------------------
+@include template-menu-style('.bg-menu-theme',
+    #242745,
+    $color: rgba-to-hex($gray-300, $rgba-to-hex-bg),
+    $active-color: rgba-to-hex($gray-200, $rgba-to-hex-bg),
+    $active-bg: $primary-color);
+
+.bg-menu-theme {
+    .menu-inner {
+        .menu-item {
+
+            &.open,
+            &.active {
+                >.menu-link.menu-toggle {
+
+                    &,
+                    .layout-menu-hover.layout-menu-collapsed & {
+                        background: #2d3253;
+                    }
+                }
+            }
+
+            &:not(.active) .menu-link:hover {
+
+                html:not(.layout-menu-collapsed) &,
+                .layout-menu-hover.layout-menu-collapsed & {
+                    background: #2d3253;
+                }
+            }
+        }
+    }
+
+    .menu-inner .menu-sub .menu-item:not(.active)>.menu-link::before {
+        color: rgba-to-hex($gray-500, $rgba-to-hex-bg) !important;
+    }
+}
+
+
+@include template-footer-style('.bg-footer-theme', $card-bg, $color: $body-color, $active-color: $headings-color);
+
+.layout-footer-fixed .layout-wrapper:not(.layout-horizontal) .content-footer .footer-container,
+.layout-footer-fixed .layout-wrapper.layout-horizontal .content-footer {
+    box-shadow: $box-shadow;
+}
+

@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">        
+        <ng-container *ngFor="let item of data; let i = index">
+            <li *ngIf="i != data.length - 1; else activeBlock" class="breadcrumb-item">
+                <a [routerLink]="[item.path]">{{item.title}}</a>
+            </li>
+            <ng-template #activeBlock>
+                <li class="breadcrumb-item active" aria-current="page">{{item.title}}</li>
+            </ng-template>
+        </ng-container>        
+    </ol>
+</nav>

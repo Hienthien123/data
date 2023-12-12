@@ -1,0 +1,48 @@
+
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    
+    <div class="d-flex">
+        <button [routerLink]="['/admin/grade']" class="btn btn-secondary me-3">Quay lại</button>
+        <button [disabled]="data.name ==''" (click)="submit()" class="btn btn-primary">{{itemId ? 'Sửa thông tin' :
+            'Thêm mới'}}</button>
+    </div>
+</div>
+<hr>
+<div>
+    <form>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="name">Tên khối học</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" required="required"
+                    [(ngModel)]="data.name">
+            </div>
+        </div>       
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="code">Mã</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="code" name="code" required="required"
+                    [(ngModel)]="data.code">
+            </div>
+        </div>   
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="orderid">Khối Cuối cấp</label>
+            <div class="col-sm-10">
+                <!-- <select  [(ngModel)]="data.isSeniorGrade" id="isSeniorGrade" name="isSeniorGrade" >
+                     <option value="0">--Select--</option>
+                    <option  [ngValue]="false">Khối</option>
+                    <option  [ngValue]="true">Khối cuối cấp </option>
+                  </select> -->
+                  <input type="checkbox" class="form-check-input"
+                  [checked]="data.isSeniorGrade"
+                  (change)="data.isSeniorGrade = !data.isSeniorGrade">
+           
+
+            </div>
+        </div>   
+        <br>
+    
+    </form>
+</div>

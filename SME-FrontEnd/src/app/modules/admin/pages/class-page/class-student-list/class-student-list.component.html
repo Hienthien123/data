@@ -1,0 +1,134 @@
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+        <div >
+
+  <button type="button" (click)="openModal()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Đăng ký học viên
+  </button>
+ 
+  <div class="modal  bd-example-modal-xl "  [ngClass]="{ 'd-block': showModal }" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Danh sách học viên chưa đăng ký </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" (click)="closeModal()" >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body"  *ngIf="studentsNotInClass.length > 0 ; else noStudents " >
+          <table class="table table-bordered table-light " >
+      <thead>
+        <tr>
+          <th style="width: 5%;">STT</th>
+                  <th>Họ tên</th>
+                  <th>Ngày sinh</th>
+                  <th>Địa chỉ</th>
+                  <th>Số điện thoại</th>
+                  <th>Số CCCD</th>
+                  <th>Email</th>
+                  <th>Dân tộc</th>
+                  <th> <input type="checkbox" (change)="selectAllChanged($event)" [checked]="selectAll">
+                  </th>
+        </tr>
+      </thead>
+      <tbody>
+      
+        <tbody>
+          <tr *ngFor="let item of studentsNotInClass; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.fullName}}</td>
+              <td>{{item.dateOfBirth | date:"dd-MM-yyyy"}}</td>
+              <td>{{item.addressString}}</td>
+              <td>{{item.phoneNumber}}</td>
+              <td>{{item.identificationNumber}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.ethnicity}}</td>
+              <td >
+                <div class="d-flex align-items-center">
+                  <input type="checkbox" value="{{item.id}}" (change)="checkboxChanged($event)">
+                </div>
+              </td>
+          </tr>
+      </tbody>
+     
+    </table>
+          
+          
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+          <button type="button" (click)="submit()"    class="btn btn-primary">Đăng ký</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+    </div>
+    
+  <hr />
+  <div   *ngIf="studentsInClass.length > 0 ; else noStudents " >
+    <table class="table table-bordered table-light " >
+        <thead>
+          <tr>
+            <th style="width: 5%;">STT</th>
+                    <th>Họ tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Địa chỉ</th>
+                    <th>Số điện thoại</th>
+                    <th>Số CCCD</th>
+                    <th>Email</th>
+                    <th>Dân tộc</th>        
+                   <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        
+          <tbody>
+            <tr *ngFor="let item of studentsInClass ; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.fullName}}</td>
+                <td>{{item.dateOfBirth | date:"dd-MM-yyyy"}}</td>
+                <td>{{item.addressString}}</td>
+                <td>{{item.phoneNumber}}</td>
+                <td>{{item.identificationNumber}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.ethnicity}}</td>     
+                <td>
+                  <div class="d-flex align-items-center">      
+                    <i (click)="deleteItem(item)" class="fas fa-trash-alt mx-2"></i>
+                  
+                  </div>
+                </td>
+            </tr>
+        </tbody>
+       
+      </table>
+     
+    
+  </div>
+  <!-- <table class="table table-bordered table-light " >
+    <thead>
+      <tr>
+        <th style="width: 5%;">STT</th>
+                
+                
+                <th>năm</th>
+               <th>lớp</th>
+               <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    
+      <tbody>
+        <tr *ngFor="let item of studentMapsClass ; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{item.classId}}</td>
+            <td>{{getnam(item.studentId)}}</td>
+        </tr>
+    </tbody>
+   
+  </table> -->
+  <ng-template #noStudents>
+    <p>No students found.</p>
+  </ng-template>
