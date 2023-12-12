@@ -56,9 +56,6 @@ import { StudentMapsTuitionComponent } from './pages/tuition-page/student-maps-t
 import { StudentMapTuitionService } from 'src/app/services/admin/student-map-tuition.service';
 import { StudentMapTuitionEditComponent } from './pages/student-page/student-map-tuition-edit/student-map-tuition-edit.component';
 import { TuitionTransactionServiceService } from 'src/app/services/admin/tuition-transaction-service.service';
-import { KhoaHocComponent } from './pages/khoa-hoc/khoa-hoc.component';
-import { CreateKhoaHocComponent } from './pages/khoa-hoc/create-khoa-hoc/create-khoa-hoc.component';
-import { KhoaHocService } from 'src/app/services/admin/khoa-hoc.service';
 @NgModule({
   declarations: [
     AdminComponent,
@@ -98,8 +95,7 @@ import { KhoaHocService } from 'src/app/services/admin/khoa-hoc.service';
         StudentMapClassComponent,
         StudentMapsTuitionComponent,
         StudentMapTuitionEditComponent,
-        KhoaHocComponent,
-        CreateKhoaHocComponent,
+ 
     ],
   imports: [
     CommonModule,
@@ -124,7 +120,6 @@ import { KhoaHocService } from 'src/app/services/admin/khoa-hoc.service';
       EmployeeMapService,
       StudentMapTuitionService,
       TuitionTransactionServiceService,
-      KhoaHocService,
   ]
 })
 export class AdminModule {}

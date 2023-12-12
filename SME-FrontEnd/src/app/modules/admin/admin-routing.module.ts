@@ -33,7 +33,6 @@ import { StudentMapTuitionService } from 'src/app/services/admin/student-map-tui
 import { StudentMapsTuitionComponent } from './pages/tuition-page/student-maps-tuition/student-maps-tuition.component';
 import { StudentMapsClassService } from 'src/app/services/admin/student-maps-class.service';
 import { StudentMapTuitionEditComponent } from './pages/student-page/student-map-tuition-edit/student-map-tuition-edit.component';
-import { KhoaHocComponent } from './pages/khoa-hoc/khoa-hoc.component';
 const routes: Routes = [
   {
     path: '',
@@ -215,10 +214,6 @@ const routes: Routes = [
       {
         path: 'class/lop/:id/studenMapsTuition/edit',
         component: StudentMapTuitionEditComponent
-      },
-      {
-        path: 'khoa-hoc',
-        component: KhoaHocComponent,
       },
     ]
   }

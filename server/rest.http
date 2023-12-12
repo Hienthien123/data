@@ -3,7 +3,7 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-    "email" : "emcdil@email.com",
+    "email" : "maytam@email.com",
     "password": "password"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:3000/api/image/cloudinary-upload
 Content-Type: multipart/form-data
 
 {
-    "file": "file"
+    "file": "file"          
 }
 
 
@@ -33,10 +33,10 @@ Content-Type: application/json
 
 {
     "profile" : {
-        "name" : "tadd3"
+        "name" : "mytam"
     },
-    "username": "tdidcddcddd",
-    "email" : "emcdddil@email.com",
+    "username": "mytam",
+    "email" : "maytam@email.com",
     "password": "password"
 }
 
