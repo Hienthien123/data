@@ -34,6 +34,13 @@ import { StudentMapsTuitionComponent } from './pages/tuition-page/student-maps-t
 import { StudentMapsClassService } from 'src/app/services/admin/student-maps-class.service';
 import { StudentMapTuitionEditComponent } from './pages/student-page/student-map-tuition-edit/student-map-tuition-edit.component';
 import { KhoaHocComponent } from './pages/khoa-hoc/khoa-hoc.component';
+import { FormKhoaHocComponent } from './pages/khoa-hoc/form-khoa-hoc/form-khoa-hoc.component';
+import { ChapterComponent } from './pages/chapter/chapter.component';
+import { FormChapterComponent } from './pages/chapter/form-chapter/form-chapter.component';
+import { LessonComponent } from './pages/lesson/lesson.component';
+import { FormLessonComponent } from './pages/lesson/form-lesson/form-lesson.component';
+import { UserComponent } from './pages/user/user.component';
+import { FormUserComponent } from './pages/user/form-user/form-user.component';
 const routes: Routes = [
   {
     path: '',
@@ -219,6 +226,58 @@ const routes: Routes = [
       {
         path: 'khoa-hoc',
         component: KhoaHocComponent,
+      },
+      {
+        path: 'khoa-hoc/add',
+        component: FormKhoaHocComponent,
+      },
+      {
+        path: 'khoa-hoc/edit/:_id',
+        component: FormKhoaHocComponent,
+      },
+      {
+        path: 'chapter',
+        component: ChapterComponent,
+      },
+      {
+        path: 'chapter/:course_id',
+        component: ChapterComponent,
+      },
+      {
+        path: 'chapter/:course_id/add',
+        component: FormChapterComponent,
+      },
+      {
+        path: 'chapter/:course_id/edit/:_id',
+        component: FormChapterComponent,
+      },
+      {
+        path: 'lesson',
+        component: LessonComponent,
+      },
+      {
+        path: 'lesson/:_id',
+        component: LessonComponent,
+      },
+      {
+        path: 'lesson/:idd/add',
+        component: FormLessonComponent,
+      },
+      {
+        path: 'lesson/edit/:_id',
+        component: FormLessonComponent,
+      },
+      {
+        path: 'user',
+        component: UserComponent,
+      },
+      {
+        path: 'user/add',
+        component: FormUserComponent,
+      },
+      {
+        path: 'user/edit/:_id',
+        component: FormUserComponent,
       },
     ]
   }
