@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between">
+    <div>Chapter</div>
+    <div>
+      <button [routerLink]="['/admin/chapter',course_id]" class="btn btn-secondary me-3">Trở lại</button>
+      <button [routerLink]="['add']" class="btn btn-primary">Thêm</button>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <table class="table table-bordered table-light">
+      <thead>
+      <tr>
+        <th style="width: 5%;">STT</th>
+        <th>Tên khóa học</th>
+        <th>Link</th>
+        <th style="width: 10%;">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data; let i = index">
+          <td>{{item.order}}</td>
+          <td>{{item.title}}</td>
+          <td>{{item.link}}</td>
+
+
+        <td>
+          <div class="d-flex align-items-center">
+            <i [routerLink]="['/admin/lesson',course_id,chapter_id,'edit', item._id]" class="fas fa-edit mx-2"></i>
+            <i (click)="deleteItem(item)" class="fas fa-trash-alt mx-2"></i>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  

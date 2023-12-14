@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-between">
+    <div>Khóa học</div>
+    <div>
+      <button [routerLink]="['add']" class="btn btn-primary">Thêm</button>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <table class="table table-bordered table-light">
+      <thead>
+      <tr>
+        <th style="width: 5%;">STT</th>
+        <th>Tên khóa học</th>
+        <th>Mô tả</th>
+        <th>Thể loại</th>
+        <th>Tags</th>
+        <th>Giá</th>
+        <th>Review</th>
+        <th style="width: 10%;">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data; let i = index">
+          <td>{{i+1}}</td>
+          <td><a [routerLink] = "['/admin/chapter',item._id]">{{item.title}}</a></td>
+          <td>{{item.description}}</td>
+          <td>{{item.categories.join(', ')}}</td>
+          <td>{{item.tags.join(', ')}}</td>
+          <td>{{item.price}}</td>
+          <td><a [routerLink]="['/admin/review',item._id]">Review</a></td>
+        <td>
+          <div class="d-flex align-items-center">
+            <i [routerLink]="['edit', item._id]" class="fas fa-edit mx-2"></i>
+            <i (click)="deleteItem(item)" class="fas fa-trash-alt mx-2"></i>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  

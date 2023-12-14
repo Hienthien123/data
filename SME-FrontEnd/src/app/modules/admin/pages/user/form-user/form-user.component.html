@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-between">
+    <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
+    <div>{{data._id ? 'Sửa' : 'Thêm'}} môn học</div>
+    <div class="d-flex">
+      <button [routerLink]="['/admin/user']" class="btn btn-secondary me-3">Trở lại</button>
+      <button [disabled]="data.username == ''" (click)="submit()" class="btn btn-primary">{{data._id ? 'Sửa' : 'Thêm'}}</button>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <form>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label py-4" for="username">Tên khóa học</label>
+            <div class="col-sm-10 py-4">
+                <input type="text" class="form-control" id="title" name="username" required="required"
+               [(ngModel)]="data.username">
+            </div>
+
+
+            <label class="col-sm-2 col-form-label py-4" for="email">Email</label>
+            <div class="col-sm-10 py-4">
+                <input type="text" class="form-control" id="email" name="email" required="required"
+               [(ngModel)]="data.email">
+            </div>
+
+            <label class="col-sm-2 col-form-label py-4" for="name">Name</label>
+            <div class="col-sm-10 py-4">
+                <input type="text" class="form-control" id="name" name="name" required="required"
+               [(ngModel)]="data.profile.name">
+            </div>
+            <label class="col-sm-2 col-form-label py-4" for="avatar">Avatar</label>
+            <div class="col-sm-10 py-4">
+                <input type="text" class="form-control" id="avatar" name="avatar" required="required"
+               [(ngModel)]="data.profile.avatar">
+            </div>
+            <label class="col-sm-2 col-form-label py-4" for="bio">Bio</label>
+            <div class="col-sm-10 py-4">
+                <input type="text" class="form-control" id="bio" name="bio" required="required"
+               [(ngModel)]="data.profile.bio">
+            </div>
+            <label class="col-sm-2 col-form-label py-4" for="roles">roles</label>
+            <div class="col-sm-10 py-4">
+                <input type="text" class="form-control" id="roles" name="roles" required="required"
+               [(ngModel)]="data.roles">
+            </div>
+            <label class="col-sm-2 col-form-label py-4" for="isEnable">isEnable</label>
+            <div class="col-sm-10 py-4">
+                <input type="text" class="form-control" id="isEnable" name="isEnable" required="required"
+               [(ngModel)]="data.isEnable">
+            </div>
+            <label class="col-sm-2 col-form-label py-4" for="isActive">isActive</label>
+            <div class="col-sm-10 py-4">
+                <input type="text" class="form-control" id="isActive" name="isActive" required="required"
+               [(ngModel)]="data.isActive">
+            </div>
+        </div>
+
+    </form>
+  </div>
+  

@@ -34,6 +34,18 @@ export const AdminMenu = [
         children: []
     },
     {
+        path: '/admin/user',
+        text: 'User',
+        icon: 'fas fa-bell',
+        children: []
+    },
+    {
+        path: '/admin/payment',
+        text: 'Payment',
+        icon: 'fas fa-bell',
+        children: []
+    },
+    {
         path: '',
         text: 'Quản lý học viên',
         icon: 'fas fa-user-graduate',

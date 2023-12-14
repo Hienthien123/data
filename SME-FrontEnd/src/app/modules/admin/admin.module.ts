@@ -56,6 +56,23 @@ import { StudentMapsTuitionComponent } from './pages/tuition-page/student-maps-t
 import { StudentMapTuitionService } from 'src/app/services/admin/student-map-tuition.service';
 import { StudentMapTuitionEditComponent } from './pages/student-page/student-map-tuition-edit/student-map-tuition-edit.component';
 import { TuitionTransactionServiceService } from 'src/app/services/admin/tuition-transaction-service.service';
+import { KhoaHocComponent } from './pages/khoa-hoc/khoa-hoc.component';
+import { FormKhoaHocComponent } from './pages/khoa-hoc/form-khoa-hoc/form-khoa-hoc.component';
+import { ChapterComponent } from './pages/chapter/chapter.component';
+import { FormChapterComponent } from './pages/chapter/form-chapter/form-chapter.component';
+import { LessonComponent } from './pages/lesson/lesson.component';
+import { FormLessonComponent } from './pages/lesson/form-lesson/form-lesson.component';
+import { UserComponent } from './pages/user/user.component';
+import { FormUserComponent } from './pages/user/form-user/form-user.component';
+import { KhoaHocService } from 'src/app/services/admin/khoa-hoc.service';
+import { ChapterService } from 'src/app/services/admin/chapter.service';
+import { UserService } from 'src/app/services/admin/user.service';
+import { LessonService } from 'src/app/services/admin/lesson.service';
+import { PaymentComponent } from './pages/payment/payment.component';
+import { ReviewComponent } from './pages/review/review.component';
+import { FormReviewComponent } from './pages/review/form-review/form-review.component';
+import { ReviewService } from 'src/app/services/admin/review.service';
+import { PaymentService } from 'src/app/services/admin/payment.service';
 @NgModule({
   declarations: [
     AdminComponent,
@@ -95,6 +112,17 @@ import { TuitionTransactionServiceService } from 'src/app/services/admin/tuition
         StudentMapClassComponent,
         StudentMapsTuitionComponent,
         StudentMapTuitionEditComponent,
+        KhoaHocComponent,
+        FormKhoaHocComponent,
+        ChapterComponent,
+        FormChapterComponent,
+        LessonComponent,
+        FormLessonComponent,
+        UserComponent,
+        FormUserComponent,
+        PaymentComponent,
+        ReviewComponent,
+        FormReviewComponent,
  
     ],
   imports: [
@@ -120,6 +148,12 @@ import { TuitionTransactionServiceService } from 'src/app/services/admin/tuition
       EmployeeMapService,
       StudentMapTuitionService,
       TuitionTransactionServiceService,
+      KhoaHocService,
+      ChapterService,
+      UserService,
+      LessonService,
+      ReviewService,
+      PaymentService,
   ]
 })
 export class AdminModule {}

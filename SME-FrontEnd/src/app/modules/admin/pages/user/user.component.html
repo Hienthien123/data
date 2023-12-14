@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-between">
+    <div>User</div>
+    <div>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <table class="table table-bordered table-light">
+      <thead>
+      <tr>
+        <th style="width: 5%;">STT</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Avatar</th>
+        <th>Bio</th>
+        <th>Role</th>
+        <th>Enabled</th>
+        <th>Active</th>
+        <th style="width: 10%;">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.profile.name}}</td>
+          <td>{{item.profile.avatar}}</td>
+          <td>{{item.profile.bio}}</td>
+            <td>{{item.roles}}</td>
+            <td>{{item.isEnable}}</td>
+            <td>{{item.isActive}}</td>
+        <td>
+          <div class="d-flex align-items-center">
+            <i [routerLink]="['edit', item._id]" class="fas fa-edit mx-2"></i>
+            <i (click)="deleteItem(item)" class="fas fa-trash-alt mx-2"></i>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  

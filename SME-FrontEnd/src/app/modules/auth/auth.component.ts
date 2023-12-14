@@ -21,17 +21,26 @@ export class AuthComponent implements OnInit {
   constructor(private loginServices: TestScoreService,
     private toastr: ToastrService, private router: Router) {
   }
+  setUpStorage(res: any) {
+    localStorage.setItem('username', res.username)
+    localStorage.setItem('role', res.role)
+    localStorage.setItem('email', res.email)
+    localStorage.setItem('profile', res.profile)
+    localStorage.setItem('authorization', res.token)
+  }
   login() {
     const loginSub = this.loginServices.loginUser(this.logInData).subscribe(res => {
       if (res.token) {
         if (res.role && res.role.includes('ADMIN')) {
           this.toastr.success('Đăng Nhập Thành Công')
-          localStorage.setItem('currentUser', JSON.stringify(res));
+          this.setUpStorage(res)
+          // localStorage.setItem('currentUser', JSON.stringify(res));
           this.router.navigate(['/admin'])
         }
         else {
           this.toastr.success('Đăng nhập thành công');
-          localStorage.setItem('currentUser', JSON.stringify(res));
+          // localStorage.setItem('currentUser', JSON.stringify(res));
+          this.setUpStorage(res)
           this.router.navigate(['/website'])
           console.log(res)
         }
