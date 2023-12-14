@@ -36,7 +36,7 @@ module.exports = {
            
             let listRole = res.locals.userInfo.roles.split(',')
             // console.log(course)
-            if(course.author_id===res.locals.userInfo._id||payment!==null||listRole.includes(constant.addminRole))
+            if(course.author_id===res.locals.userInfo._id||payment!==null||listRole.includes(constant.adminRole))
                 next()
 
         }catch (error) {

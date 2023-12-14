@@ -28,6 +28,7 @@ module.exports = {
     checkToken : (time) => {
         return (req, res, next) => {
             try {
+                
                 // console.log(req.body)
                 const authHeader = req.body.authorization
                 // console.log(req.body.email)
@@ -49,8 +50,9 @@ module.exports = {
                     email: decoded.email
                 },
                 process.env.APP_SECRET,{
-                    expiresIn: time
+                    expiresIn: time,
                 })
+                
                 // console.log(tokenReGen)
                 res.locals.newToken = `Bearer ${tokenReGen}`
                 next()
@@ -65,13 +67,16 @@ module.exports = {
     checkRole: (requireRole) => {
         return (req, res, next) => {
             try {
-                // console.log(req.body.email)
+                
                 let userInfo = res.locals.userInfo
                 let listRole = userInfo.roles.split(',')
                 if(listRole.includes(requireRole))
-                    next()
+                    {
+                        next()
+                    }
                 else
                 throw createError(403,"You don't have role to do this!!!")
+            
             } catch (error) {
                 console.log(error.message)
                 next(error)
@@ -81,9 +86,10 @@ module.exports = {
     },
     checkIsUserOrAdmin: async (req, res, next) => {
         try {
+            
             let userInfo = res.locals.userInfo
             let listRole = userInfo.roles.split(',')
-            if(user_id!==res.locals.userInfo._id&&listRole.includes(constant.addminRole))
+            if(user_id!==res.locals.userInfo._id&&listRole.includes(constant.adminRole))
                 throw createError(403,"You don't have role to do this!!!")
             next()
         } catch (error) {

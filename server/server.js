@@ -30,12 +30,6 @@ app.use('/api/chapter',chapterRoute)
 const lessonRoute = require('./app/routes/lesson.route')
 app.use('/api/lesson',lessonRoute)
 
-const enrollmentRoute = require('./app/routes/enrollment.route')
-app.use('/api/enrollment',enrollmentRoute)
-
-const completedRoute = require('./app/routes/complete.route')
-app.use('/api/complete',completedRoute)
-
 const paymentRoute = require('./app/routes/payment.route')
 app.use('/api/payment',paymentRoute)
 
@@ -53,10 +47,8 @@ app.use((req, res, next)=>{
 app.use((err, req, res, next)=>{
     // res.status(err.status || 500)
     res.send({
-        error: {
-            status: err.status || 500,
-            message: err.message
-        }
+        status: err.status || 500,
+        message: err.message
     })
 })
 

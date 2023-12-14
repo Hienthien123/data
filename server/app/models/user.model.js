@@ -52,16 +52,7 @@ const userSchema = new Schema({
   isActive: {
     type: Boolean,
     require: true
-  },
-  payments:[{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Payment',
-}],
-    reviews:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review',
-    }]
-  
+  }
 },
 {timestamps: true}
 )

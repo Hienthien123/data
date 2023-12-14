@@ -8,13 +8,19 @@ const Topic = require("../models/topic.model")
 module.exports = {
     createCourse : async(req, res, next) => {
         try {
-            const course = new Course(req.body)
+            const request = req.body.change
+            request.author_id=res.locals.userInfo._id
+            delete request._id
+            const course = new Course(request)
             course.isDelete = false
-            course.author_id = res.locals.userInfo._id
+            // course.author_id = res.locals.userInfo._id
             await course.save()
             return res.status(200).json({
-                'message': 'oke',
-                'newToken': res.locals.newToken
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': course,
             })
         } catch (error) {
             console.log(error.message)
@@ -23,23 +29,16 @@ module.exports = {
     },
     getCourseById : async(req, res, next) => {
         try{
-            const courseId = req.body.courseId
+            const courseId = req.body._id
             const course = await Course.findById(courseId)
-            .populate({
-                path: 'chapters',
-                model: 'Chapter',
-                populate: {
-                    path: 'lessons',
-                    model: 'Lesson',
-                    select: '-link'
-                },
-            })
             if(!course)
-                throw createError(400,'something went wrong')
+                throw createError(400,'something went wrongggg')
             return res.status(200).json({
                 'message':'oke',
-                'course_data': course,
-                'newToken': res.locals.newToken,
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': course,
             })
 
         } catch (error) {
@@ -49,21 +48,21 @@ module.exports = {
     },
     changeCourse: async(req,res,next) => {
         try{
-            const course = await Course.findById(req.body.courseChanged._id)
-            .populate({
-                path: 'author_id',
-                select: "_id"
-            })
-            .exec()
+            // console.log(req.body.changed)
+            console.log(req.body.change)
+            const course = await Course.findById(req.body.change._id)
+            console.log(course)
             if(!course)
                 createError(400,'something went wrong')
-            if(res.locals.userInfo._id !== course.author_id._id.toString())
-                throw createError(400,'you don\'t have roles to do this')
-            Object.assign(course,req.body.courseChanged)
-            course.save()
+            
+            Object.assign(course,req.body.change)
+            await course.save()
             return res.status(200).json({
-                "message": "oke",
-                "newToken": res.locals.newToken
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': course,
             })
         }catch(error){
             console.log(error.message)
@@ -72,11 +71,14 @@ module.exports = {
     },
     deleteCourse: async(req,res,next) => {
         try{
-            await Course.updateOne({_id:req.body.courseId},{isDelete: true})
-            // return res.status(200).json({
-            //     'message' : 'oke'
-            // })
-            next()
+            await Course.updateOne({_id:req.body._id},{isDelete: true})
+            return res.status(200).json({
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+
+            })
         }catch(error){
             console.log(error.message)
             next(error)
@@ -160,20 +162,12 @@ module.exports = {
         try{
             const courseId = req.body.courseId
             const course = await Course.findById(courseId)
-            .populate({
-                path: 'chapters',
-                model: 'Chapter',
-                populate: {
-                    path: 'lessons',
-                    model: 'Lesson',
-                },
-            })
             if(!course)
                 throw createError(400,'something went wrong')
             return res.status(200).json({
                 'message':'oke',
                 'course_data': course,
-                'newToken': res.locals.newToken,
+                'token': res.locals.newToken,
             })
 
         } catch (error) {
@@ -185,25 +179,12 @@ module.exports = {
         try{
             const courseId = req.body.courseId
             const course = await Course.find({isDelete:false})
-            .populate({
-                path: 'chapters',
-                model: 'Chapter',
-                populate: {
-                    path: 'lessons',
-                    model: 'Lesson',
-                    select: '-link',
-                },
-            })
-            .populate({
-                path: 'reviews',
-                model: 'Review'
-            })
             if(!course)
                 throw createError(400,'something went wrong')
             return res.status(200).json({
                 'message':'oke',
                 'course_data': course,
-                'newToken': res.locals.newToken,
+                'token': res.locals.newToken,
             })
 
         } catch (error) {
@@ -213,36 +194,16 @@ module.exports = {
     },
     getAllCourseAdmin: async (req, res,next) =>{
         try{
-            const courseId = req.body.courseId
+            const courseId = req.body._id
             const course = await Course.find({isDelete:false})
-            .populate({
-                path: 'chapters',
-                model: 'Chapter',
-                match: { isDelete: false },
-                populate: {
-                    match: { isDelete: false },
-                    path: 'lessons',
-                    model: 'Lesson',
-                },
-            })
-            .populate({
-                path: 'reviews',
-                model: 'Review',
-                populate:{
-                    path: "topic_id",
-                    model: "Topic",
-                }
-            })
-            .populate({
-                path: "payments",
-                model: "Payment"
-            })
             if(!course)
                 throw createError(400,'something went wrong')
             return res.status(200).json({
                 'message':'oke',
-                'course_data': course,
-                'newToken': res.locals.newToken,
+                'result': course,
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
             })
 
         } catch (error) {

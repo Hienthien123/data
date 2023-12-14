@@ -16,17 +16,6 @@ module.exports = {
             payment.total = course.price
             payment.course_id = course._id
             await payment.save()
-            // console.log(course)
-            await Course.findByIdAndUpdate(
-                payment.course_id,
-                { $push: { payments: payment._id } },
-                { new: true }
-            );
-            await User.findByIdAndUpdate(
-                payment.user_id,
-                { $push: { payments: payment._id } },
-                { new: true }
-            );
             return res.status(200).json({
                'message': 'oke',
                 'newToken': res.locals.newToken
@@ -39,11 +28,21 @@ module.exports = {
     read: async (req,res,next)=>{
         try{
             const payments = await Payment.find({})
+            .populate({
+                path: 'user_id',
+                select: 'username',
+            })
+            .populate({
+                path: 'course_id',
+                select: 'title',
+            })
             return res.status(200).json({
-                'message': 'oke',
-                 'newToken': res.locals.newToken,
-                 'payments': payments
-             }) 
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': payments,
+             })
         }catch (error) {
             console.log(error.message)
             next(error)
@@ -51,10 +50,12 @@ module.exports = {
     },
     delete: async(req, res,next)=>{
         try{
-            await Payment.findByIdAndDelete(req.body.payment_id)
+            const x = await Payment.findByIdAndDelete(req.body._id)
             return res.status(200).json({
-                'message': 'oke',
-                'newToken': res.locals.newToken,
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
              }) 
 
         }catch (error) {
@@ -62,5 +63,8 @@ module.exports = {
             next(error)
         }
 
-    }
+    },
+    // getAll: async(req, res, next)=>{
+
+    // }
 }

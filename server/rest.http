@@ -3,7 +3,7 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-    "email" : "maytam@email.com",
+    "email" : "emcdil@email.com",
     "password": "password"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:3000/api/image/cloudinary-upload
 Content-Type: multipart/form-data
 
 {
-    "file": "file"          
+    "file": "file"
 }
 
 
@@ -33,10 +33,10 @@ Content-Type: application/json
 
 {
     "profile" : {
-        "name" : "mytam"
+        "name" : "tadd3"
     },
-    "username": "mytam",
-    "email" : "maytam@email.com",
+    "username": "tdidcddcddd",
+    "email" : "emcdddil@email.com",
     "password": "password"
 }
 
@@ -139,11 +139,12 @@ Content-Type: application/json
 
 
 ### get course by id
-POST http://localhost:3000/api/course/getcoursebyid
+POST http://localhost:3000/api/course/getcoursebyidadmin
 Content-Type: application/json
 
 {
-    "courseId" : "6571433bdf10077c81fd2760"
+    "_id" : "6571c79453adfa42c39c55a8",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQ4ODlmMTRmYzQzZjk3NGJhYjJjMzkiLCJyb2xlcyI6IlVTRVIsSU5TVFJVQ1RPUixBRE1JTiIsInVzZXJuYW1lIjoidGRpZGNkY2RkZCIsInByb2ZpbGUiOiJ7IG5hbWU6ICd0YTMnIH0iLCJlbWFpbCI6ImVtY2RpbEBlbWFpbC5jb20iLCJpYXQiOjE3MDIzMzkxOTAsImV4cCI6MTcwMjM5OTE5MH0.tjlbCEtQUGso2uM1sWqW3EGpBzEWoD36AUDrAzcJWwI"
 }
 
 
@@ -162,7 +163,7 @@ POST http://localhost:3000/api/course/getallcourseadmin
 Content-Type: application/json
 
 {
-    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQ4ODlmMTRmYzQzZjk3NGJhYjJjMzkiLCJyb2xlcyI6IlVTRVIsSU5TVFJVQ1RPUixBRE1JTiIsInVzZXJuYW1lIjoidGRpZGNkY2RkZCIsInByb2ZpbGUiOiJ7IG5hbWU6ICd0YTMnIH0iLCJlbWFpbCI6ImVtY2RpbEBlbWFpbC5jb20iLCJpYXQiOjE3MDIwMDE2NjQsImV4cCI6MTcwMjA2MTY2NH0.EW0JuvHXDhGOMDqtT3wC_x7opCs9dFs6NfWW2iJnPN0"
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQ4ODlmMTRmYzQzZjk3NGJhYjJjMzkiLCJyb2xlcyI6IlVTRVIsSU5TVFJVQ1RPUixBRE1JTiIsInVzZXJuYW1lIjoidGRpZGNkY2RkZCIsInByb2ZpbGUiOiJ7IG5hbWU6ICd0YTMnIH0iLCJlbWFpbCI6ImVtY2RpbEBlbWFpbC5jb20iLCJpYXQiOjE3MDIyNzg0NDcsImV4cCI6MTcwMjMzODQ0N30.KsFuDkznywGUum-MuzjN_0bGQfnWjF4fFGWt6yXQtj8"
 }
 
 
@@ -408,4 +409,26 @@ Content-Type: application/json
   "course_id": "6571433bdf10077c81fd2760",
   "rating": 4,
   "review_text": "hiện em mới bắt đầu học môn Cơ sở dữ liệu ở trường, nhưng mà thầy giảng lí thuyết nhiều quá, không biết khóa SQL Sever này có giống môn CSDL trên trường không ạ, em newbie mong mọi người đừng ném đá ạ, em cảm ơn"
+}
+
+
+
+###get chapter
+POST http://localhost:3000/api/chapter/getbycourse
+Content-Type: application/json
+
+{
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQ4ODlmMTRmYzQzZjk3NGJhYjJjMzkiLCJyb2xlcyI6IlVTRVIsSU5TVFJVQ1RPUixBRE1JTiIsInVzZXJuYW1lIjoidGRpZGNkY2RkZCIsInByb2ZpbGUiOiJ7IG5hbWU6ICd0YTMnIH0iLCJlbWFpbCI6ImVtY2RpbEBlbWFpbC5jb20iLCJpYXQiOjE3MDIzMzkxOTAsImV4cCI6MTcwMjM5OTE5MH0.tjlbCEtQUGso2uM1sWqW3EGpBzEWoD36AUDrAzcJWwI",
+  "_id": "6571c79453adfa42c39c55a8"
+}
+
+
+
+
+###get 
+POST http://localhost:3000/api/payment/read
+Content-Type: application/json
+
+{
+  "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQ4ODlmMTRmYzQzZjk3NGJhYjJjMzkiLCJyb2xlcyI6IlVTRVIsSU5TVFJVQ1RPUixBRE1JTiIsInVzZXJuYW1lIjoidGRpZGNkY2RkZCIsInByb2ZpbGUiOiJ7IG5hbWU6ICd0YTMnLCBhdmF0YXI6ICdudWxsJywgYmlvOiAnbnVsbCcgfSIsImVtYWlsIjoiZW1jZGlsQGVtYWlsLmNvbSIsImlhdCI6MTcwMjUzOTg3MCwiZXhwIjoxNzAyNTk5ODcwfQ.wE4QblmIUmZNIeJnbCJll5AzUZ-kLcdB0Z3bV8naHZE"
 }

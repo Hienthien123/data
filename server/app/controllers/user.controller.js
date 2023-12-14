@@ -27,25 +27,15 @@ module.exports = {
     },
     getUserById : async(req, res, next) =>{
         try{
-            const user = await User.findById(req.body.userId,{username: 1,profile: 1})
-            .populate({
-                path: 'payments',
-                model: "Payment"
-            })
-            .populate({
-                path: 'reviews',
-                model: 'Review',
-                populate:{
-                    path: "topic_id",
-                    model: "Topic",
-                }
-            })
+            const user = await User.findById(req.body._id)
             if (!user)
-                throw createError(400,'something went wrong')
+                throw createError(400,'this user is not exist')
             return res.status(200).json({
-                "message": "oke",
-                "user" : user,
-                'newToken': res.locals.newToken
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': user,
             })
         }catch (error) {
             console.log(error.message)
@@ -55,24 +45,14 @@ module.exports = {
     getUserByUsername: async(req, res, next) =>{
         try{
             const user = await User.findOne({username: req.body.username},{username: 1,profile: 1})
-            .populate({
-                path: 'payments',
-                model: "Payment"
-            })
-            .populate({
-                path: 'reviews',
-                model: 'Review',
-                populate:{
-                    path: "topic_id",
-                    model: "Topic",
-                }
-            })
             if (!user)
                 throw createError(400,'something went wrong')
             return res.status(200).json({
-                "message": "oke",
-                "user" : user,
-                'newToken': res.locals.newToken
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': user,
             })
         }catch (error) {
             console.log(error.message)
@@ -83,8 +63,10 @@ module.exports = {
         try{
             await User.updateOne({userid:req.body._id},{isActive: false})
             return res.status(200).json({
-                "message" : "oke",
-                'newToken': res.locals.newToken,
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
 
             })
         }catch (error) {
@@ -94,25 +76,34 @@ module.exports = {
     },
     getAllUser: async(req,res,next) =>{
         try{
-            const users = await User.find()
-            .populate({
-                path: 'payments',
-                model: "Payment"
-            })
-            .populate({
-                path: 'reviews',
-                model: 'Review',
-                populate:{
-                    path: "topic_id",
-                    model: "Topic",
-                }
-            })
-            if (!users)
-                throw createError(400,'something went wrong')
+            const users = await User.find({})
+   
             return res.status(200).json({
-                "message" : "oke",
-                'newToken': res.locals.newToken,
-                'users': users
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': users,
+            })
+        }catch (error) {
+            console.log(error.message)
+            next(error)
+        }
+    },
+    changeUserInfo: async (req,res,next) =>{
+        try{
+            const user = await User.findById(req.body.change._id)
+            if(!user)
+                createError(400,'this user is not exist')
+            
+            Object.assign(user,req.body.change)
+            user.save()
+            return res.status(200).json({
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': user,
             })
         }catch (error) {
             console.log(error.message)

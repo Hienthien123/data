@@ -9,23 +9,19 @@ const Topic = require("../models/topic.model")
 module.exports = {
     create: async (req, res, next) => {
         try {
-            const review = new Review(req.body)
+            const request = req.body.change
+            delete request._id
+            delete request.user_id
+            delete request.topic_id
+            request.user_id = res.locals.userInfo._id
+            const review = new Review(request)
             review.user_id = res.locals.userInfo._id
             await review.save()
-            await Course.findByIdAndUpdate(
-                req.body.course_id,
-                { $push: { reviews: review._id } },
-                { new: true }
-            );
-            console.log(review.user_id)
-            await User.findByIdAndUpdate(
-                review.user_id,
-                { $push: { reviews: review._id } },
-                { new: true }
-            )
             return res.status(200).json({
-              'message': 'oke',
-                'newToken': res.locals.newToken
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
             })
         } catch (error) {
             console.log(error.message)
@@ -34,13 +30,21 @@ module.exports = {
     },
     read: async (req, res, next) => {
         try {
-            const reviews = await Review.find({course_id: req.body.course_id})
+            const reviews = await Review.find({course_id: req.body._id})
             .populate({
                 path: 'topic_id',
-                model: "Topic"
+                select: 'topic'
+            })
+            .populate({
+                path: 'user_id',
+                select: 'username',
             })
             return res.status(200).json({
-                reviews
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': reviews,
             })
         } catch (error) {
             console.log(error.message)
@@ -49,9 +53,12 @@ module.exports = {
     },
     delete: async(req, res, next)=>{
         try {
-            const review = await Review.findByIdAndDelete(req.params.id)
+            const review = await Review.findByIdAndDelete(req.body._id)
             return res.status(200).json({
-                review
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
             })
         } catch (error) {
             console.log(error.message)
@@ -60,9 +67,35 @@ module.exports = {
     },
     update: async(req, res, next)=>{
         try {
-            const review = await Review.findByIdAndUpdate(req.params.id, req.body)
+            const review = await Review.findByIdAndUpdate(req.body.change._id, req.body.change)
             return res.status(200).json({
-                review
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+            })
+        } catch (error) {
+            console.log(error.message)
+            next(error)
+        }
+    },
+    getById :async (req, res, next) => {
+        try {
+            const review = await Review.findById(req.body._id)
+            .populate({
+                path: 'topic_id',
+                select: 'topic'
+            })
+            .populate({
+                path: 'user_id',
+                select: 'username',
+            })
+            return res.status(200).json({
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': review,
             })
         } catch (error) {
             console.log(error.message)

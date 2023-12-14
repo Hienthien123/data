@@ -4,8 +4,7 @@ const reviewSchema = new mongoose.Schema({
     course_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Course' },
     rating: Number,
     review_text: String,
-    review_date: Date,
-    key_words: [
+    key_word: [
       {type: String,}
     ],
     perc_contribution: Number,

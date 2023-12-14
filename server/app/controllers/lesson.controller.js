@@ -8,18 +8,17 @@ const Chapter = require("../models/chapter.model")
 module.exports = {
     create : async (req,res,next) =>{
         try {
-            const lesson = new Lesson(req.body)
+            const request = req.body.change
+            delete request._id
+            const lesson = new Lesson(request)
             if(lesson===null)
                 throw createError(400,'create fail')
             await lesson.save()
-            const updatedChapter = await Chapter.findByIdAndUpdate(
-                req.body.chapter_id,
-                { $push: { lessons: lesson._id } },
-                { new: true }
-            );
             return res.status(200).json({
-                'message': 'oke',
-                'newToken': res.locals.newToken
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
             })
         } catch (error) {
             console.log(error.message)
@@ -28,14 +27,16 @@ module.exports = {
     },
     change: async(req,res,next) => {
         try{
-            const lesson = await Lesson.findById(req.body.lesson_id)
+            const lesson = await Lesson.findById(req.body.change._id)
             if(!lesson)
-                createError(400,'something went wrong')
-            Object.assign(lesson,req.body.lesson_change)
+                throw createError(400,'something went wrong')
+            Object.assign(lesson,req.body.change)
             await lesson.save()
             return res.status(200).json({
-                "message": "oke",
-                "newToken": res.locals.newToken
+                'message':'oke',
+                'isSuccess': true,
+               'statusCode':200,
+                'token': res.locals.newToken,
             })
         }catch(error){
             console.log(error.message)
@@ -44,10 +45,13 @@ module.exports = {
     },
     delete: async(req,res,next) => {
         try{
-            await Lesson.updateOne({_id:req.body.lesson_id},{isDelete: false})
-            // return res.status(200).json({
-            //     'message' : 'oke'
-            // })
+            await Lesson.updateOne({_id:req.body._id},{isDelete: true})
+            return res.status(200).json({
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+            })
             next()
         }catch(error){
             console.log(error.message)
@@ -56,13 +60,16 @@ module.exports = {
     },
     getById: async(req, res, next) => {
         try{
-            const lesson = await Lesson.find({id:req.params.lesson_id,isDelete:false})
+            const lesson = await Lesson.findById(req.body._id)
+            .where({ isDelete: false })
             if(!lesson)
-                createError(400,'something went wrong')
+                createError(400,'This lesson is not exist')
             return res.status(200).json({
-                'lesson' : lesson,
-                message : "oke",
-                newToken: res.locals.newToken
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': lesson,
             })
         }catch(error){
             console.log(error.message)
@@ -71,14 +78,15 @@ module.exports = {
     },
     getByChapterId: async(req, res, next) => {
         try{
-            const lesson = await Lesson.find({chapters:req.body.chapter_id,isDelete:false})
-            if(!lesson)
-                createError(400,'something went wrong')
-                return res.status(200).json({
-                    'lesson' : lesson,
-                    message : "oke",
-                    newToken: res.locals.newToken
-                })
+            const lessons = await Lesson.find({chapter_id:req.body._id,isDelete:false})
+            // console.log(res.locals.newToken)
+            return res.status(200).json({
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': lessons,
+            })
         }catch(error){
             console.log(error.message)
             next(error)

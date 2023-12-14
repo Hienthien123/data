@@ -7,13 +7,13 @@ const authMiddleware = require('../middlewares/auth.middleware')
 const constant = require('../config/constant.config');
 const courseMiddleware = require('../middlewares/course.middleware');
 
-router.post('/newcourse',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.instructorRole),courseController.createCourse)
+router.post('/createcourse',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.instructorRole),courseController.createCourse)
 
-router.post('/getcoursebyid',courseController.getCourseById)
+router.post('/getcoursebyidadmin',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole),courseController.getCourseById)
 
-router.post('/changecourse',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.instructorRole),courseController.changeCourse)
+router.post('/updatecourse',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole),courseController.changeCourse)
 
-router.post('/deletecourse',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.instructorRole), courseController.deleteCourse,courseController.getAllCourseAdmin)
+router.post('/deletecourse',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole), courseController.deleteCourse)
 
 router.post('/getallcoursebyauthor', courseController.getAllCourseByAuthor)
 
@@ -27,7 +27,7 @@ router.post('/getfullcoursebyid',authMiddleware.checkToken(constant.timeExpire),
 
 router.post('/getallcourse',courseController.getAllCourse)
 
-router.post('/getallcourseadmin',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.addminRole),courseController.getAllCourseAdmin)
+router.post('/getallcourseadmin',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole),courseController.getAllCourseAdmin)
 
 
 module.exports = router

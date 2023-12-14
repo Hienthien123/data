@@ -18,7 +18,7 @@ const courseSchema = new Schema({
     author_id: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User',
-        required: true,
+        required: false,
     },
     categories: [String],
     tags: [String],
@@ -26,19 +26,6 @@ const courseSchema = new Schema({
         type: Boolean,
         require: true,
     },
-    chapters: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Chapter',
-    }],
-    reviews: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review',
-    }],
-    payments:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Payment',
-    }]
-
   },
   {timestamps: true}
 )
