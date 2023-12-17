@@ -19,7 +19,8 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
   }
   constructor(private loginServices: TestScoreService,
-    private toastr: ToastrService, private router: Router) {
+    private toastr: ToastrService, private router: Router,
+  ) {
   }
   setUpStorage(res: any) {
     localStorage.setItem('username', res.username)
@@ -40,7 +41,6 @@ export class AuthComponent implements OnInit {
         else {
           this.toastr.success('Đăng nhập thành công');
           // localStorage.setItem('currentUser', JSON.stringify(res));
-          this.setUpStorage(res)
           this.router.navigate(['/website'])
           console.log(res)
         }

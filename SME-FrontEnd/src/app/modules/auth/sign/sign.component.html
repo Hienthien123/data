@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Đăng ký tài khoản </h2>
         <button [routerLink]="['']" class="btn btn-secondary">Trở lại</button>
@@ -21,7 +21,61 @@
             <label for="password" class="form-label">Mật khẩu</label>
             <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="user.password">
         </div>
-        <!-- Add more form fields as needed -->
+    
         <button [disabled]="!user.username || !user.password || !user.email" (click)="onSubmit()" class="btn btn-primary">Đăng ký</button>
     </form>
-</div>
+</div> -->
+
+
+<main class="login-body" data-vide-bg="assets/login/img/login-bg.mp4">
+    <!-- Login Admin -->
+    <video autoplay muted loop>
+        <source src="./assets/login/img/login-bg.mp4" type="video/mp4">
+      </video>
+    <form class="form-default" action="login-bg.mp4" method="POST">
+        
+        <div class="login-form">
+            <form (submit)="onSubmit()">
+            <!-- logo-login -->
+            <div class="logo-login">
+                <a href="index.html"><img src="assets/img/logo/loder.png" alt=""></a>
+            </div>
+            <h2>Registration Here</h2>
+
+            <div class="form-input">
+                <label for="profile" class="form-label">Tên hiển thị</label>
+                <input type="text" class="form-control" id="profile" name="profile" required [(ngModel)]="user.profile.name">
+            </div>
+            <div class="form-input">
+                <label for="username" class="form-label">Tên người dùng</label>
+            <input type="text" class="form-control" id="username" name="username" required [(ngModel)]="user.username">
+            </div>
+            <div class="form-input">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="user.email">
+            </div>
+            <div class="form-input">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="user.password">
+            </div>
+            <div class="form-input pt-30">
+                <input href="auth" type="submit" name="submit" value="Registration">
+            </div>
+            </form>
+            <!-- Forget Password -->
+            <a href="/auth" class="registration">login</a>
+        </div>
+    </form>
+    <!-- /end login form -->
+</main>
+
+<style>
+    .login-body video {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+</style>
+
+

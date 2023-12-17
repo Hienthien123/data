@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center" style="align-items: center; height: 100vh; background: url('/assets/Images/login-bg.svg');">
+<!-- <div class="d-flex justify-content-center" style="align-items: center; height: 100vh; background: url('/assets/Images/login-bg.svg');">
     <div class="d-flex flex-column justify-content-between">
         <div></div>
         <div style="width: 100%; max-width: 600px; height: 600px; margin: auto;" class="p-5">
@@ -36,13 +36,60 @@
         </div>
     </div>
 </div>
+ -->
 
 
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="assets/login/img/logo/loder.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
 
+<main class="login-body">
+    <video autoplay muted loop>
+        <source src="./assets/login/img/login-bg.mp4" type="video/mp4">
+    </video>
 
+    <form class="form-default" action="login-bg.mp4" method="POST">
+        <form (submit)="login()">
 
-
-
-
-
-
+            <div class="login-form">
+                <!-- logo-login -->
+                <div class="logo-login">
+                    <a href="index.html"><img src="assets/login/img/logo/loder.png" alt=""></a>
+                </div>
+                <h2>Login Here</h2>
+                <div class="form-input">
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" id="profile" name="profile" required
+                        [(ngModel)]="logInData.email">
+                </div>
+                <div class="form-input">
+                    <label for="name">Password</label>
+                    <input type="text" class="form-control" id="profile" name="profile" required
+                        [(ngModel)]="logInData.password">
+                </div>
+                <div class="form-input pt-30">
+                    <input type="submit" name="submit" value="login">
+                </div>
+                <!-- Forget Password -->
+                <a href="#" class="forget">Forget Password</a>
+                <!-- Forget Password -->
+                <a href="auth/singin" class="registration">Registration</a>
+            </div>
+        </form>
+    </form>
+    <!-- /end login form -->
+</main>
+<style>
+    .login-body video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>

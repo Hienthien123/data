@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Admin khóa học</title>
@@ -9,8 +10,169 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+  <title>EduWell - Education HTML5 Template</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="assets/login/img/favicon.ico">
+  <link rel="stylesheet" href="assets/login/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/login/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/login/css/slicknav.css">
+  <link rel="stylesheet" href="assets/login/css/flaticon.css">
+  <link rel="stylesheet" href="assets/login/css/progressbar_barfiller.css">
+  <link rel="stylesheet" href="assets/login/css/gijgo.css">
+  <link rel="stylesheet" href="assets/login/css/animate.min.css">
+  <link rel="stylesheet" href="assets/login/css/animated-headline.css">
+  <link rel="stylesheet" href="assets/login/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/login/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/login/css/themify-icons.css">
+  <link rel="stylesheet" href="assets/login/css/slick.css">
+  <link rel="stylesheet" href="assets/login/css/nice-select.css">
+  <link rel="stylesheet" href="assets/login/css/style.css">
+
+  <!-- login end -->
+
+
+
+
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/lightbox.css">
 </head>
+
 <body>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/lightbox.js"></script>
+  <script src="assets/js/tabs.js"></script>
+  <script src="assets/js/video.js"></script>
+  <script src="assets/js/slick-slider.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script>
+    //according to loftblog tut
+    $('.nav li:first').addClass('active');
+
+    var showSection = function showSection(section, isAnimate) {
+      var
+        direction = section.replace(/#/, ''),
+        reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+        reqSectionPos = reqSection.offset().top - 0;
+
+      if (isAnimate) {
+        $('body, html').animate({
+          scrollTop: reqSectionPos
+        },
+          800);
+      } else {
+        $('body, html').scrollTop(reqSectionPos);
+      }
+
+    };
+
+    var checkSection = function checkSection() {
+      $('.section').each(function () {
+        var
+          $this = $(this),
+          topEdge = $this.offset().top - 80,
+          bottomEdge = topEdge + $this.height(),
+          wScroll = $(window).scrollTop();
+        if (topEdge < wScroll && bottomEdge > wScroll) {
+          var
+            currentId = $this.data('section'),
+            reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+          reqLink.closest('li').addClass('active').
+            siblings().removeClass('active');
+        }
+      });
+    };
+
+    $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+      e.preventDefault();
+      showSection($(this).attr('href'), true);
+    });
+
+    $(window).scroll(function () {
+      checkSection();
+    });
+  </script>
+
+  <script>
+    document.querySelectorAll('a.scroll-to-section').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+  </script>
+
+<script src="./assets/login/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="./assets/login/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="./assets/login/js/popper.min.js"></script>
+<script src="./assets/login/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="./assets/login/js/jquery.slicknav.min.js"></script>
+
+<!-- Video bg -->
+<script src="./assets/login/js/jquery.vide.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="./assets/login/js/owl.carousel.min.js"></script>
+<script src="./assets/login/js/slick.min.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="./assets/login/js/wow.min.js"></script>
+<script src="./assets/login/js/animated.headline.js"></script>
+<script src="./assets/login/js/jquery.magnific-popup.js"></script>
+
+<!-- Date Picker -->
+<script src="./assets/login/js/gijgo.min.js"></script>
+<!-- Nice-select, sticky -->
+<script src="./assets/login/js/jquery.nice-select.min.js"></script>
+<script src="./assets/login/js/jquery.sticky.js"></script>
+<!-- Progress -->
+<script src="./assets/login/js/jquery.barfiller.js"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="./assets/login/js/jquery.counterup.min.js"></script>
+<script src="./assets/login/js/waypoints.min.js"></script>
+<script src="./assets/login/js/jquery.countdown.min.js"></script>
+<script src="./assets/login/js/hover-direction-snake.min.js"></script>
+
+<!-- contact js -->
+<script src="./assets/login/js/contact.js"></script>
+<script src="./assets/login/js/jquery.form.js"></script>
+<script src="./assets/login/js/jquery.validate.min.js"></script>
+<script src="./assets/login/js/mail-script.js"></script>
+<script src="./assets/login/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="./assets/login/js/plugins.js"></script>
+<script src="./assets/login/js/main.js"></script>
+
   <app-root></app-root>
 </body>
+
 </html>
+
+

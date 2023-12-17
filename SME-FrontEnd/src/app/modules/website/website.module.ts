@@ -9,9 +9,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { OurServicesComponent } from './our-services/our-services.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AboutComponent,
+    ContactComponent,
+    OurServicesComponent
+  ],
   imports: [
     CommonModule,
     WebsiteRoutingModule,
