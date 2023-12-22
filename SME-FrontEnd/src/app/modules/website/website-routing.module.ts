@@ -5,6 +5,9 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { OurServicesComponent } from './our-services/our-services.component';
 import { autGuardGuard } from 'src/app/auth/auth.guard';
+import { CourseComponent } from './course/course.component';
+import { SliderComponent } from './slider/slider.component';
+import { GridviewComponent } from './gridview/gridview.component';
 
 const routes: Routes = [
   {
@@ -23,6 +26,14 @@ const routes: Routes = [
     path: 'services',
     component: OurServicesComponent
   },
+  {
+    path: 'course',
+    component: CourseComponent
+  },
+  {
+    path: 'test',
+    component: GridviewComponent
+  },  
 
 
 

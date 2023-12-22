@@ -4,6 +4,7 @@ import { AuthComponent } from './auth.component';
 import { SignComponent } from './sign/sign.component';
 import { CommaExpr } from '@angular/compiler';
 import { TuitionFormComponent } from '../admin/pages/tuition-page/tuition-form/tuition-form.component';
+import { ActiveComponent } from './active/active.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,14 @@ const routes: Routes = [
   {
     path: 'singin',
     component: SignComponent
+  },
+  {
+    path: 'active',
+    component: ActiveComponent
+  },
+  {
+    path: 'active/:code',
+    component: ActiveComponent
   },
 ];
 

@@ -16,6 +16,7 @@ export class AuthComponent implements OnInit {
      token: '',
     roles: [],
   }
+  userData: any 
   ngOnInit() {
   }
   constructor(private loginServices: TestScoreService,
@@ -33,14 +34,17 @@ export class AuthComponent implements OnInit {
     const loginSub = this.loginServices.loginUser(this.logInData).subscribe(res => {
       if (res.token) {
         if (res.role && res.role.includes('ADMIN')) {
+          this.userData = res
           this.toastr.success('Đăng Nhập Thành Công')
           this.setUpStorage(res)
-          // localStorage.setItem('currentUser', JSON.stringify(res));
+          localStorage.setItem('user', JSON.stringify(this.userData));
+          JSON.parse(localStorage.getItem('user')!);
           this.router.navigate(['/admin'])
         }
         else {
           this.toastr.success('Đăng nhập thành công');
-          // localStorage.setItem('currentUser', JSON.stringify(res));
+          localStorage.setItem('user', JSON.stringify(this.userData));
+          JSON.parse(localStorage.getItem('user')!);
           this.router.navigate(['/website'])
           console.log(res)
         }

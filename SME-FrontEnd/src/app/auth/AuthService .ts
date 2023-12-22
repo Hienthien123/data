@@ -10,7 +10,15 @@ export class AuthService {
 
   // Hàm này gửi một request đến server để lấy token
   getTokenFromServer(): Observable<any> {
-    // Thực hiện request lấy token từ server
+    
     return this.http.get<any>('URL để lấy token từ server');
+  }
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    if (user == null) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
