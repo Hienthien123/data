@@ -12,9 +12,13 @@ export class CourseService {
 
   private baseUrl = `${environment.apiUrl}/course`;
   constructor(private http:HttpClient) { }
-  search(payload: any):Observable<BaseResponseModel<CourseModel[]>> {
+  getAll(payload: any):Observable<BaseResponseModel<CourseModel[]>> {
     const apiUrl = `${this.baseUrl}/getallcourseadmin`;
-    return this.http.post<BaseResponseModel<CourseModel[]>>(apiUrl,payload);
+    return this.http.post<any>(apiUrl,payload);
+  }
+  search(payload: any): Observable<any>{
+    const apiUrl = `${this.baseUrl}/searchcoursebykeyword`;
+    return this.http.post<any>(apiUrl,payload);
   }
 
 }

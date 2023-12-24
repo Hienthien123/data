@@ -13,12 +13,7 @@ module.exports = {
             if(chapter===null)
                 throw createError(400,'create fail')
             await chapter.save()
-            return res.status(200).json({
-                'message':'oke',
-                'isSuccess': true,
-                'statusCode':200,
-                'token': res.locals.newToken,
-            })
+            next(request.course_id)
         }catch (error) {
             console.log(error.message)
             next(error)
@@ -29,14 +24,10 @@ module.exports = {
             const chapter = await Chapter.findById(req.body.change._id)
             if(!chapter)
                 throw createError(400,'something went wrong')
-            Object.assign(chapter,req.body.change)
+            await Object.assign(chapter,req.body.change)
             await chapter.save()
-            return res.status(200).json({
-               'message':'oke',
-                'isSuccess': true,
-               'statusCode':200,
-                'token': res.locals.newToken,
-            })
+            
+            next(chapter.course_id)
         } catch (error) {
             console.log(error.message)
             next(error)
@@ -45,6 +36,8 @@ module.exports = {
     getAllChapterByCourse : async(req,res, next)=>{
         try{
             const chapters = await Chapter.find({course_id: req.body._id,isDelete:false})
+            const redisClient = req.redisClient
+            await redisClient.set('chapter',JSON.stringify(chapters))
             return res.status(200).json({
                 'message':'oke',
                 'isSuccess': true,
@@ -59,13 +52,9 @@ module.exports = {
     },
     deleteChapterById : async(req,res, next)=>{
         try{
+            const chapter = await Chapter.findById()
             await Chapter.updateOne({_id:req.body._id},{isDelete:true})
-            return res.status(200).json({
-                'message':'oke',
-                'isSuccess': true,
-                'statusCode':200,
-                'token': res.locals.newToken,
-            })
+            next()
         }catch (error) {
             console.log(error.message)
             next(error)

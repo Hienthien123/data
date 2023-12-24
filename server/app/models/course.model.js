@@ -15,6 +15,9 @@ const courseSchema = new Schema({
         type : Number,
         required: true,
     },
+    image:{
+        type: String,
+    },
     author_id: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User',

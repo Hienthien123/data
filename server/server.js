@@ -1,18 +1,32 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const createError = require('http-errors')
+const Redis = require('@upstash/redis').Redis
 const cors = require('cors');
 require('./app/config/database.config')()
 require('dotenv').config()
 const app = express()
-
+let redisClient;
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+
 
 app.use(cors({
     credentials: true,
     origin: ['http://localhost:4200']
   }));
+app.use((req, res, next) => {
+if (!redisClient) {
+    redisClient = new Redis({
+        url: process.env.UPSTASH_REDIS_REST_URL,
+        token: process.env.UPSTASH_REDIS_REST_TOKEN,
+        })
+    console.log('Connected to Redis');
+
+}
+    req.redisClient = redisClient;
+    next();
+})
 //auth route
 const authRouter = require('./app/routes/auth.route')
 app.use('/api/auth',authRouter)
@@ -60,3 +74,21 @@ app.use((err, req, res, next)=>{
 app.listen(process.env.PORT || 3000, () =>{
     console.log('Server is running')
 })  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

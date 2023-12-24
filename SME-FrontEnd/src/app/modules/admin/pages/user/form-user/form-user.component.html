@@ -1,3 +1,4 @@
+
 <div class="d-flex justify-content-between">
     <app-breadcrumb [data]="breadCrumb"></app-breadcrumb>
     <div>{{data._id ? 'Sửa' : 'Thêm'}} môn học</div>
@@ -28,10 +29,12 @@
                 <input type="text" class="form-control" id="name" name="name" required="required"
                [(ngModel)]="data.profile.name">
             </div>
-            <label class="col-sm-2 col-form-label py-4" for="avatar">Avatar</label>
+            <label class="col-sm-2 col-form-label py-4" for="bio">Avatar</label>
             <div class="col-sm-10 py-4">
-                <input type="text" class="form-control" id="avatar" name="avatar" required="required"
-               [(ngModel)]="data.profile.avatar">
+                <img src="{{img}}" alt="avatar" width="50" height="50">
+                <br/>
+                <input (change)="this.onFilechange($event)" class="form-control" id="image" name="image" type="file"
+               [(ngModel)]="file">
             </div>
             <label class="col-sm-2 col-form-label py-4" for="bio">Bio</label>
             <div class="col-sm-10 py-4">

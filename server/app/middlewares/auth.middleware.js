@@ -25,20 +25,18 @@ module.exports = {
             next(error)
         }
     },
-    checkToken : (time) => {
-        return (req, res, next) => {
+    checkToken :  (req, res, next) => {
             try {
-                
-                // console.log(req.body)
+                let time = constant.timeExpire
                 const authHeader = req.body.authorization
-                // console.log(req.body.email)
                 if (!authHeader)
                     throw createError(403,'Something went wrongs')
                 const token = authHeader.split(" ")[1]
                 // console.log(token)
-                jwt.verify(token, process.env.APP_SECRET, (err, decoded) => {
+                jwt.verify(token, process.env.APP_SECRET,  (err, decoded) => {
                     if (err) 
                         throw err
+               
                 res.locals.userInfo = decoded
                 // console.log(decoded)
                 let tokenReGen = jwt.sign({
@@ -52,8 +50,6 @@ module.exports = {
                 process.env.APP_SECRET,{
                     expiresIn: time,
                 })
-                
-                // console.log(tokenReGen)
                 res.locals.newToken = `Bearer ${tokenReGen}`
                 next()
                 })
@@ -62,11 +58,20 @@ module.exports = {
                 next(error)
             }
         }
-    },
+    ,
 
     checkRole: (requireRole) => {
-        return (req, res, next) => {
-            try {
+        return async (req, res, next) => {
+            try { 
+                const user = await User.findById(res.locals.userInfo._id)
+                // console.log(user)
+                if(!user)
+                    throw createError(403,'your account is not existing')
+                if(!user.isActive)
+                    throw createError(403,'your account is not active')
+                if(!user.isEnable)
+                    throw createError(403,'your account is disabled by us')
+
                 
                 let userInfo = res.locals.userInfo
                 let listRole = userInfo.roles.split(',')

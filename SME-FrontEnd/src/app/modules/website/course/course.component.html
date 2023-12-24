@@ -2,30 +2,31 @@
   <app-header/>
  
   <script>
-   function scrollToTop() {
-  const topSection = document.getElementById('top');
-  if (topSection) {
-    topSection.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-
-  </script>
-  <!-- ***** Header Area End ***** -->
-
-  <!-- ***** Main Banner Area Start ***** -->
-  <section class="main-banner" id="top">
-    
-    <div class="container">
-     <app-gridview></app-gridview>
-    </div>
-  </section>
-
+    function scrollToTop() {
+   const topSection = document.getElementById('top');
+   if (topSection) {
+     topSection.scrollIntoView({ behavior: 'smooth' });
+   }
+ }
+ 
+ 
+   </script>
+   <!-- ***** Header Area End ***** -->
+ 
+   <!-- ***** Main Banner Area Start ***** -->
+   <section class="main-banner" id="top">
+    <app-search></app-search>
+     <div class="container">
+      <app-gridview></app-gridview>
+     </div>
+   </section>
+   
 
   <!-- ***** Main Banner Area End ***** -->
 
   <section class="services" id="services">
     <div class="container">
+      
       <div class="row">
         <div class="col-lg-12">
           <div class="section-heading">

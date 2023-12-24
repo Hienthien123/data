@@ -5,6 +5,7 @@ export interface CourseModel {
     price: number;
     categories: string[];
     tags: string[];
+    image?: string;
     chapters: any[]; 
     reviews: any[]; 
     payments: any[];

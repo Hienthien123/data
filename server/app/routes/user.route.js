@@ -5,19 +5,18 @@ const router = express.Router()
 const userController = require('../controllers/user.controller') 
 const authMiddleware = require('../middlewares/auth.middleware')
 const constant = require('../config/constant.config');
-const { route } = require('./course.route');
+const redisMiddelware = require('../middlewares/redis.middleware')
 
+router.post('/profilechange',authMiddleware.checkToken,authMiddleware.checkRole(constant.userRole), userController.changeProfile)
 
-router.post('/profilechange',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.userRole), userController.changeProfile)
+router.post('/getuserbyid',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole), userController.getUserById)
 
-router.post('/getuserbyid',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole), userController.getUserById)
+router.post('/getuserbyusername',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole), userController.getUserByUsername)
 
-router.post('/getuserbyusername',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole), userController.getUserByUsername)
+router.post('/disableuser',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),userController.disableUser,redisMiddelware.setAllUser)
 
-router.post('/disableuser',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole),userController.disableUser)
+router.post('/getalluser',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),redisMiddelware.getAllUser, userController.getAllUser)
 
-router.post('/getalluser',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole), userController.getAllUser)
-
-router.post('/changeuserinfo',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole), userController.changeUserInfo)
+router.post('/changeuserinfo',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole), userController.changeUserInfo,redisMiddelware.setAllUser)
 
 module.exports = router

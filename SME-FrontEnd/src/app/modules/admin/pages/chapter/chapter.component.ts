@@ -11,7 +11,7 @@ import { ChapterService } from 'src/app/services/admin/chapter.service';
 })
 export class ChapterComponent implements OnInit{
   data: ChapterModel[] = []
-
+  p: any = 1
   course_id = '123'
 
   constructor(private chapterService: ChapterService,private toastr:ToastrService,private route: ActivatedRoute,private router: Router){
@@ -32,8 +32,11 @@ export class ChapterComponent implements OnInit{
     const xx = this.chapterService.getAll(courseId).subscribe(res => {
       if(res.isSuccess) {
         // this.courseId._id = x
-        localStorage.setItem('authorization',res.token)
+        if(res.token)
+          localStorage.setItem('authorization',res.token)
+        
         this.data = res.result.sort((a,b)=> a.order - b.order)
+        
         this.toastr.info('Success loading')
         
       }

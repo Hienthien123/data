@@ -95,10 +95,22 @@ module.exports = {
             await user.save()
 
             //TODO send email to active account
+            const jwt_active = await jwt.sign({_id:user._id},process.env.ACTIVE_SECRET,{
+                expiresIn: timeExpire
+            })
+            let link = "http://localhost:4200/auth/active/" + jwt_active
+            const t = await sendMail(user.email,"Active your account",link)
+            console.log(t)
+
+            const users = await User.find({})
+            const redisClient = req.redisClient
+            await redisClient.set('getalluser',JSON.stringify(users))
 
             //send OK 
             return res.status(200).json({
-                'message': 'oke'
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
             })
             
         } catch (error) {
@@ -114,6 +126,11 @@ module.exports = {
             
             //find user, change email and save to 
             // userMiddleware.changeUser({email: oldEmail},{email: newEmail})
+
+            const users = await User.find({})
+            const redisClient = req.redisClient
+            await redisClient.set('getalluser',JSON.stringify(users))
+
             await User.updateOne({'email': oldEmail},{'email':newEmail})
             return res.status(200).json({
                 'message': 'oke',
@@ -133,6 +150,9 @@ module.exports = {
             //find user, change password and save to 
             // userMiddleware.changeUser({email: oldEmail},{email: newEmail})
             await User.updateOne({'email': oldEmail},{'password':newPassword})
+            const users = await User.find({})
+            const redisClient = req.redisClient
+            await redisClient.set('getalluser',JSON.stringify(users))
             return res.status(200).json({
                 'message': 'oke',
                 'newToken': res.locals.newToken
@@ -167,6 +187,37 @@ module.exports = {
             console.log(error.message)
             next(error)
         }
-    }
+    },
+    activeAccount: async (req, res, next) =>{
+        try{
+            if(req.body.code){
+                jwt.verify(req.body.code, process.env.ACTIVE_SECRET, async (err, decoded) => {
+                    // console.log(decoded)
+                    const user = await User.findById(decoded._id)
+                    if(!user)
+                        throw createError(403,'your account is not existing')
+                    console.log(user)
+                    if(!user.isEnable)
+                        throw createError(403,'your account is disabled by us')
+    
+                    user.isActive = true
+                    await user.save()
+                    const users = await User.find({})
+                    const redisClient = req.redisClient
+                    await redisClient.set('getalluser',JSON.stringify(users))
+                    return res.status(200).json({
+                        'message':'oke',
+                        'isSuccess': true,
+                        'statusCode':200,
+                    })
+                })
+            }
+            else 
+            throw createError(403,'your active code is not valid')
+        } catch (error) {
+            console.log(error.message)
+            next(error)
+        }
+    }, 
     
 }

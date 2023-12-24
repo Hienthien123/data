@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { CourseModel } from 'src/app/models/doan/courseModel';
 import { KhoaHocService } from 'src/app/services/admin/khoa-hoc.service';
-import {ToastrService} from "ngx-toastr";
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: 'app-khoa-hoc',
   templateUrl: './khoa-hoc.component.html',
   styleUrls: ['./khoa-hoc.component.scss']
 })
-export class KhoaHocComponent implements OnInit{
+export class KhoaHocComponent implements OnInit {
 
   data: CourseModel[] = []
+  p: any = 1
 
-  constructor(private KhoaHocService_: KhoaHocService, private toastr:ToastrService,private router: Router){
+  constructor(private KhoaHocService_: KhoaHocService, private toastr: ToastrService, private router: Router) {
   }
 
 
@@ -21,31 +22,32 @@ export class KhoaHocComponent implements OnInit{
     console.log(this.data)
   }
   loadData(): void {
-    const auth ={
-      authorization : localStorage.getItem('authorization'),
+    const auth = {
+      authorization: localStorage.getItem('authorization'),
     }
     const x = this.KhoaHocService_.getAll(auth).subscribe(res => {
-      if(res.isSuccess) {
+      if (res.isSuccess) {
         this.data = res.result
         this.toastr.info('Success loading')
-        localStorage.setItem('authorization',res.token)
+        if (res.token)
+          localStorage.setItem('authorization', res.token)
       }
-      else{
+      else {
         this.toastr.error(res.message);
       }
     })
   }
-  deleteItem(item: CourseModel){
+  deleteItem(item: CourseModel) {
     const del = {
-      _id : item._id,
+      _id: item._id,
       authorization: localStorage.getItem('authorization')
     }
-    if(confirm(`Xác nhận xóa ${item.title}`)){
+    if (confirm(`Xác nhận xóa ${item.title}`)) {
       const deletePromise = this.KhoaHocService_.delete(del).subscribe(res => {
-        if(res.isSuccess){
+        if (res.isSuccess) {
           this.toastr.info('Xóa thành công');
           this.loadData();
-        } else{
+        } else {
           this.toastr.error(res.message);
         }
       })

@@ -8,6 +8,7 @@ import { autGuardGuard } from 'src/app/auth/auth.guard';
 import { CourseComponent } from './course/course.component';
 import { SliderComponent } from './slider/slider.component';
 import { GridviewComponent } from './gridview/gridview.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'test',
-    component: GridviewComponent
+    component: TestComponent
   },  
 
 

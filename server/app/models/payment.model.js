@@ -7,7 +7,11 @@ const paymentSchema = new Schema({
         type: Number,
         required: true,
     },
-    status: Boolean,
+    status: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   {timestamps:true}
 

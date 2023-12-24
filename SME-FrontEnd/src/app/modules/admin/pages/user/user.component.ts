@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/admin/user.service';
 })
 export class UserComponent implements OnInit{
   data: UserModel[] = []
+  p: any = 1
 
   constructor(private userService: UserService,private toastr:ToastrService,private router: Router){
   }
@@ -27,7 +28,8 @@ export class UserComponent implements OnInit{
         this.data = res.result
         this.toastr.info('Success loading')
         console.log(this.data)
-        localStorage.setItem('authorization',res.token)
+        if(res.token)
+localStorage.setItem('authorization',res.token)
       }
       else{
         this.toastr.error(res.message);

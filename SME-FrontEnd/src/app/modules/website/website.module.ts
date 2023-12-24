@@ -22,6 +22,7 @@ import { DataService } from 'src/app/services/website/data.service';
 import { SliderComponent } from './slider/slider.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { GridviewComponent } from './gridview/gridview.component';
+import { TestComponent } from './test/test.component';
 @NgModule({
   declarations: [
     AboutComponent,
@@ -34,6 +35,7 @@ import { GridviewComponent } from './gridview/gridview.component';
     FooterComponent,
     SliderComponent,
     GridviewComponent,
+    TestComponent,
     
   ],
   imports: [

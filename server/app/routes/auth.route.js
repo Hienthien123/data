@@ -14,10 +14,12 @@ router.post('/login', authController.login)
 
 router.post('/signup', authController.signup)
 
-router.post('/emailchange',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.userRole),authController.changeEmail)
+router.post('/emailchange',authMiddleware.checkToken,authMiddleware.checkRole(constant.userRole),authController.changeEmail)
 
-router.post('/passwordchange',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.userRole),authMiddleware.checkPassword,authController.changePassword)
+router.post('/passwordchange',authMiddleware.checkToken,authMiddleware.checkRole(constant.userRole),authMiddleware.checkPassword,authController.changePassword)
 
 router.post('/sendmail',authController.sendEmail)
+
+router.post('/active',authController.activeAccount)
 
 module.exports = router
