@@ -10,7 +10,8 @@ import { SliderComponent } from './slider/slider.component';
 import { GridviewComponent } from './gridview/gridview.component';
 import { TestComponent } from './test/test.component';
 import { DetailComponent } from './detail/detail.component';
-import { SurveyComponent } from './survey/survey.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 const routes: Routes = [
   {
@@ -36,20 +37,16 @@ const routes: Routes = [
   {
     path: 'test',
     component: TestComponent
-  },  
-  {
-    path: 'test',
-    component: TestComponent
-  },  
+  },
   {
     path: 'detail',
     component: DetailComponent
-  }, 
+  },    
   {
-    path: 'survey',
-    component: SurveyComponent
-  }, 
-
+    path: 'profile',
+    component: ProfileComponent
+  },   
+  
 ];
 
 @NgModule({
