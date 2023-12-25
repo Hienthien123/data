@@ -23,6 +23,8 @@ import { SliderComponent } from './slider/slider.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { GridviewComponent } from './gridview/gridview.component';
 import { TestComponent } from './test/test.component';
+import { DetailComponent } from './detail/detail.component';
+import { SurveyComponent } from './survey/survey.component';
 @NgModule({
   declarations: [
     AboutComponent,
@@ -36,6 +38,8 @@ import { TestComponent } from './test/test.component';
     SliderComponent,
     GridviewComponent,
     TestComponent,
+    DetailComponent,
+    SurveyComponent,
     
   ],
   imports: [
