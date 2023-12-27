@@ -25,6 +25,10 @@ import { GridviewComponent } from './gridview/gridview.component';
 import { TestComponent } from './test/test.component';
 import { DetailComponent } from './detail/detail.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PaymentComponent } from './payment/payment.component';
+import { CancelComponent } from './payment/cancel/cancel.component';
+import { PaymentService } from 'src/app/services/website/payment.service';
+import { ReviewService } from 'src/app/services/website/review.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,8 @@ import { ProfileComponent } from './profile/profile.component';
     TestComponent,
     DetailComponent,
     ProfileComponent,
+    PaymentComponent,
+    CancelComponent,
    
   ],
   imports: [
@@ -52,6 +58,8 @@ import { ProfileComponent } from './profile/profile.component';
   providers:[
     CourseService,
     DataService,
+    PaymentService,
+    ReviewService,
   ]
 })
 export class WebsiteModule { }

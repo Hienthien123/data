@@ -192,15 +192,15 @@
 
             <div class="col-lg-4 col-md-6 col-sm-6 d-flex" *ngFor="let item of filteredData | paginate: { itemsPerPage: 10, currentPage: p }">
               <div class="card w-100 my-2 shadow-2-strong">
-                <img src="{{item.image}}" class="card-img-top" />
+                <img src="{{item.image}}" class="card-img-top" (click)="to_detail(item._id)" />
                 <div class="card-body d-flex flex-column">
                   <div class="d-flex flex-row">
                     <h5 class="mb-1 me-1">${{item.price}}</h5>
                     <!-- <span class="text-danger"><s>$49.99</s></span> -->
                   </div>
-                  <p class="card-text"><b>{{item.title}}</b></p>
+                  <p class="card-text" (click)="to_detail(item._id)"><b>{{item.title}}</b></p>
                   <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-                    <a href="#!" class="btn btn-primary shadow-0 me-1">Add to cart</a>
+                    <button (click)="buycourse(item._id)" class="btn btn-primary shadow-0 me-1">By course</button>
                   </div>
                 </div>
               </div>

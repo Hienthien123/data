@@ -16,6 +16,8 @@ module.exports = {
             payment.user_id = res.locals.userInfo._id
             payment.total = course.price
             payment.course_id = course._id
+            // console.log(course.price)
+            console.log("hi")
             await payment.save()
             const data = [
                 {
@@ -24,18 +26,19 @@ module.exports = {
                         product_data: {
                             name: course.title,
                           },
-                          unit_amount: course.total,
+                          unit_amount: course.price,
                     },
                     quantity : 1
                 }
             ]
+            // console.log(data)
             let hash = await bcrypt.hash(payment._id + process.env.APP_SECRET,10)
             const session = await stripe.checkout.sessions.create({
                 payment_method_types: ["card"],
                 mode: "payment",
                 line_items: data,
                 success_url: `${process.env.CLIENT_URL}/website/payment/success/${payment._id}/${hash}`,
-                cancel_url: `${process.env.CLIENT_URL}/website/cancel`,
+                cancel_url: `${process.env.CLIENT_URL}/website/payment/`,
               })
             return res.status(200).json({
                 'message':'oke',

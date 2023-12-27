@@ -17,4 +17,6 @@ router.post('/update',authMiddleware.checkToken,authMiddleware.checkRole(constan
 
 router.post('/delete',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),reviewController.delete)
 
+router.post('/getbyidnocheck',reviewController.read)
+
 module.exports = router

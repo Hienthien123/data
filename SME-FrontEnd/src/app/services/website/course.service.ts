@@ -21,4 +21,9 @@ export class CourseService {
     return this.http.post<any>(apiUrl,payload);
   }
 
+  get(payload: any):Observable<any>{
+    const apiUrl = `${this.baseUrl}/getbyiduser`;
+    return this.http.post<any>(apiUrl,payload)
+  }
+
 }

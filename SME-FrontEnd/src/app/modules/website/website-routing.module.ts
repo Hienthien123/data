@@ -11,6 +11,9 @@ import { GridviewComponent } from './gridview/gridview.component';
 import { TestComponent } from './test/test.component';
 import { DetailComponent } from './detail/detail.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PaymentService } from 'src/app/services/website/payment.service';
+import { PaymentComponent } from './payment/payment.component';
+import { CancelComponent } from './payment/cancel/cancel.component';
 
 
 const routes: Routes = [
@@ -43,9 +46,21 @@ const routes: Routes = [
     component: DetailComponent
   },    
   {
+    path: 'detail/:_id',
+    component: DetailComponent
+  },  
+  {
     path: 'profile',
     component: ProfileComponent
   },   
+  {
+    path: 'payment',
+    component: PaymentComponent
+  },
+  {
+    path: 'payment/:_id/:hash',
+    component: PaymentComponent
+  }
   
 ];
 

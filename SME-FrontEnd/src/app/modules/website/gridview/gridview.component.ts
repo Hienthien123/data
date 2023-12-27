@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/website/data.service';
+import { PaymentService } from 'src/app/services/website/payment.service';
 
 @Component({
   selector: 'app-gridview',
@@ -22,7 +24,7 @@ export class GridviewComponent implements OnDestroy, OnInit {
   max_change: any = 0
 
   private dataSubscription: Subscription;
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService,private paymentService: PaymentService,private route: ActivatedRoute,private router: Router) {
     this.dataService.initializeData()
     this.dataSubscription = this.dataService.dataCourse$.subscribe((newData) => {
       this.data = newData
@@ -92,6 +94,25 @@ export class GridviewComponent implements OnDestroy, OnInit {
 
     this.filteredData = this.filteredData.filter(item => item.price>=this.min_change&&item.price<=this.max_change)
 
+  }
+  
+  buycourse(_id:string):void{
+    console.log("hi")
+    const send_to_server = {
+      authorization: localStorage.getItem('authorization'),
+      course_id: _id
+    }
+    const get_url = this.paymentService.create(send_to_server).subscribe(res =>{
+      if(res.isSuccess){
+        console.log(res.result)
+        window.location = res.result
+      }
+    })
+
+  }
+
+  to_detail(_id: string):void{
+    this.router.navigate(['website/detail',_id])
   }
 
   ngOnDestroy(): void {

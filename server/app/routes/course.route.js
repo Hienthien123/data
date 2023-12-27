@@ -8,7 +8,8 @@ const constant = require('../config/constant.config');
 const courseMiddleware = require('../middlewares/course.middleware');
 const { getAllCourse } = require('../middlewares/redis.middleware');
 const redisMiddleware = require('../middlewares/redis.middleware');
-const fileUploader = require('../middlewares/image.middleware')
+const fileUploader = require('../middlewares/image.middleware');
+const { route } = require('./image.route');
 
 
 router.post('/createcourse',authMiddleware.checkToken,authMiddleware.checkRole(constant.instructorRole),courseController.createCourse,redisMiddleware.setAllCourse)
@@ -32,6 +33,8 @@ router.post('/getfullcoursebyid',authMiddleware.checkToken,courseMiddleware.chec
 router.post('/getallcourse',courseController.getAllCourse)
 
 router.post('/getallcourseadmin',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),redisMiddleware.getAllCourse,courseController.getAllCourseAdmin)
+
+router.post('/getbyiduser',courseController.getCourseById)
 
 
 module.exports = router

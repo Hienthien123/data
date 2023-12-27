@@ -9,9 +9,10 @@ import { environment } from 'src/environments/environments';
   providedIn: 'root'
 })
 export class ReviewService {
-
   private baseUrl = `${environment.apiUrl}/review`;
   constructor(private http:HttpClient) { }
+
+   
   getAll(payload: any):Observable<BaseResponseModel<ReviewModel[]>> {
     const apiUrl = `${this.baseUrl}/read`;
     return this.http.post<BaseResponseModel<ReviewModel[]>>(apiUrl,payload);

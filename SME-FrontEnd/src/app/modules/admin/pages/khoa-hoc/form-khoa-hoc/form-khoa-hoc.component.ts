@@ -59,7 +59,7 @@ export class FormKhoaHocComponent implements OnInit{
   
   loadData(){
     const x = this.route.snapshot.paramMap.get('_id');
-    if(x!=null){
+    if(x!==null){
       const id = {
         _id : x,
         authorization : localStorage.getItem('authorization'),
