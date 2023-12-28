@@ -38,6 +38,7 @@ module.exports = {
             .populate({
                 path: 'user_id',
                 select: 'username',
+                select: 'profile'
             })
             return res.status(200).json({
                 'message':'oke',

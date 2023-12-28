@@ -22,4 +22,10 @@ router.post('/sendmail',authController.sendEmail)
 
 router.post('/active',authController.activeAccount)
 
+router.post('/checkjwtadmin',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),(req,res,next)=>{
+    return res.status(200).json({
+
+    })
+})
+
 module.exports = router

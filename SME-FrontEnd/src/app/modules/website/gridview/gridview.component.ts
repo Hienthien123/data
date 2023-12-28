@@ -112,7 +112,7 @@ export class GridviewComponent implements OnDestroy, OnInit {
   }
 
   to_detail(_id: string):void{
-    this.router.navigate(['website/detail',_id])
+    this.router.navigate(['website/course/detail',_id])
   }
 
   ngOnDestroy(): void {
