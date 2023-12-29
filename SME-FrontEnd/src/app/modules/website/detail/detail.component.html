@@ -105,17 +105,28 @@
 								<h4>Add a Review</h4>
 								<p>Your Rating:</p>
 								<ul class="list">
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
+									<li [ngClass]="{'yellow-star': rating>=1}" (click)="changerating(1)">
+										<i class="fa fa-star"></i>
+									  </li>
+									  <li [ngClass]="{'yellow-star': rating>=2}" (click)="changerating(2)">
+										<i class="fa fa-star"></i>
+									  </li>
+									  <li [ngClass]="{'yellow-star': rating>=3}" (click)="changerating(3)">
+										<i class="fa fa-star"></i>
+									  </li>
+									  <li [ngClass]="{'yellow-star': rating>=4}" (click)="changerating(4)">
+										<i class="fa fa-star"></i>
+									  </li>
+									  <li [ngClass]="{'yellow-star': rating>=5}" (click)="changerating(5)">
+										<i class="fa fa-star"></i>
+									  </li>
+									
 								</ul>
 								<p>Outstanding</p>
 								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
 									<div class="col-md-12">
 										<div class="form-group">
-											<input type="text" class="form-control" id="name" name="name" placeholder="Your Review" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Review'">
+											<input type="text" class="form-control" id="name" name="name" placeholder="Your Review" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Review'" [(ngModel)]="review">
 										</div>
 									</div>
 									
@@ -123,7 +134,7 @@
 										
 									</div>
 									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="primary-btn">Submit Now</button>
+										<button type="submit" value="submit" class="primary-btn" (click)="addReview()">Submit Now</button>
 									</div>
 								</form>
 							</div>
@@ -157,4 +168,5 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="assets/detail/js/gmaps.min.js"></script>
 	<script src="assets/detail/js/main.js"></script>
+	<p>{{reviewData[0].createAt}}</p>
 

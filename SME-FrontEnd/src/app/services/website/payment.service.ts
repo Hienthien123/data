@@ -18,4 +18,8 @@ export class PaymentService {
     const apiUrl = `${this.baseUrl}/confirm`;
     return this.http.post<any>(apiUrl,payload)
   }
+  getUserPayment(payload: any):Observable<any>{
+    const apiUrl = `${this.baseUrl}/getuserpayment`;
+    return this.http.post<any>(apiUrl,payload)
+  }
 }

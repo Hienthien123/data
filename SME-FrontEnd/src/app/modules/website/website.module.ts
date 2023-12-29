@@ -30,6 +30,7 @@ import { CancelComponent } from './payment/cancel/cancel.component';
 import { PaymentService } from 'src/app/services/website/payment.service';
 import { ReviewService } from 'src/app/services/website/review.service';
 import { CourseDetailComponent } from './course/course-detail/course-detail.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { CourseDetailComponent } from './course/course-detail/course-detail.comp
     CancelComponent,
     DetailComponent,
     CourseDetailComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,

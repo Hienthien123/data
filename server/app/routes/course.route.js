@@ -37,5 +37,6 @@ router.post('/getallcourseadmin',authMiddleware.checkToken,authMiddleware.checkR
 router.post('/getbyiduser',courseController.getCourseById)
 
 
+
 module.exports = router
 
