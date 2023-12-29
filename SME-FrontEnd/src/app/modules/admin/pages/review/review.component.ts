@@ -12,6 +12,7 @@ import { ReviewService } from 'src/app/services/admin/review.service';
 export class ReviewComponent implements OnInit{
 
   data: ReviewModel[] = []
+  p: any = 1
 
   course_id = '123'
 
@@ -33,7 +34,8 @@ export class ReviewComponent implements OnInit{
     const xx = this.reviewService.getAll(courseId).subscribe(res => {
       if(res.isSuccess) {
         console.log(res.result);
-        localStorage.setItem('authorization',res.token)
+        if(res.token)
+localStorage.setItem('authorization',res.token)
         this.data = res.result.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
         this.toastr.info('Success loading')
         

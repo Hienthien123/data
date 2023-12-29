@@ -5,6 +5,7 @@ const {timeExpire} = require('../config/constant.config')
 const Payment = require("../models/payment.model")
 const Course = require("../models/course.model")
 const User = require("../models/user.model")
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 module.exports = {
     create: async (req, res, next) => {
         try{
@@ -15,10 +16,61 @@ module.exports = {
             payment.user_id = res.locals.userInfo._id
             payment.total = course.price
             payment.course_id = course._id
+            // console.log(course.price)
+            await payment.save()
+            const data = [
+                {
+                    price_data: {
+                        currency: "usd",
+                        product_data: {
+                            name: course.title,
+                          },
+                          unit_amount: course.price,
+                    },
+                    quantity : 1
+                }
+            ]
+            // console.log(data)
+            let hash = await bcrypt.hash(payment._id.toString() + process.env.APP_SECRET,10)
+            const session = await stripe.checkout.sessions.create({
+                payment_method_types: ["card"],
+                mode: "payment",
+                line_items: data,
+                success_url: `${process.env.CLIENT_URL}/website/payment/${payment._id}/${hash}`,
+                cancel_url: `${process.env.CLIENT_URL}/website/payment/`,
+              })
+            console.log()
+            return res.status(200).json({
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+                'result': session.url,
+            })
+        }catch (error) {
+            console.log(error.message)
+            next(error)
+        }
+    },
+    confirmPayment: async(req, res, next) => {
+        try{
+            console.log("check")
+            const payment = await Payment.findById(req.body._id)
+            console.log(payment)
+            if(!payment)
+                throw createError(403,"Payment not found")
+            if(payment.user_id.toString()!==res.locals.userInfo._id)
+                throw createError(403,"something went wrong")
+            let isMatch = await bcrypt.compare(payment._id.toString()+ process.env.APP_SECRET, req.body.hash)
+            if(!isMatch)
+            throw createError(403,"Your are not pay yet")
+            payment.status = isMatch
             await payment.save()
             return res.status(200).json({
-               'message': 'oke',
-                'newToken': res.locals.newToken
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
             })
         }catch (error) {
             console.log(error.message)
@@ -64,7 +116,21 @@ module.exports = {
         }
 
     },
-    // getAll: async(req, res, next)=>{
+    getuserpayment:async(req, res,next)=>{
+        try{
+            const x = await Payment.find({user_id:res.locals.userInfo._id}).where({status: true})
+            return res.status(200).json({
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'result': x,
+                'token': res.locals.newToken,
+             }) 
 
-    // }
+        }catch (error) {
+            console.log(error.message)
+            next(error)
+        }
+
+    },
 }

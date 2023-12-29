@@ -11,6 +11,7 @@ import { TestScoreService } from 'src/app/services/admin/test-score.service';
 })
 export class WebsiteComponent implements OnInit {
   menuItems = website;
+  searchText = ''
   ngOnInit(): void {
     console.log(this.menuItems);
   }

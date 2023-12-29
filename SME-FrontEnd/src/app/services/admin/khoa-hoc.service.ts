@@ -23,19 +23,19 @@ export class KhoaHocService {
     return this.http.post<BaseResponseModel<CourseModel>>(apiUrl,payload);
   }
 
-  create(payload: any):Observable<BaseResponseModel<CourseModel>> {
+  create(payload: any):Observable<BaseResponseModel<any>> {
     const apiUrl = `${this.baseUrl}/createcourse`;
-    return this.http.post<BaseResponseModel<CourseModel>>(apiUrl,payload);
+    return this.http.post<BaseResponseModel<any>>(apiUrl,payload);
   }
 
-  update(payload: any):Observable<BaseResponseModel<CourseModel>> {
+  update(payload: any):Observable<BaseResponseModel<any>> {
     const apiUrl = `${this.baseUrl}/updatecourse`;
-    return this.http.post<BaseResponseModel<CourseModel>>(apiUrl,payload);
+    return this.http.post<BaseResponseModel<any>>(apiUrl,payload);
   }
 
-  delete(payload: any):Observable<BaseResponseModel<CourseModel>> {
+  delete(payload: any):Observable<BaseResponseModel<any>> {
     const apiUrl = `${this.baseUrl}/deletecourse`;
-    return this.http.post<BaseResponseModel<CourseModel>>(apiUrl,payload);
+    return this.http.post<BaseResponseModel<any>>(apiUrl,payload);
   }
 
 }

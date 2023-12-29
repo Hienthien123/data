@@ -11,6 +11,7 @@ import { PaymentService } from 'src/app/services/admin/payment.service';
 })
 export class PaymentComponent implements OnInit{
   data: PaymentModel[] = []
+  p: any = 1
 
   constructor(private paymentService: PaymentService, private toastr:ToastrService,private router: Router){
   }
@@ -28,7 +29,8 @@ export class PaymentComponent implements OnInit{
       if(res.isSuccess) {
         this.data = res.result.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
         this.toastr.info('Success loading')
-        localStorage.setItem('authorization',res.token)
+        if(res.token)
+localStorage.setItem('authorization',res.token)
         console.log(this.data)
       }
       else{

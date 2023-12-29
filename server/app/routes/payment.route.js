@@ -5,14 +5,14 @@ const authMiddleware = require('../middlewares/auth.middleware')
 const constant = require('../config/constant.config');
 const paymentMiddleware = require('../middlewares/payment.middleware')
 
-router.post('/create',authMiddleware.checkToken(constant.timeExpire),paymentController.create)
+router.post('/create',authMiddleware.checkToken,paymentController.create)
 
-router.post('/read',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole),paymentController.read)
-
-
-router.post('/delete',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.adminRole),paymentController.delete)
+router.post('/read',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),paymentController.read)
 
 
+router.post('/delete',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),paymentController.delete)
 
+router.post('/confirm',authMiddleware.checkToken,paymentController.confirmPayment)
 
+router.post('/getuserpayment',authMiddleware.checkToken,paymentController.getuserpayment)
 module.exports = router

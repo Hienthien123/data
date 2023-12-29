@@ -41,8 +41,8 @@ export class FormChapterComponent implements OnInit{
       const getDataPromise = this.chapterService.getById(id).subscribe(res => {
       if(res.isSuccess){
         this.data = res.result
-        console.log(this.data)
-        localStorage.setItem('authorization',res.token)
+        if(res.token)
+localStorage.setItem('authorization',res.token)
       }
     })
     }
@@ -57,7 +57,6 @@ export class FormChapterComponent implements OnInit{
       change: this.data,
       authorization: localStorage.getItem('authorization')
     }
-    console.log(changed)
     const xx = this.route.snapshot.paramMap.get('course_id')
       if(xx!==null){
         changed.change.course_id = xx

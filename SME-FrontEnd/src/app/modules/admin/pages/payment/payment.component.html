@@ -15,7 +15,7 @@
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of data; let i = index">
+        <tr *ngFor="let item of data | paginate: { itemsPerPage: 2, currentPage: p }; let i = index">
           <td>{{i+1}}</td>
           <td><a [routerLink]="['/admin/user/edit',item.user_id._id]">{{item.user_id.username}}</a></td>
           <td><a [routerLink]="['/admin/khoa-hoc/edit',item.course_id._id]">{{item.course_id.title}}</a></td>
@@ -30,4 +30,4 @@
       </tbody>
     </table>
   </div>
-  
+  <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>

@@ -20,7 +20,7 @@ function createMailOption(to,subject,link){
       return mailOptions
 }
 
-function sendMail(to,subject,link){
+async function sendMail(to,subject,link){
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -38,13 +38,13 @@ function sendMail(to,subject,link){
         viewPath: path.resolve('./app/templates'),
         extName: ".handlebars",
       }
-    console.log(path.resolve('./app/templates'))
+    // console.log(path.resolve('./app/templates'))
     
     transporter.use('compile', hbs(handlebarOptions));
     transporter.sendMail(createMailOption(to,subject,link), function (error, info) {
         return error
       })
-    console.log('oke')
+    console.log('mail sended')
 }
 
 module.exports = sendMail

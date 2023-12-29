@@ -46,7 +46,8 @@ export class FormLessonComponent implements OnInit {
       if(res.isSuccess){
         this.data = res.result
         console.log(this.data)
-        localStorage.setItem('authorization',res.token)
+        if(res.token)
+localStorage.setItem('authorization',res.token)
       }
     })
     }

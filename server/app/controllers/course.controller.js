@@ -5,6 +5,7 @@ const {timeExpire} = require('../config/constant.config')
 const Course = require("../models/course.model")
 const Review = require("../models/review.model")
 const Topic = require("../models/topic.model")
+const { request } = require('express')
 module.exports = {
     createCourse : async(req, res, next) => {
         try {
@@ -15,13 +16,7 @@ module.exports = {
             course.isDelete = false
             // course.author_id = res.locals.userInfo._id
             await course.save()
-            return res.status(200).json({
-                'message':'oke',
-                'isSuccess': true,
-                'statusCode':200,
-                'token': res.locals.newToken,
-                'result': course,
-            })
+            next()
         } catch (error) {
             console.log(error.message)
             next(error)
@@ -49,21 +44,15 @@ module.exports = {
     changeCourse: async(req,res,next) => {
         try{
             // console.log(req.body.changed)
-            console.log(req.body.change)
             const course = await Course.findById(req.body.change._id)
-            console.log(course)
+            
+
             if(!course)
                 createError(400,'something went wrong')
-            
             Object.assign(course,req.body.change)
+            
             await course.save()
-            return res.status(200).json({
-                'message':'oke',
-                'isSuccess': true,
-                'statusCode':200,
-                'token': res.locals.newToken,
-                'result': course,
-            })
+            next()
         }catch(error){
             console.log(error.message)
             next(error)
@@ -72,13 +61,7 @@ module.exports = {
     deleteCourse: async(req,res,next) => {
         try{
             await Course.updateOne({_id:req.body._id},{isDelete: true})
-            return res.status(200).json({
-                'message':'oke',
-                'isSuccess': true,
-                'statusCode':200,
-                'token': res.locals.newToken,
-
-            })
+            next()
         }catch(error){
             console.log(error.message)
             next(error)
@@ -144,14 +127,13 @@ module.exports = {
             const courses = await Course.find({
                 title: { $regex: new RegExp(req.body.keyword, 'i') }, 
                 isDelete: false,
-            }).exec();
-    
-            if (!courses || courses.length === 0) {
-                throw createError('400','There is no course for this keyword')
-            }
+            })
             return res.status(200).json({
-                'message': 'oke',
-                courses,
+                'message':'oke',
+                'result': courses,
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
             })
         }catch(error){
             console.log(error.message)
@@ -194,13 +176,12 @@ module.exports = {
     },
     getAllCourseAdmin: async (req, res,next) =>{
         try{
-            const courseId = req.body._id
-            const course = await Course.find({isDelete:false})
-            if(!course)
-                throw createError(400,'something went wrong')
+            const courses = await Course.find({isDelete:false})
+            const redisClient = req.redisClient
+            redisClient.set('getallcourse',JSON.stringify(courses))
             return res.status(200).json({
                 'message':'oke',
-                'result': course,
+                'result': courses,
                 'isSuccess': true,
                 'statusCode':200,
                 'token': res.locals.newToken,

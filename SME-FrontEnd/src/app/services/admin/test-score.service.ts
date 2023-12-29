@@ -38,4 +38,8 @@ export class TestScoreService {
     const apiUrl = `${this.baseUrl}/signup`
     return this.http.post(apiUrl, singinUser)
   }
+  activeUser(data: any):Observable<any> {
+    const apiUrl = `${this.baseUrl}/active`
+    return this.http.post(apiUrl, data)
+  }
 }

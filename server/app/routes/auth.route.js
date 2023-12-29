@@ -14,10 +14,31 @@ router.post('/login', authController.login)
 
 router.post('/signup', authController.signup)
 
-router.post('/emailchange',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.userRole),authController.changeEmail)
+router.post('/emailchange',authMiddleware.checkToken,authMiddleware.checkRole(constant.userRole),authController.changeEmail)
 
-router.post('/passwordchange',authMiddleware.checkToken(constant.timeExpire),authMiddleware.checkRole(constant.userRole),authMiddleware.checkPassword,authController.changePassword)
+router.post('/passwordchange',authMiddleware.checkToken,authMiddleware.checkRole(constant.userRole),authMiddleware.checkPassword,authController.changePassword)
 
 router.post('/sendmail',authController.sendEmail)
+
+router.post('/active',authController.activeAccount)
+
+router.post('/checkjwtadmin',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),(req,res,next)=>{
+    return res.status(200).json({
+        'message':'oke',
+        'isSuccess': true,
+        'statusCode':200,
+        'token': res.locals.newToken,
+    })
+})
+
+router.post('/checkjwtuser',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),(req,res,next)=>{
+    // console.log("oke")
+    return res.status(200).json({
+        'message':'oke',
+        'isSuccess': true,
+        'statusCode':200,
+        'token': res.locals.newToken,
+    })
+})
 
 module.exports = router

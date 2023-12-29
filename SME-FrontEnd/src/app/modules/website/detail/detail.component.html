@@ -1,0 +1,172 @@
+<!-- <p>{{data}}</p>	 -->
+	<!--================Single Product Area =================-->
+	<div class="product_image_area">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-6">
+					<div class="s_Product_carousel">
+						<div class="single-prd-item">
+							<img class="img-fluid" src="{{data.image}}" alt="">
+						</div>
+						<!-- <div class="single-prd-item">
+							<img class="img-fluid" src="assets/detail/img/category/s-p1.jpg" alt="">
+						</div>
+						<div class="single-prd-item">
+							<img class="img-fluid" src="assets/detail/img/category/s-p1.jpg" alt="">
+						</div> -->
+					</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<h3>{{data.title}}</h3>
+						<h2>${{data.price}}</h2>
+						<!-- <ul class="list" *ngFor="let cate of data.categories">
+							<li><a class="active" href="#"><span>Category</span> : {{cate}}</a></li>
+						</ul>
+						<ul class="list" >
+				
+							<li *ngFor="let tag of data.tags">
+								<a href="#">
+									<span>
+										Availibility
+
+									</span> :{{tag}}</a>
+								</li>
+						</ul> -->
+						<p>{{data.description}}</p>
+						<div class="product_count">
+							<!-- <label for="qty">Quantity:</label>
+							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty"> -->
+							<!-- <button 
+							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button> -->
+							
+						</div>
+						<div class="card_area d-flex align-items-center">
+							<button (click)="buycourse(data._id)" class="primary-btn" >Add to Cart</button>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section class="product_description_area">
+		<div class="container">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+						
+				<li class="nav-item">
+					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+					 aria-selected="false">Reviews</a>
+				</li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="row total_rate">
+								<div class="col-6">
+									<div class="box_total">
+										<h5>Overall</h5>
+										<h4>{{overal}}</h4>
+										<h6>({{reviewCount}} Reviews)</h6>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="rating_list">
+										
+										
+									</div>
+								</div>
+							</div>
+							<div class="review_list">
+								
+								
+								<div class="review_item" *ngFor="let item of reviewData">
+									<div class="media">
+										<div class="d-flex">
+											<img src="{{item.user_id.profile.avatar}}" alt="" height="50">
+										</div>
+										<div class="media-body" >
+											<h4>{{item.user_id.profile.name}}</h4>
+											<i *ngIf="item.rating >= 1" class="fa fa-star"></i>
+											<i *ngIf="item.rating >= 2" class="fa fa-star"></i>
+											<i *ngIf="item.rating >= 3" class="fa fa-star"></i>
+											<i *ngIf="item.rating >= 4" class="fa fa-star"></i>
+											<i *ngIf="item.rating >= 5" class="fa fa-star"></i>
+										</div>
+									</div>
+									<p>{{item.review_text}}</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="review_box">
+								<h4>Add a Review</h4>
+								<p>Your Rating:</p>
+								<ul class="list">
+									<li [ngClass]="{'yellow-star': rating>=1}" (click)="changerating(1)">
+										<i class="fa fa-star"></i>
+									  </li>
+									  <li [ngClass]="{'yellow-star': rating>=2}" (click)="changerating(2)">
+										<i class="fa fa-star"></i>
+									  </li>
+									  <li [ngClass]="{'yellow-star': rating>=3}" (click)="changerating(3)">
+										<i class="fa fa-star"></i>
+									  </li>
+									  <li [ngClass]="{'yellow-star': rating>=4}" (click)="changerating(4)">
+										<i class="fa fa-star"></i>
+									  </li>
+									  <li [ngClass]="{'yellow-star': rating>=5}" (click)="changerating(5)">
+										<i class="fa fa-star"></i>
+									  </li>
+									
+								</ul>
+								<p>Outstanding</p>
+								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" class="form-control" id="name" name="name" placeholder="Your Review" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Review'" [(ngModel)]="review">
+										</div>
+									</div>
+									
+									<div class="col-md-12">
+										
+									</div>
+									<div class="col-md-12 text-right">
+										<button type="submit" value="submit" class="primary-btn" (click)="addReview()">Submit Now</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Product Description Area =================-->
+
+	<!-- Start related-product Area -->
+	
+	<!-- End related-product Area -->
+
+	<!-- start footer Area -->
+	
+	<!-- End footer Area -->
+
+	<script src="assets/detail/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	 crossorigin="anonymous"></script>
+	<script src="assets/detail/js/vendor/bootstrap.min.js"></script>
+	<script src="assets/detail/js/jquery.ajaxchimp.min.js"></script>
+	<script src="assets/detail/js/jquery.nice-select.min.js"></script>
+	<script src="assets/detail/js/jquery.sticky.js"></script>
+	<script src="assets/detail/js/nouislider.min.js"></script>
+	<script src="assets/detail/js/jquery.magnific-popup.min.js"></script>
+	<script src="assets/detail/js/owl.carousel.min.js"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="assets/detail/js/gmaps.min.js"></script>
+	<script src="assets/detail/js/main.js"></script>
+	<p>{{reviewData[0].createAt}}</p>
+

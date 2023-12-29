@@ -15,6 +15,10 @@ module.exports = {
             profile = JSON.parse(req.body.profile)
 
             await User.updateOne({email},{profile})
+            const users = await User.find({})
+            const redisClient = req.redisClient
+            await redisClient.set('getalluser',JSON.stringify(users))
+            
             return res.status(200).json({
                 'message': 'oke',
                 'newToken': res.locals.newToken
@@ -61,14 +65,9 @@ module.exports = {
     },
     disableUser: async(req, res, next)=>{
         try{
-            await User.updateOne({userid:req.body._id},{isActive: false})
-            return res.status(200).json({
-                'message':'oke',
-                'isSuccess': true,
-                'statusCode':200,
-                'token': res.locals.newToken,
-
-            })
+            await User.updateOne({_id:req.body._id},{isActive: false})
+            // console.log(await User.findById(req.body._id))
+            next()
         }catch (error) {
             console.log(error.message)
             next(error)
@@ -77,7 +76,8 @@ module.exports = {
     getAllUser: async(req,res,next) =>{
         try{
             const users = await User.find({})
-   
+            const redisClient = req.redisClient
+            await redisClient.set('getalluser',JSON.stringify(users))
             return res.status(200).json({
                 'message':'oke',
                 'isSuccess': true,
@@ -97,14 +97,8 @@ module.exports = {
                 createError(400,'this user is not exist')
             
             Object.assign(user,req.body.change)
-            user.save()
-            return res.status(200).json({
-                'message':'oke',
-                'isSuccess': true,
-                'statusCode':200,
-                'token': res.locals.newToken,
-                'result': user,
-            })
+            await user.save()
+            next()
         }catch (error) {
             console.log(error.message)
             next(error)

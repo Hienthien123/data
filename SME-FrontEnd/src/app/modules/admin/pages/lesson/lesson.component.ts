@@ -13,6 +13,7 @@ export class LessonComponent implements OnInit{
   data: LessonModel[] = []
   course_id = ''
   chapter_id = ''
+  p: any = 1
   constructor(private lessonService: LessonService,private toastr:ToastrService,private route: ActivatedRoute,private router: Router){
 
   }
@@ -34,7 +35,8 @@ export class LessonComponent implements OnInit{
         this.data = res.result.sort((a,b)=> a.order - b.order)
         this.toastr.info('Success loading')
         // console.log(this.data)
-        localStorage.setItem('authorization',res.token)
+        if(res.token)
+localStorage.setItem('authorization',res.token)
         // console.log(res)
       }
       else{

@@ -73,6 +73,8 @@ import { ReviewComponent } from './pages/review/review.component';
 import { FormReviewComponent } from './pages/review/form-review/form-review.component';
 import { ReviewService } from 'src/app/services/admin/review.service';
 import { PaymentService } from 'src/app/services/admin/payment.service';
+import { ImageService } from 'src/app/services/admin/image.service';
+
 @NgModule({
   declarations: [
     AdminComponent,
@@ -123,7 +125,7 @@ import { PaymentService } from 'src/app/services/admin/payment.service';
         PaymentComponent,
         ReviewComponent,
         FormReviewComponent,
- 
+
     ],
   imports: [
     CommonModule,
@@ -131,7 +133,7 @@ import { PaymentService } from 'src/app/services/admin/payment.service';
     AdminRoutingModule,
     FormsModule,
     DpDatePickerModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [
     TestServiceService,
@@ -154,6 +156,7 @@ import { PaymentService } from 'src/app/services/admin/payment.service';
       LessonService,
       ReviewService,
       PaymentService,
+      ImageService,
   ]
 })
 export class AdminModule {}

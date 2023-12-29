@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from 'src/app/models/doan/userModel';
+import { ImageService } from 'src/app/services/admin/image.service';
 import { UserService } from 'src/app/services/admin/user.service';
 
 @Component({
@@ -35,11 +36,22 @@ export class FormUserComponent implements OnInit{
     __v: 1,
     email: '',
   }
-  constructor(private userService: UserService,private route: ActivatedRoute,private router: Router) { }
+  img: any = ''
+  file: any = null
+
+  constructor(private userService: UserService,private route: ActivatedRoute,private router: Router,private imageService : ImageService) { }
   ngOnInit(): void {
     this.loadData()
 
   }
+
+  onFilechange(event: any) {
+    this.file = event.target.files[0]
+    const selectedFile = event.target.files[0];
+    const fileUrl = URL.createObjectURL(selectedFile);
+    this.img = fileUrl
+  }
+
   loadData(){
     const x = this.route.snapshot.paramMap.get('_id');
     if(x!=null){
@@ -51,7 +63,9 @@ export class FormUserComponent implements OnInit{
         if(res.isSuccess){
           this.data = res.result 
           console.log(this.data)
-          localStorage.setItem('authorization',res.token)
+          this.img = res.result.profile.avatar
+          if(res.token)
+localStorage.setItem('authorization',res.token)
         }
         else
         console.log(res.message )
@@ -65,15 +79,39 @@ export class FormUserComponent implements OnInit{
       change: this.data,
       authorization: localStorage.getItem('authorization')
     }
-    console.log(this.data)
-    // this.changed.change = this.data
-    if(this.route.snapshot.paramMap.get('_id')){
-      const addDataPromise = this.userService.update(changed).subscribe(res => {
+    const image = {
+      authorization: localStorage.getItem('authorization'),
+      file : this.file,
+    }
+    if(this.file){
+      const uploadImage =  this.imageService.uploadAvatar(image).subscribe(res=>{
+        console.log(res)
         if(res.isSuccess){
-          this.router.navigate(['/admin/user'])
+          changed.change.profile.avatar = res.secure_url
+          if(this.route.snapshot.paramMap.get('_id')){
+            const addDataPromise = this.userService.update(changed).subscribe(res => {
+              if(res.isSuccess){
+                this.router.navigate(['/admin/user'])
+              }
+            })
+          }
+        }
+        else {
+          return
         }
       })
-    }
+    }else{
+      if(this.route.snapshot.paramMap.get('_id')){
+        const addDataPromise = this.userService.update(changed).subscribe(res => {
+          if(res.isSuccess){
+            this.router.navigate(['/admin/user'])
+          }
+        })
+      }
+
+      }
+
+    
   }
 
 }
