@@ -15,6 +15,9 @@ import { PaymentService } from 'src/app/services/website/payment.service';
 import { PaymentComponent } from './payment/payment.component';
 import { CancelComponent } from './payment/cancel/cancel.component';
 import { DetailCourseComponent } from './detail-course/detail-course.component';
+import { CourseDetailComponent } from './course/course-detail/course-detail.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+
 
 
 const routes: Routes = [
@@ -43,17 +46,17 @@ const routes: Routes = [
     component: TestComponent
   },
   {
-    path: 'detail',
-    component: DetailComponent
+    path: 'course/detail/:_id',
+    component: CourseDetailComponent
   },    
   {
-    path: 'detail/:_id',
-    component: DetailComponent
-  },  
-  {
     path: 'profile',
-    component: ProfileComponent
+    component: UserProfileComponent
   },   
+  {
+    path: 'profile/:_id',
+    component: UserProfileComponent
+  }, 
   {
     path: 'payment',
     component: PaymentComponent

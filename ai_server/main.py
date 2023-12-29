@@ -26,8 +26,11 @@ def add(l: List[str]):
 
 
 @app.post("/check/")
-def check(s: str):
-    ns,ws = vulgar_word.convert_it_to_it(s)
+def check(input_data: dict):
+    # print(input_data)
+    # return input_data
+    input_word = input_data.get("input_word")
+    ns,ws = vulgar_word.convert_it_to_it(input_word)
     after_check = ''.join(vulgar_word.check_sentence(vulgar_word.get_list(ns)))
     # print(len(after_check))
     # ws = ws.replace('danhDau',str(2))

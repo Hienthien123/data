@@ -16,8 +16,8 @@ export class PaymentComponent implements OnInit{
       if(_id && hash){
         const payload ={
           authorization: localStorage.getItem('authorization'),
-          _id,
-          hash,
+          _id:_id,
+          hash:hash,
         }
         this.paymentService.confirm(payload).subscribe(res=>{
           if(res.isSuccess){

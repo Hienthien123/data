@@ -7,16 +7,15 @@ const constant = require('../config/constant.config')
 const courseMiddleware = require('../middlewares/course.middleware')
 
 
-router.post('/read',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),reviewController.read)
+router.post('/read',reviewController.read)
 
-router.post('/getbyid',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),reviewController.getById)
+router.post('/getbyid',reviewController.getById)
 
-router.post('/create',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),reviewController.create)
+router.post('/create',authMiddleware.checkToken,authMiddleware.checkRole(constant.userRole),reviewController.create)
 
 router.post('/update',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),reviewController.update)
 
 router.post('/delete',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),reviewController.delete)
 
-router.post('/getbyidnocheck',reviewController.read)
 
 module.exports = router

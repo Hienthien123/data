@@ -17,7 +17,6 @@ module.exports = {
             payment.total = course.price
             payment.course_id = course._id
             // console.log(course.price)
-            console.log("hi")
             await payment.save()
             const data = [
                 {
@@ -32,14 +31,15 @@ module.exports = {
                 }
             ]
             // console.log(data)
-            let hash = await bcrypt.hash(payment._id + process.env.APP_SECRET,10)
+            let hash = await bcrypt.hash(payment._id.toString() + process.env.APP_SECRET,10)
             const session = await stripe.checkout.sessions.create({
                 payment_method_types: ["card"],
                 mode: "payment",
                 line_items: data,
-                success_url: `${process.env.CLIENT_URL}/website/payment/success/${payment._id}/${hash}`,
+                success_url: `${process.env.CLIENT_URL}/website/payment/${payment._id}/${hash}`,
                 cancel_url: `${process.env.CLIENT_URL}/website/payment/`,
               })
+            console.log()
             return res.status(200).json({
                 'message':'oke',
                 'isSuccess': true,
@@ -54,15 +54,17 @@ module.exports = {
     },
     confirmPayment: async(req, res, next) => {
         try{
+            console.log("check")
             const payment = await Payment.findById(req.body._id)
+            console.log(payment)
             if(!payment)
                 throw createError(403,"Payment not found")
-            if(payment.user_id!==res.locals.userInfo._id)
+            if(payment.user_id.toString()!==res.locals.userInfo._id)
                 throw createError(403,"something went wrong")
-            const hash = bcrypt.hash(payment._id+process.env.APP_SECRET)
-            if(hash!==req.body.hash)
+            let isMatch = await bcrypt.compare(payment._id.toString()+ process.env.APP_SECRET, req.body.hash)
+            if(!isMatch)
             throw createError(403,"Your are not pay yet")
-            payment.status = true
+            payment.status = isMatch
             await payment.save()
             return res.status(200).json({
                 'message':'oke',
@@ -105,6 +107,23 @@ module.exports = {
                 'message':'oke',
                 'isSuccess': true,
                 'statusCode':200,
+                'token': res.locals.newToken,
+             }) 
+
+        }catch (error) {
+            console.log(error.message)
+            next(error)
+        }
+
+    },
+    getuserpayment:async(req, res,next)=>{
+        try{
+            const x = await Payment.find({user_id:res.locals.userInfo._id}).where({status: true})
+            return res.status(200).json({
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'result': x,
                 'token': res.locals.newToken,
              }) 
 

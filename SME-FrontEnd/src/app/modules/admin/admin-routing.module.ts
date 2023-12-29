@@ -44,9 +44,11 @@ import { FormUserComponent } from './pages/user/form-user/form-user.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { ReviewComponent } from './pages/review/review.component';
 import { FormReviewComponent } from './pages/review/form-review/form-review.component';
+
 import { autGuardGuard } from 'src/app/auth/auth.guard';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { PineChartComponent } from './pine-chart/pine-chart.component';
+
 const routes: Routes = [
   {
     path: '',

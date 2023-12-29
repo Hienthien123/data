@@ -14,5 +14,5 @@ router.post('/delete',authMiddleware.checkToken,authMiddleware.checkRole(constan
 
 router.post('/confirm',authMiddleware.checkToken,paymentController.confirmPayment)
 
-
+router.post('/getuserpayment',authMiddleware.checkToken,paymentController.getuserpayment)
 module.exports = router

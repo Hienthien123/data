@@ -12,7 +12,7 @@ export class CourseService {
 
   private baseUrl = `${environment.apiUrl}/course`;
   constructor(private http:HttpClient) { }
-  getAll(payload: any):Observable<BaseResponseModel<CourseModel[]>> {
+  getAll(payload: any):Observable<any> {
     const apiUrl = `${this.baseUrl}/getallcourseadmin`;
     return this.http.post<any>(apiUrl,payload);
   }
@@ -25,5 +25,7 @@ export class CourseService {
     const apiUrl = `${this.baseUrl}/getbyiduser`;
     return this.http.post<any>(apiUrl,payload)
   }
+
+
 
 }

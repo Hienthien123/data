@@ -76,6 +76,7 @@ import { PaymentService } from 'src/app/services/admin/payment.service';
 import { ImageService } from 'src/app/services/admin/image.service';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { PineChartComponent } from './pine-chart/pine-chart.component';
+
 @NgModule({
   declarations: [
     AdminComponent,
@@ -128,7 +129,7 @@ import { PineChartComponent } from './pine-chart/pine-chart.component';
         FormReviewComponent,
         LineChartComponent,
         PineChartComponent
- 
+
     ],
   imports: [
     CommonModule,

@@ -47,10 +47,11 @@ module.exports = {
             //send responce
 
             let result = {
+                _id: user._id,
                 username: user.username,
                 role: user.roles,
                 email: user.email,
-                profile: profile,
+                profile: user.profile,
                 token: `Bearer ${token}`
               };
             return res.status(200).json({
@@ -164,19 +165,6 @@ module.exports = {
     },
     sendEmail: async (req, res, next) =>{
         try{
-            // let roleString = user.roles.toString()
-            // let profile = user.profile.toString()
-            // let token = jwt.sign({
-            //     _id: user._id,
-            //     roles: roleString,
-            //     username: user.username,
-            //     profile: profile,
-            //     name: user.name,
-            //     email: user.email
-            // },
-            // process.env.APP_SECRET,{
-            //     expiresIn: timeExpire
-            // })
             const t = sendMail("phamductaidtsomuch@gmail.com","test","#")
             console.log(t)
             return res.status(200).json({

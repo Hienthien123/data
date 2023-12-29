@@ -6,17 +6,12 @@ import { environment } from 'src/environments/environments';
 @Injectable({
   providedIn: 'root'
 })
-export class ReviewService {
+export class UserService {
 
-  private baseUrl = `${environment.apiUrl}/review`;
+  private baseUrl = `${environment.apiUrl}/user`;
   constructor(private http:HttpClient) { }
-
-  getAll(payload: any):Observable<any> {
-    const apiUrl = `${this.baseUrl}/read`;
-    return this.http.post<any>(apiUrl,payload);
-  }
-  create(payload: any):Observable<any> {
-    const apiUrl = `${this.baseUrl}/create`;
+  checkjwt(payload: any):Observable<any> {
+    const apiUrl = `${environment.apiUrl}/auth/checkjwtuser`;
     return this.http.post<any>(apiUrl,payload);
   }
 }

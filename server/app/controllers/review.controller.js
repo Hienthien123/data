@@ -6,6 +6,7 @@ const Review = require("../models/review.model")
 const Course = require("../models/course.model")
 const User = require("../models/user.model")
 const Topic = require("../models/topic.model")
+const axios = require('axios');
 module.exports = {
     create: async (req, res, next) => {
         try {
@@ -14,6 +15,28 @@ module.exports = {
             delete request.user_id
             delete request.topic_id
             request.user_id = res.locals.userInfo._id
+
+            const apiUrl = 'http://127.0.0.1:8000/check';
+
+            // console.log(req.body)
+            const input_data = {
+            
+                    input_word: req.body.change.review_text,
+                
+                
+              };
+              console.log(input_data)
+            
+            await axios.post(apiUrl, input_data)
+              .then(response => {
+                console.log('Response from server:', response.data);
+                request.review_text = response.data.result
+              })
+              .catch(error => {
+                console.error('Error posting data:', error.message);
+              });
+
+
             const review = new Review(request)
             review.user_id = res.locals.userInfo._id
             await review.save()
@@ -38,7 +61,9 @@ module.exports = {
             .populate({
                 path: 'user_id',
                 select: 'username',
+                select: 'profile'
             })
+
             return res.status(200).json({
                 'message':'oke',
                 'isSuccess': true,

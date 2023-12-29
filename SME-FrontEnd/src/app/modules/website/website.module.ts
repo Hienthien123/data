@@ -30,7 +30,8 @@ import { CancelComponent } from './payment/cancel/cancel.component';
 import { PaymentService } from 'src/app/services/website/payment.service';
 import { ReviewService } from 'src/app/services/website/review.service';
 import { DetailCourseComponent } from './detail-course/detail-course.component';
-
+import { CourseDetailComponent } from './course/course-detail/course-detail.component';
+import { UserProfileComponent } from './user-profile/user-profile.component'
 @NgModule({
   declarations: [
     AboutComponent,
@@ -49,7 +50,9 @@ import { DetailCourseComponent } from './detail-course/detail-course.component';
     PaymentComponent,
     CancelComponent,
     DetailCourseComponent,
-   
+    DetailComponent,
+    CourseDetailComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
