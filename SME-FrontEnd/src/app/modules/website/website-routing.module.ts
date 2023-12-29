@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PaymentService } from 'src/app/services/website/payment.service';
 import { PaymentComponent } from './payment/payment.component';
 import { CancelComponent } from './payment/cancel/cancel.component';
+import { DetailCourseComponent } from './detail-course/detail-course.component';
 
 
 const routes: Routes = [
@@ -60,7 +61,12 @@ const routes: Routes = [
   {
     path: 'payment/:_id/:hash',
     component: PaymentComponent
+  },
+  {
+    path:'detail-coures',
+   component: DetailCourseComponent
   }
+
   
 ];
 

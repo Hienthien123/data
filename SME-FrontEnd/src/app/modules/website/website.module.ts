@@ -29,6 +29,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { CancelComponent } from './payment/cancel/cancel.component';
 import { PaymentService } from 'src/app/services/website/payment.service';
 import { ReviewService } from 'src/app/services/website/review.service';
+import { DetailCourseComponent } from './detail-course/detail-course.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ReviewService } from 'src/app/services/website/review.service';
     ProfileComponent,
     PaymentComponent,
     CancelComponent,
+    DetailCourseComponent,
    
   ],
   imports: [
