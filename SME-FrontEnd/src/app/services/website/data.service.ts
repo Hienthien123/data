@@ -37,7 +37,6 @@ export class DataService {
   initialReviewlData(id: any):void{
     this.reviewService.getAll(id).subscribe(res=>{
       if(res.isSuccess){
-        console.log(res.result)
         this.reviewSubject.next(res.result)
       }
     })

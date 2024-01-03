@@ -1,0 +1,13 @@
+
+
+<div class="dropdown">
+    <button href="#" onclick="toggleSubMenu(event)">Học lập trình để làm gì </button>
+    <div *ngFor=" let item of lesson_data" >
+        <a [routerLink]="['/website/student-course',course_id,item._id]">tai</a>
+    </div>
+    <!-- <ul  *ngFor=" let item of lesson_data">
+        <li><a href="">tai</a></li>
+        
+    </ul> -->
+</div>
+<p>{{lesson_data.lenght}}</p>

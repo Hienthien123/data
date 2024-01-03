@@ -10,13 +10,15 @@ router.post('/createchapter',authMiddleware.checkToken,authMiddleware.checkRole(
 
 router.post('/updatechapter',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),chapterController.updateChapter,redisMiddleware.setAllChapter)
 
-router.post('/getbycourse',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),redisMiddleware.getAllChapter,chapterController.getAllChapterByCourse)
+router.post('/getbycourse',chapterController.getAllChapterByCourse)
 
 router.post('/deletechapter',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),chapterController.deleteChapterById,redisMiddleware.setAllChapter)
 
 router.post('/getChapterWithLesson',authMiddleware.checkToken,courseMiddleware.checkPayCreateAdmin,chapterController.getChapterWithLesson)
 
 router.post('/getbyid',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),chapterController.getChapterById)
+
+
 
 
 module.exports = router

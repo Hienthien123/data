@@ -26,6 +26,25 @@ export class CourseService {
     return this.http.post<any>(apiUrl,payload)
   }
 
+  getchapter(payload: any):Observable<any>{
+    const apiUrl = `${environment.apiUrl}/chapter/getbycourse`;
+    return this.http.post<any>(apiUrl,payload)
+  }
+
+
+  getLesson(payload: any):Observable<any>{
+    const apiUrl = `${environment.apiUrl}/lesson/getbyuser`;
+    console.log(apiUrl)
+    return this.http.post<any>(apiUrl,payload)
+  }
+
+  learn(payload: any):Observable<any>{
+    const apiUrl = `${environment.apiUrl}/lesson/learn`;
+    console.log(apiUrl)
+    return this.http.post<any>(apiUrl,payload)
+  }
+
+
 
 
 }

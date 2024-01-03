@@ -31,6 +31,10 @@ import { PaymentService } from 'src/app/services/website/payment.service';
 import { ReviewService } from 'src/app/services/website/review.service';
 import { CourseDetailComponent } from './course/course-detail/course-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LearnComponent } from './learn/learn.component';
+import { LessonComponent } from './lesson/lesson.component';
+import { StudentCourseComponent } from './student-course/student-course.component';
+import { MycourseComponent } from './mycourse/mycourse.component';
 
 @NgModule({
   declarations: [
@@ -52,12 +56,17 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     DetailComponent,
     CourseDetailComponent,
     UserProfileComponent,
+    LearnComponent,
+    LessonComponent,
+    StudentCourseComponent,
+    MycourseComponent,
   ],
   imports: [
     CommonModule,
     WebsiteRoutingModule,
     FormsModule,
     NgxPaginationModule,
+    RouterModule,
   ],
   providers:[
     CourseService,

@@ -30,4 +30,11 @@ export class UserService {
     const apiUrl = `${this.baseUrl}/disableuser`;
     return this.http.post<BaseResponseModel<UserModel>>(apiUrl,payload);
   }
+
+  checkAdmin(payload: any):Observable<any> {
+    
+    const apiUrl = `${environment.apiUrl}/auth/checkjwtadmin`;
+    // console.log(apiUrl)
+    return this.http.post<any>(apiUrl,payload);
+  }
 }

@@ -17,6 +17,6 @@ router.post('/disableuser',authMiddleware.checkToken,authMiddleware.checkRole(co
 
 router.post('/getalluser',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),redisMiddelware.getAllUser, userController.getAllUser)
 
-router.post('/changeuserinfo',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole), userController.changeUserInfo,redisMiddelware.setAllUser)
+router.post('/changeuserinfo',authMiddleware.checkToken, userController.changeUserInfo)
 
 module.exports = router

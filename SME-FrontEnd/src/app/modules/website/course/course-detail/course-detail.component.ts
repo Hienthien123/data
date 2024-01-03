@@ -12,6 +12,5 @@ export class CourseDetailComponent {
   }
   load_id(){
     this.id = this.route.snapshot.paramMap.get('_id')
-    console.log('hi',this.id)
   } 
 }

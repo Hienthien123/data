@@ -29,6 +29,7 @@ export class AuthComponent implements OnInit {
     localStorage.setItem('email', res.email)
     localStorage.setItem('profile', res.profile)
     localStorage.setItem('authorization', res.token)
+    localStorage.setItem('name', res.profile.name)
   }
   login() {
     const loginSub = this.loginServices.loginUser(this.logInData).subscribe(res => {

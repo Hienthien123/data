@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environments';
   providedIn: 'root'
 })
 export class UserService {
+  
 
   private baseUrl = `${environment.apiUrl}/user`;
   constructor(private http:HttpClient) { }
@@ -14,4 +15,12 @@ export class UserService {
     const apiUrl = `${environment.apiUrl}/auth/checkjwtuser`;
     return this.http.post<any>(apiUrl,payload);
   }
+
+  changeInfo(payload: any):Observable<any> {
+    
+    const apiUrl = `${environment.apiUrl}/user/changeuserinfo`;
+    return this.http.post<any>(apiUrl,payload);
+  }
+
+  
 }

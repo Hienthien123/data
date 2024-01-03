@@ -74,6 +74,8 @@ import { FormReviewComponent } from './pages/review/form-review/form-review.comp
 import { ReviewService } from 'src/app/services/admin/review.service';
 import { PaymentService } from 'src/app/services/admin/payment.service';
 import { ImageService } from 'src/app/services/admin/image.service';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +127,8 @@ import { ImageService } from 'src/app/services/admin/image.service';
         PaymentComponent,
         ReviewComponent,
         FormReviewComponent,
+        PieChartComponent,
+        LineChartComponent,
 
     ],
   imports: [

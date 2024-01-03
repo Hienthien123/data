@@ -1,1 +1,39 @@
-<p>dashboard works!</p>
+<div class="row">
+    <section class="col-md-8 connectedSortable ui-sortable custom-height">
+      <div class="card" style="position: relative; left: 0px; top: 0px;">
+        <div class="card-header ui-sortable-handle">
+          <h3 class="card-title">
+            <i class="fa-brands fa-gratipay"></i>
+            Theo tháng
+          </h3>
+          <div class="card-tools">
+            
+          </div>
+        </div>
+        <div class="card-body">
+          <div style="display: block;">
+            <app-line-chart></app-line-chart>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="col-md-4 connectedSortable ui-sortable">
+      <div class="card">
+        <div class="card-header ui-sortable-handle">
+          <h3 class="card-title">
+            <i class="fa-brands fa-github"></i>
+            Theo lĩnh vực
+          </h3>
+          <div class="card-tools">
+      
+          </div>
+        </div>
+        <div class="card-body">
+          <div style="display: block;">
+            <app-pine-chart></app-pine-chart>          
+          </div>
+        </div>
+      </div>
+    </section>
+ 

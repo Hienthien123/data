@@ -62,7 +62,7 @@ module.exports = {
             // console.log(chapter)
             const data = await Chapter.find({course_id: course_id.course_id,isDelete:false})
             const redisClient = req.redisClient
-            await redisClient.set('getalluser',JSON.stringify(data))
+            await redisClient.set('getallchapter'+course_id.course_id,JSON.stringify(data))
             return res.status(200).json({
                 'message':'oke',
                 'isSuccess': true,

@@ -44,6 +44,8 @@ import { FormUserComponent } from './pages/user/form-user/form-user.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { ReviewComponent } from './pages/review/review.component';
 import { FormReviewComponent } from './pages/review/form-review/form-review.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 const routes: Routes = [
   {
@@ -302,6 +304,14 @@ const routes: Routes = [
       {
         path: 'review/:course_id/add',
         component: FormReviewComponent,
+      },
+      {
+        path: 'line',
+        component: LineChartComponent,
+      },
+      {
+        path: 'pie',
+        component: PieChartComponent,
       },
     ]
   }

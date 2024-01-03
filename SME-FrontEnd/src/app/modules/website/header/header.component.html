@@ -22,7 +22,12 @@
                       </ul>
                   </li>
                   <li><a href="website">Testimonials</a></li> 
-                  <li><a href="website">Contact Us</a></li> 
+                  <li>
+                    <a *ngIf="username; else loginLink" [routerLink]="['/website/profile']">{{ username }}</a>
+                    <ng-template #loginLink>
+                      <a [routerLink]="['/auth']">Login</a>
+                    </ng-template>
+                  </li> 
                 </ul>      
                 <a class='menu-trigger'>
                     <span>Menu</span>

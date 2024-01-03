@@ -92,13 +92,21 @@ module.exports = {
     },
     changeUserInfo: async (req,res,next) =>{
         try{
-            const user = await User.findById(req.body.change._id)
+            console.log(res.locals.userInfo._id)
+
+            const user = await User.findById(res.locals.userInfo._id)
+
             if(!user)
                 createError(400,'this user is not exist')
             
-            Object.assign(user,req.body.change)
+            user.profile.name = req.body.name
             await user.save()
-            next()
+            return res.status(200).json({
+                'message':'oke',
+                'isSuccess': true,
+                'statusCode':200,
+                'token': res.locals.newToken,
+            })
         }catch (error) {
             console.log(error.message)
             next(error)

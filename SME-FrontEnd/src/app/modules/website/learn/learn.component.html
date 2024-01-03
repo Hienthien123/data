@@ -1,0 +1,18 @@
+
+<main>
+    <section class="intro">
+        
+    </section>
+
+    <section class="what-you-will-learn">
+    
+        <div id="menu" class="block" *ngFor="let item of data; let i = index">
+            <ul>
+                <li>
+                    <app-lesson [id]="item._id" [course_id]="id"></app-lesson>
+                </li>
+                
+            </ul>
+        </div>
+    </section>
+</main>

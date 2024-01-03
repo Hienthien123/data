@@ -15,6 +15,8 @@ router.post('/getbyid',authMiddleware.checkToken,authMiddleware.checkRole(consta
 
 router.post('/getbychapter',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),lessonController.getByChapterId)
 
+router.post('/getbyuser',authMiddleware.checkToken,lessonController.getByUser)
 
+router.post('/learn',authMiddleware.checkToken,lessonController.learn)
 
 module.exports = router

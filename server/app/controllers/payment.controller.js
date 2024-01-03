@@ -30,8 +30,9 @@ module.exports = {
                     quantity : 1
                 }
             ]
-            // console.log(data)
+            // 
             let hash = await bcrypt.hash(payment._id.toString() + process.env.APP_SECRET,10)
+            console.log(`${process.env.CLIENT_URL}/website/payment/${payment._id}/${hash}`)
             const session = await stripe.checkout.sessions.create({
                 payment_method_types: ["card"],
                 mode: "payment",

@@ -1,0 +1,97 @@
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+main {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.intro {
+    margin-top: 20px;
+}
+
+.what-you-will-learn {
+    margin-top: 20px;
+    list-style: none;
+}
+
+.what-you-will-learn-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.what-you-will-learn-list li {
+    margin-bottom: 10px;
+}
+
+
+.dropdown ul li a:hover {
+    color: red;
+}
+
+
+.dropdown ul li a:hover {
+    background-color: #06e04e; 
+}
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+.dropdown {
+    margin-bottom: 10px;
+}
+
+.dropdown button {
+    border-radius: 5px;
+}
+
+.dropdown button {
+    background-color: rgb(11, 227, 184);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    width: 1600px;
+}
+
+.dropdown button:hover {
+    background-color: #333;
+}
+
+.dropdown button .icon {
+    margin-right: 5px;
+    /* Khoảng cách giữa biểu tượng và nội dung */
+}

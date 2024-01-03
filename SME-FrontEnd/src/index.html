@@ -209,6 +209,19 @@
       application: "argon-dashboard-free"
     });
 </script>
+<script>
+  function toggleSubMenu(event) {
+    event.preventDefault();
+    var subMenu = event.target.nextElementSibling;
+    if (subMenu.style.display === "none" || subMenu.style.display === "") {
+      subMenu.style.display = "block";
+    } else {
+      subMenu.style.display = "none";
+    }
+  }
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 
 <!-- Survey -->
    

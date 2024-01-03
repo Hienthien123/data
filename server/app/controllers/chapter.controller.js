@@ -35,9 +35,9 @@ module.exports = {
     },
     getAllChapterByCourse : async(req,res, next)=>{
         try{
-            const chapters = await Chapter.find({course_id: req.body._id,isDelete:false})
-            const redisClient = req.redisClient
-            await redisClient.set('chapter',JSON.stringify(chapters))
+            console.log(req.body)
+            const chapters = await Chapter.find({course_id: req.body._id}).where({isDelete:false})
+            // console.log(chapters)
             return res.status(200).json({
                 'message':'oke',
                 'isSuccess': true,

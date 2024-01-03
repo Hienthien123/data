@@ -11,15 +11,16 @@
         <th style="width: 5%;">STT</th>
         <th>username</th>
         <th>course</th>
+        <td>Status</td>
         <th style="width: 10%;">Action</th>
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of data | paginate: { itemsPerPage: 2, currentPage: p }; let i = index">
+        <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
           <td>{{i+1}}</td>
           <td><a [routerLink]="['/admin/user/edit',item.user_id._id]">{{item.user_id.username}}</a></td>
           <td><a [routerLink]="['/admin/khoa-hoc/edit',item.course_id._id]">{{item.course_id.title}}</a></td>
-        
+          <td>{{item.status}}</td>
           <td>
           <div class="d-flex align-items-center">
             <i [routerLink]="['edit', item._id]" class="fas fa-edit mx-2"></i>

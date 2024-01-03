@@ -23,6 +23,7 @@ router.post('/sendmail',authController.sendEmail)
 router.post('/active',authController.activeAccount)
 
 router.post('/checkjwtadmin',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),(req,res,next)=>{
+    console.log("this")
     return res.status(200).json({
         'message':'oke',
         'isSuccess': true,
@@ -32,7 +33,6 @@ router.post('/checkjwtadmin',authMiddleware.checkToken,authMiddleware.checkRole(
 })
 
 router.post('/checkjwtuser',authMiddleware.checkToken,authMiddleware.checkRole(constant.adminRole),(req,res,next)=>{
-    // console.log("oke")
     return res.status(200).json({
         'message':'oke',
         'isSuccess': true,

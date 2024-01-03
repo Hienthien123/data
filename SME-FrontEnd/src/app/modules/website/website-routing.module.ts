@@ -16,6 +16,9 @@ import { PaymentComponent } from './payment/payment.component';
 import { CancelComponent } from './payment/cancel/cancel.component';
 import { CourseDetailComponent } from './course/course-detail/course-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LearnComponent } from './learn/learn.component';
+import { StudentCourseComponent } from './student-course/student-course.component';
+import { MycourseComponent } from './mycourse/mycourse.component';
 
 
 const routes: Routes = [
@@ -62,7 +65,24 @@ const routes: Routes = [
   {
     path: 'payment/:_id/:hash',
     component: PaymentComponent
-  }
+  },
+  {
+    path: 'learn',
+    component: LearnComponent
+  },
+  {
+    path: 'student-course',
+    component: StudentCourseComponent
+  },
+  {
+    path: 'student-course/:course_id/:_id',
+    component: StudentCourseComponent
+  },
+  {
+    path: 'mycourse',
+    component: MycourseComponent
+  },
+  
   
 ];
 
